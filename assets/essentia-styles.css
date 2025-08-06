@@ -3,9 +3,12 @@
 :root {
   /* Essentia Color Palette */
   --primary: #1a1a1a;
+  --primary-color: #1a1a1a; /* Legacy support */
   --primary-light: #333333;
   --secondary: #f8f5f0;
+  --secondary-color: #f8f5f0; /* Legacy support */
   --accent: #d4dccf;
+  --accent-color: #d4dccf; /* Legacy support */
   --white: #ffffff;
   --text-muted: #666666;
   --border: #e5e5e5;
