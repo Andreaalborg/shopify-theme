@@ -1,0 +1,41 @@
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">{{ shop.name }}</a>
+      
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Hjem</a></li>
+        <li><a href="/collections/all" class="nav-link">Produkter</a></li>
+        <li><a href="/pages/om-oss" class="nav-link">Om oss</a></li>
+        <li><a href="/pages/faq" class="nav-link">FAQ</a></li>
+        <li><a href="/pages/kontakt" class="nav-link">Kontakt</a></li>
+        <li><a href="/cart" class="nav-link">Handlekurv ({{ cart.item_count }})</a></li>
+      </ul>
+      
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "menu_title",
+      "label": "Menu title",
+      "default": "Main menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,78 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>{{ shop.name }}</h3>
+        <p>{{ section.settings.footer_text }}</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Hurtiglenker</h3>
+        <ul class="footer-links">
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/collections/all">Produkter</a></li>
+          <li><a href="/pages/om-oss">Om oss</a></li>
+          <li><a href="/pages/faq">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Kundeservice</h3>
+        <ul class="footer-links">
+          <li><a href="/pages/kontakt">Kontakt oss</a></li>
+          <li><a href="/policies/privacy-policy">Personvern</a></li>
+          <li><a href="/policies/terms-of-service">Vilkår</a></li>
+          <li><a href="/policies/refund-policy">Retur</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Følg oss</h3>
+        <ul class="footer-links">
+          {% if section.settings.facebook_url != blank %}
+            <li><a href="{{ section.settings.facebook_url }}" target="_blank">Facebook</a></li>
+          {% endif %}
+          {% if section.settings.instagram_url != blank %}
+            <li><a href="{{ section.settings.instagram_url }}" target="_blank">Instagram</a></li>
+          {% endif %}
+          {% if section.settings.twitter_url != blank %}
+            <li><a href="{{ section.settings.twitter_url }}" target="_blank">Twitter</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Alle rettigheter reservert.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "En moderne nettbutikk med fokus på kvalitet og design."
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    }
+  ]
+}
+{% endschema %}

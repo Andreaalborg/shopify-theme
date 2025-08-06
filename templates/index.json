@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "title": "Velkommen til vår butikk",
+        "subtitle": "Oppdag våre unike produkter med moderne design",
+        "button_text": "Se produkter",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Utvalgte produkter",
+        "collection": "frontpage"
+      }
+    },
+    "about-preview": {
+      "type": "about-preview",
+      "settings": {
+        "title": "Vår historie",
+        "text": "Vi er dedikert til å levere produkter av høyeste kvalitet med moderne design og funksjonalitet.",
+        "button_text": "Les mer",
+        "button_link": "/pages/om-oss"
+      }
+    }
+  },
+  "order": ["hero", "featured-products", "about-preview"]
+}

@@ -1,0 +1,182 @@
+<div class="contact-page section">
+  <div class="container">
+    <h1 class="page-title animate-on-scroll">Kontakt Oss</h1>
+    
+    <div class="contact-content">
+      <div class="grid grid-2">
+        <div class="contact-form-section animate-on-scroll">
+          <h2>Send oss en melding</h2>
+          <form action="/contact" method="post" class="contact-form">
+            {% if form.posted_successfully? %}
+              <p class="success-message">Takk for din henvendelse! Vi svarer så snart som mulig.</p>
+            {% endif %}
+            
+            {% if form.errors %}
+              <div class="error-message">
+                {{ form.errors | default_errors }}
+              </div>
+            {% endif %}
+            
+            <div class="form-group">
+              <input type="text" 
+                     name="contact[name]" 
+                     placeholder="Ditt navn" 
+                     required
+                     class="form-input">
+            </div>
+            
+            <div class="form-group">
+              <input type="email" 
+                     name="contact[email]" 
+                     placeholder="Din e-post" 
+                     required
+                     class="form-input">
+            </div>
+            
+            <div class="form-group">
+              <input type="tel" 
+                     name="contact[phone]" 
+                     placeholder="Telefonnummer (valgfritt)"
+                     class="form-input">
+            </div>
+            
+            <div class="form-group">
+              <textarea name="contact[body]" 
+                        placeholder="Din melding" 
+                        rows="6" 
+                        required
+                        class="form-input"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-submit magnetic-button">
+              Send melding
+            </button>
+          </form>
+        </div>
+        
+        <div class="contact-info-section animate-on-scroll">
+          <h2>Kontaktinformasjon</h2>
+          
+          <div class="contact-info-item">
+            <h3>Adresse</h3>
+            <p>Eksempelgate 123<br>
+            0123 Oslo<br>
+            Norge</p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>Telefon</h3>
+            <p>+47 12 34 56 78</p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>E-post</h3>
+            <p>support@example.com</p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>Åpningstider</h3>
+            <p>Mandag - Fredag: 09:00 - 17:00<br>
+            Lørdag: 10:00 - 15:00<br>
+            Søndag: Stengt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="page-custom-content">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+<style>
+  .contact-page {
+    padding-top: 120px;
+    min-height: 80vh;
+  }
+  
+  .contact-content {
+    margin-top: 60px;
+  }
+  
+  .contact-form-section,
+  .contact-info-section {
+    padding: 40px;
+  }
+  
+  .contact-form-section h2,
+  .contact-info-section h2 {
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: white;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+  }
+  
+  textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 18px;
+  }
+  
+  .contact-info-item {
+    margin-bottom: 30px;
+  }
+  
+  .contact-info-item h3 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .contact-info-item p {
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  
+  .success-message {
+    background: #4caf50;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    background: #f44336;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-form-section,
+    .contact-info-section {
+      padding: 20px;
+    }
+  }
+</style>

@@ -1,0 +1,82 @@
+{
+  "general": {
+    "404": {
+      "title": "404 Side ikke funnet",
+      "subtext": "Siden du leter etter eksisterer ikke",
+      "link": "Tilbake til forsiden"
+    },
+    "accessibility": {
+      "skip_to_content": "Hopp til innhold",
+      "close_modal": "Lukk",
+      "link_messages": {
+        "new_window": "Åpnes i nytt vindu.",
+        "external": "Åpner ekstern nettside."
+      }
+    },
+    "meta": {
+      "tags": "Merket med \"{{ tags }}\"",
+      "page": "Side {{ page }}"
+    },
+    "newsletter": {
+      "title": "Meld deg på nyhetsbrevet",
+      "email_placeholder": "Din e-post",
+      "submit": "Abonner",
+      "success": "Takk for din påmelding!"
+    },
+    "search": {
+      "title": "Søk",
+      "placeholder": "Søk i butikken...",
+      "submit": "Søk",
+      "no_results": "Ingen resultater for \"{{ terms }}\""
+    }
+  },
+  "cart": {
+    "title": "Handlekurv",
+    "empty": "Din handlekurv er tom",
+    "remove": "Fjern",
+    "update": "Oppdater",
+    "quantity": "Antall",
+    "total": "Total",
+    "subtotal": "Delsum",
+    "checkout": "Gå til kassen",
+    "continue_shopping": "Fortsett å handle"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Legg i handlekurv",
+      "description": "Beskrivelse",
+      "on_sale": "Salg",
+      "quantity": "Antall",
+      "regular_price": "Ordinær pris",
+      "sale_price": "Salgspris",
+      "sold_out": "Utsolgt",
+      "unavailable": "Utilgjengelig",
+      "vendor": "Leverandør",
+      "sku": "SKU"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Min konto",
+      "details": "Kontodetaljer",
+      "orders": "Ordrehistorikk",
+      "logout": "Logg ut"
+    },
+    "login": {
+      "title": "Logg inn",
+      "email": "E-post",
+      "password": "Passord",
+      "submit": "Logg inn",
+      "forgot_password": "Glemt passord?",
+      "sign_up": "Opprett konto"
+    },
+    "register": {
+      "title": "Opprett konto",
+      "first_name": "Fornavn",
+      "last_name": "Etternavn",
+      "email": "E-post",
+      "password": "Passord",
+      "submit": "Opprett"
+    }
+  }
+}

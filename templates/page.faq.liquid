@@ -1,0 +1,151 @@
+<div class="faq-page section">
+  <div class="container">
+    <h1 class="page-title animate-on-scroll">Ofte Stilte Spørsmål</h1>
+    
+    <div class="faq-container">
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          <span>Hvor lang leveringstid har dere?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Vi leverer normalt innen 2-5 virkedager. Ekspress-levering er tilgjengelig for de fleste produkter.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          <span>Hva er returpolitikken deres?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Vi tilbyr 30 dagers åpent kjøp på alle våre produkter. Varen må være ubrukt og i original emballasje.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          <span>Tilbyr dere internasjonal frakt?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Ja, vi sender til de fleste land. Fraktkostnader og leveringstid varierer avhengig av destinasjon.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          <span>Hvordan kontakter jeg kundeservice?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Du kan kontakte oss via kontaktskjemaet, e-post på support@example.com, eller telefon på 12 34 56 78.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          <span>Er betalingen sikker?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Ja, vi bruker SSL-kryptering og sikre betalingsløsninger for å beskytte din informasjon.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-custom-content animate-on-scroll">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+<style>
+  .faq-page {
+    padding-top: 120px;
+    min-height: 80vh;
+  }
+  
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  
+  .faq-item {
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  }
+  
+  .faq-question {
+    width: 100%;
+    padding: 25px 30px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    background: rgba(0,0,0,0.02);
+  }
+  
+  .faq-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .faq-answer p {
+    padding: 0 30px 25px;
+    line-height: 1.6;
+  }
+  
+  .faq-item.active .faq-answer {
+    max-height: 300px;
+  }
+  
+  .faq-custom-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      faqItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+});
+</script>

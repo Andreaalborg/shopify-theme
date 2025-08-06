@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }} - {{ shop.name }}</title>
+  
+  <link rel="canonical" href="{{ canonical_url }}">
+  
+  {{ content_for_header }}
+  
+  {{ 'modern-styles.css' | asset_url | stylesheet_tag }}
+  {{ 'animations.css' | asset_url | stylesheet_tag }}
+  
+  <script src="{{ 'modern-scripts.js' | asset_url }}" defer></script>
+  <script src="{{ 'smooth-scroll.js' | asset_url }}" defer></script>
+  
+  <style>
+    :root {
+      --primary-color: {{ settings.primary_color }};
+      --secondary-color: {{ settings.secondary_color }};
+      --accent-color: {{ settings.accent_color }};
+      --heading-font: {{ settings.heading_font | font_face }};
+      --body-font: {{ settings.body_font | font_face }};
+    }
+  </style>
+</head>
+<body class="template-{{ template.name }}">
+  
+  {% section 'header' %}
+  
+  <main id="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+  
+  {% section 'footer' %}
+  
+  <div class="page-transition"></div>
+  
+</body>
+</html>

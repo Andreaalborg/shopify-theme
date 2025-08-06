@@ -1,0 +1,79 @@
+<section class="hero section">
+  <div class="blob" style="top: -200px; left: -200px;"></div>
+  <div class="blob" style="bottom: -200px; right: -200px;"></div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title reveal-text">{{ section.settings.title }}</h1>
+      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+      <a href="{{ section.settings.button_link }}" class="btn magnetic-button">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+  
+  {% if section.settings.hero_image %}
+    <div class="hero-image parallax-element" data-speed="0.5">
+      <img src="{{ section.settings.hero_image | img_url: '1920x' }}" alt="{{ section.settings.title }}">
+    </div>
+  {% endif %}
+</section>
+
+<style>
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Velkommen"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Oppdag våre produkter"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop nå"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Background image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

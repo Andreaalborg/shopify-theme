@@ -1,0 +1,271 @@
+<div class="product-page section">
+  <div class="container">
+    <div class="grid grid-2">
+      <div class="product-images animate-on-scroll">
+        {% if product.featured_image %}
+          <div class="main-image">
+            <img src="{{ product.featured_image | img_url: '800x' }}" 
+                 alt="{{ product.title }}"
+                 class="parallax-element"
+                 data-speed="0.2">
+          </div>
+          {% if product.images.size > 1 %}
+            <div class="image-gallery">
+              {% for image in product.images %}
+                <div class="gallery-image">
+                  <img src="{{ image | img_url: '200x' }}" 
+                       alt="{{ product.title }}"
+                       data-main-image="{{ image | img_url: '800x' }}">
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+      
+      <div class="product-info animate-on-scroll">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <div class="product-price">{{ product.price | money }}</div>
+        
+        {% if product.compare_at_price > product.price %}
+          <div class="product-compare-price">
+            <span class="original-price">{{ product.compare_at_price | money }}</span>
+            <span class="discount-badge">Spar {{ product.compare_at_price | minus: product.price | money }}</span>
+          </div>
+        {% endif %}
+        
+        <div class="product-description">
+          {{ product.description }}
+        </div>
+        
+        <form action="/cart/add" method="post" class="product-form">
+          {% if product.has_only_default_variant == false %}
+            <div class="product-options">
+              {% for option in product.options_with_values %}
+                <div class="option-group">
+                  <label>{{ option.name }}</label>
+                  <select name="options[{{ option.name }}]" class="option-select">
+                    {% for value in option.values %}
+                      <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+          <div class="quantity-selector">
+            <label>Antall:</label>
+            <div class="quantity-input">
+              <button type="button" class="quantity-btn minus">-</button>
+              <input type="number" name="quantity" value="1" min="1" class="quantity-field">
+              <button type="button" class="quantity-btn plus">+</button>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn add-to-cart magnetic-button">
+            Legg i handlekurv
+          </button>
+        </form>
+        
+        <div class="product-meta">
+          {% if product.vendor %}
+            <p><strong>Merke:</strong> {{ product.vendor }}</p>
+          {% endif %}
+          {% if product.type %}
+            <p><strong>Type:</strong> {{ product.type }}</p>
+          {% endif %}
+          {% if product.tags.size > 0 %}
+            <p><strong>Tags:</strong> {{ product.tags | join: ', ' }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-page {
+    padding-top: 120px;
+  }
+  
+  .main-image {
+    margin-bottom: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .main-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .gallery-image {
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .product-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .product-price {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+  }
+  
+  .product-compare-price {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
+  .discount-badge {
+    background: #4caf50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .product-description {
+    margin: 30px 0;
+    line-height: 1.8;
+  }
+  
+  .product-options {
+    margin-bottom: 30px;
+  }
+  
+  .option-group {
+    margin-bottom: 20px;
+  }
+  
+  .option-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .option-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+  }
+  
+  .quantity-selector {
+    margin-bottom: 30px;
+  }
+  
+  .quantity-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .quantity-input {
+    display: flex;
+    max-width: 150px;
+  }
+  
+  .quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .quantity-btn:hover {
+    background: var(--secondary-color);
+  }
+  
+  .quantity-field {
+    width: 70px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-left: none;
+    border-right: none;
+    font-size: 1rem;
+  }
+  
+  .add-to-cart {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 18px;
+  }
+  
+  .product-meta {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .product-meta p {
+    margin-bottom: 10px;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Image gallery
+  const galleryImages = document.querySelectorAll('.gallery-image img');
+  const mainImage = document.querySelector('.main-image img');
+  
+  galleryImages.forEach(img => {
+    img.addEventListener('click', function() {
+      mainImage.src = this.dataset.mainImage;
+    });
+  });
+  
+  // Quantity selector
+  const quantityField = document.querySelector('.quantity-field');
+  const minusBtn = document.querySelector('.quantity-btn.minus');
+  const plusBtn = document.querySelector('.quantity-btn.plus');
+  
+  minusBtn.addEventListener('click', () => {
+    const currentValue = parseInt(quantityField.value);
+    if (currentValue > 1) {
+      quantityField.value = currentValue - 1;
+    }
+  });
+  
+  plusBtn.addEventListener('click', () => {
+    const currentValue = parseInt(quantityField.value);
+    quantityField.value = currentValue + 1;
+  });
+});
+</script>

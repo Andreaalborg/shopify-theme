@@ -1,0 +1,67 @@
+<section class="section">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll">{{ section.settings.title }}</h2>
+    
+    <div class="grid grid-4 stagger-animation">
+      {% assign collection = collections[section.settings.collection] %}
+      {% for product in collection.products limit: 8 %}
+        <div class="card hover-lift">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: '400x400' }}" 
+                   alt="{{ product.title }}" 
+                   class="card-image">
+            {% endif %}
+            <div class="card-content">
+              <h3>{{ product.title }}</h3>
+              <p class="price">{{ product.price | money }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-top: 10px;
+  }
+  
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

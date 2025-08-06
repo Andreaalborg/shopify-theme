@@ -1,0 +1,222 @@
+<div class="collection-page section">
+  <div class="container">
+    <div class="collection-header animate-on-scroll">
+      <h1 class="collection-title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <div class="collection-description">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="collection-toolbar">
+      <div class="product-count">
+        {{ collection.products_count }} 
+        {% if collection.products_count == 1 %}produkt{% else %}produkter{% endif %}
+      </div>
+      
+      <div class="sort-by">
+        <label for="sort-by">Sorter:</label>
+        <select id="sort-by" class="sort-select">
+          <option value="manual">Anbefalt</option>
+          <option value="price-ascending">Pris: Lav til høy</option>
+          <option value="price-descending">Pris: Høy til lav</option>
+          <option value="title-ascending">Alfabetisk: A-Å</option>
+          <option value="title-descending">Alfabetisk: Å-A</option>
+          <option value="created-descending">Nyeste først</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="products-grid grid grid-4 stagger-animation">
+      {% for product in collection.products %}
+        <div class="product-card card hover-lift">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              <div class="product-image-wrapper">
+                <img src="{{ product.featured_image | img_url: '400x' }}" 
+                     alt="{{ product.title }}"
+                     class="card-image">
+                {% if product.compare_at_price > product.price %}
+                  <span class="sale-badge">Salg</span>
+                {% endif %}
+              </div>
+            {% endif %}
+            
+            <div class="card-content">
+              <h3 class="product-card-title">{{ product.title }}</h3>
+              <div class="product-card-price">
+                {{ product.price | money }}
+                {% if product.compare_at_price > product.price %}
+                  <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="pagination-btn">← Forrige</a>
+        {% endif %}
+        
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a href="{{ part.url }}" class="pagination-number">{{ part.title }}</a>
+          {% else %}
+            {% if part.title == paginate.current_page %}
+              <span class="pagination-number active">{{ part.title }}</span>
+            {% else %}
+              <span class="pagination-dots">{{ part.title }}</span>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="pagination-btn">Neste →</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .collection-page {
+    padding-top: 120px;
+  }
+  
+  .collection-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .collection-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .collection-description {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    opacity: 0.9;
+  }
+  
+  .collection-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .product-count {
+    opacity: 0.7;
+  }
+  
+  .sort-by {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sort-select {
+    padding: 10px 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background: white;
+    font-size: 0.95rem;
+  }
+  
+  .product-image-wrapper {
+    position: relative;
+  }
+  
+  .sale-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f44336;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .product-card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .product-card-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+  
+  .compare-price {
+    font-size: 0.9rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 10px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 60px;
+  }
+  
+  .pagination-btn,
+  .pagination-number {
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+  }
+  
+  .pagination-btn:hover,
+  .pagination-number:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  
+  .pagination-number.active {
+    background: var(--primary-color);
+    color: white;
+  }
+  
+  .pagination-dots {
+    padding: 10px;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sortSelect = document.getElementById('sort-by');
+  
+  sortSelect.addEventListener('change', function() {
+    const url = new URL(window.location);
+    url.searchParams.set('sort_by', this.value);
+    window.location = url.toString();
+  });
+  
+  // Set current sort value from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const sortBy = urlParams.get('sort_by');
+  if (sortBy) {
+    sortSelect.value = sortBy;
+  }
+});
+</script>
