@@ -3,28 +3,42 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "title": "Velkommen til vår butikk",
-        "subtitle": "Oppdag våre unike produkter med moderne design",
-        "button_text": "Se produkter",
+        "title": "Frisk luft, overalt",
+        "subtitle": "Premium luftfriskere for bil og hjem",
+        "button_text": "Utforsk produkter",
         "button_link": "/collections/all"
+      }
+    },
+    "product-showcase": {
+      "type": "product-showcase",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "title": "Hva kundene sier"
       }
     },
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "title": "Utvalgte produkter",
+        "title": "Bestselgere",
         "collection": "frontpage"
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
     },
     "about-preview": {
       "type": "about-preview",
       "settings": {
-        "title": "Vår historie",
-        "text": "Vi er dedikert til å levere produkter av høyeste kvalitet med moderne design og funksjonalitet.",
+        "title": "Hvorfor velge oss?",
+        "text": "Vi kombinerer skandinavisk design med premium kvalitet. Våre luftfriskere er miljøvennlige, langvarige og designet for å gi deg den perfekte duften.",
         "button_text": "Les mer",
         "button_link": "/pages/om-oss"
       }
     }
   },
-  "order": ["hero", "featured-products", "about-preview"]
+  "order": ["hero", "product-showcase", "testimonials", "featured-products", "newsletter", "about-preview"]
 }

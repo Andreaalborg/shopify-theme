@@ -1,0 +1,485 @@
+<section class="product-showcase section">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll">
+      <span class="gradient-text">Våre Produkter</span>
+    </h2>
+    
+    <div class="showcase-wrapper">
+      <!-- Car Vent Product -->
+      <div class="showcase-item" data-product="vent">
+        <div class="showcase-content">
+          <div class="product-number">01</div>
+          <h3 class="product-name">Car Vent</h3>
+          <p class="product-description">
+            Diskré og effektiv luftfrisker som festes enkelt i bilens ventilasjon. 
+            Aktiveres av luftstrømmen og gir en jevn, behagelig duft.
+          </p>
+          <ul class="product-features">
+            <li>✓ Varer opptil 45 dager</li>
+            <li>✓ Justerbar duftintensitet</li>
+            <li>✓ Universal passform</li>
+          </ul>
+          <div class="product-price">kr 149,-</div>
+          <a href="/products/car-vent-luftfrisker" class="btn-product magnetic-button">Se produkt</a>
+        </div>
+        
+        <div class="showcase-visual">
+          <div class="product-3d-container">
+            <div class="product-3d car-vent-3d">
+              <div class="vent-body"></div>
+              <div class="vent-clip"></div>
+              <div class="scent-waves">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mirror Hanger Product -->
+      <div class="showcase-item reverse" data-product="mirror">
+        <div class="showcase-content">
+          <div class="product-number">02</div>
+          <h3 class="product-name">Mirror Hanger</h3>
+          <p class="product-description">
+            Elegant luftfrisker som henger i bakspeilet. Kombinerer stilfullt design 
+            med langvarig duft. Perfekt for de som ønsker en synlig, dekorativ løsning.
+          </p>
+          <ul class="product-features">
+            <li>✓ Premium design</li>
+            <li>✓ Varer opptil 30 dager</li>
+            <li>✓ Flere duftvalg</li>
+          </ul>
+          <div class="product-price">kr 99,-</div>
+          <a href="/products/mirror-hanger-luftfrisker" class="btn-product magnetic-button">Se produkt</a>
+        </div>
+        
+        <div class="showcase-visual">
+          <div class="product-3d-container">
+            <div class="product-3d mirror-hanger-3d">
+              <div class="hanger-string"></div>
+              <div class="hanger-body">
+                <div class="hanger-design"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Home Diffuser Product -->
+      <div class="showcase-item" data-product="home">
+        <div class="showcase-content">
+          <div class="product-number">03</div>
+          <h3 class="product-name">Home Diffuser</h3>
+          <p class="product-description">
+            Stilfull aromdiffuser for hjemmet. Bruker ultralydteknologi for å 
+            spre behagelig duft og skape en avslappende atmosfære.
+          </p>
+          <ul class="product-features">
+            <li>✓ 7 LED farger</li>
+            <li>✓ Timer-funksjon</li>
+            <li>✓ Støyfri drift</li>
+          </ul>
+          <div class="product-price">kr 399,-</div>
+          <a href="/products/home-diffuser" class="btn-product magnetic-button">Se produkt</a>
+        </div>
+        
+        <div class="showcase-visual">
+          <div class="product-3d-container">
+            <div class="product-3d home-diffuser-3d">
+              <div class="diffuser-base"></div>
+              <div class="diffuser-top"></div>
+              <div class="mist-effect">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="led-glow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-showcase {
+    padding: 100px 0;
+    overflow: hidden;
+  }
+  
+  .showcase-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+  }
+  
+  .showcase-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .showcase-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .showcase-item.reverse {
+    direction: rtl;
+  }
+  
+  .showcase-item.reverse .showcase-content {
+    direction: ltr;
+  }
+  
+  .showcase-content {
+    position: relative;
+  }
+  
+  .product-number {
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(0,0,0,0.05);
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    z-index: -1;
+  }
+  
+  .product-name {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  .product-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+  
+  .product-features {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  
+  .product-features li {
+    padding: 10px 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .product-price {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+  }
+  
+  .btn-product {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* 3D Product Visualizations */
+  .product-3d-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+  }
+  
+  .product-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate3d 20s linear infinite;
+  }
+  
+  @keyframes rotate3d {
+    0% { transform: rotateY(0deg) rotateX(0deg); }
+    50% { transform: rotateY(180deg) rotateX(10deg); }
+    100% { transform: rotateY(360deg) rotateX(0deg); }
+  }
+  
+  /* Car Vent 3D */
+  .car-vent-3d {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .vent-body {
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(135deg, #333, #666);
+    border-radius: 15px;
+    position: absolute;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transform: translateZ(20px);
+  }
+  
+  .vent-body::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background: rgba(255,255,255,0.2);
+    top: 30%;
+    left: 20%;
+    box-shadow: 0 10px 0 rgba(255,255,255,0.2), 0 20px 0 rgba(255,255,255,0.2);
+  }
+  
+  .vent-clip {
+    width: 80px;
+    height: 30px;
+    background: linear-gradient(135deg, #555, #888);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(-10px);
+    border-radius: 5px;
+  }
+  
+  .scent-waves {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .scent-waves span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    position: absolute;
+    animation: wave 3s ease-out infinite;
+    opacity: 0;
+  }
+  
+  .scent-waves span:nth-child(1) { animation-delay: 0s; }
+  .scent-waves span:nth-child(2) { animation-delay: 1s; }
+  .scent-waves span:nth-child(3) { animation-delay: 2s; }
+  
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+  
+  /* Mirror Hanger 3D */
+  .mirror-hanger-3d {
+    width: 150px;
+    height: 250px;
+    animation: swing 4s ease-in-out infinite;
+  }
+  
+  @keyframes swing {
+    0%, 100% { transform: rotateZ(-5deg) rotateY(0deg); }
+    25% { transform: rotateZ(5deg) rotateY(90deg); }
+    50% { transform: rotateZ(-5deg) rotateY(180deg); }
+    75% { transform: rotateZ(5deg) rotateY(270deg); }
+  }
+  
+  .hanger-string {
+    width: 2px;
+    height: 100px;
+    background: #666;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .hanger-body {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #f0f0f0, #fff);
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  
+  .hanger-design {
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    border-radius: 15px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    opacity: 0.8;
+  }
+  
+  /* Home Diffuser 3D */
+  .home-diffuser-3d {
+    width: 180px;
+    height: 220px;
+  }
+  
+  .diffuser-base {
+    width: 180px;
+    height: 100px;
+    background: linear-gradient(135deg, #8b7355, #d4a574);
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+  
+  .diffuser-top {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+    border-radius: 50% 50% 40% 40%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    backdrop-filter: blur(10px);
+  }
+  
+  .mist-effect {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .mist-effect span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8), transparent);
+    border-radius: 50%;
+    position: absolute;
+    animation: mist 4s ease-out infinite;
+    opacity: 0;
+  }
+  
+  .mist-effect span:nth-child(1) { animation-delay: 0s; left: -10px; }
+  .mist-effect span:nth-child(2) { animation-delay: 1.3s; left: 0; }
+  .mist-effect span:nth-child(3) { animation-delay: 2.6s; left: 10px; }
+  
+  @keyframes mist {
+    0% {
+      transform: translateY(0) scale(0.5);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-80px) scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .led-glow {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--accent-color), transparent);
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.3;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    0% { opacity: 0.2; transform: translateX(-50%) scale(0.9); }
+    100% { opacity: 0.5; transform: translateX(-50%) scale(1.1); }
+  }
+  
+  @media (max-width: 768px) {
+    .showcase-item {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .showcase-item.reverse {
+      direction: ltr;
+    }
+    
+    .product-3d-container {
+      height: 300px;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.showcase-item').forEach(item => {
+    observer.observe(item);
+  });
+  
+  // Interactive 3D rotation on mouse move
+  const containers = document.querySelectorAll('.product-3d-container');
+  
+  containers.forEach(container => {
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      
+      const product3d = container.querySelector('.product-3d');
+      product3d.style.transform = `rotateY(${x * 30}deg) rotateX(${-y * 30}deg)`;
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      const product3d = container.querySelector('.product-3d');
+      product3d.style.transform = '';
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Product Showcase",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Showcase"
+    }
+  ]
+}
+{% endschema %}

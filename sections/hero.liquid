@@ -2,10 +2,65 @@
   <div class="blob" style="top: -200px; left: -200px;"></div>
   <div class="blob" style="bottom: -200px; right: -200px;"></div>
   
+  <!-- Floating particles for scent visualization -->
+  <div class="scent-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  
   <div class="container">
     <div class="hero-content">
       <h1 class="hero-title reveal-text">{{ section.settings.title }}</h1>
       <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+      
+      <!-- 3 Product showcase -->
+      <div class="hero-products">
+        <div class="hero-product car-vent" data-product="vent">
+          <div class="product-icon">
+            <svg viewBox="0 0 100 100" class="animated-icon">
+              <rect x="10" y="30" width="80" height="40" rx="5" fill="currentColor" opacity="0.9"/>
+              <line x1="25" y1="40" x2="75" y2="40" stroke="white" stroke-width="2" class="air-flow"/>
+              <line x1="25" y1="50" x2="75" y2="50" stroke="white" stroke-width="2" class="air-flow"/>
+              <line x1="25" y1="60" x2="75" y2="60" stroke="white" stroke-width="2" class="air-flow"/>
+              <circle cx="50" cy="50" r="8" fill="white" opacity="0.8" class="pulse-circle"/>
+            </svg>
+          </div>
+          <h3>Bil Ventilasjon</h3>
+          <p>Perfekt duft i bilen</p>
+        </div>
+        
+        <div class="hero-product car-mirror" data-product="mirror">
+          <div class="product-icon">
+            <svg viewBox="0 0 100 100" class="animated-icon">
+              <rect x="35" y="10" width="30" height="20" rx="10" fill="currentColor" opacity="0.9"/>
+              <line x1="50" y1="30" x2="50" y2="60" stroke="currentColor" stroke-width="3"/>
+              <circle cx="50" cy="70" r="15" fill="currentColor" opacity="0.9" class="swing"/>
+              <circle cx="50" cy="70" r="10" fill="white" opacity="0.3"/>
+            </svg>
+          </div>
+          <h3>Bilspeil Henger</h3>
+          <p>Elegant og diskré</p>
+        </div>
+        
+        <div class="hero-product home-diffuser" data-product="home">
+          <div class="product-icon">
+            <svg viewBox="0 0 100 100" class="animated-icon">
+              <ellipse cx="50" cy="75" rx="20" ry="5" fill="currentColor" opacity="0.3"/>
+              <path d="M35 75 Q35 50 40 30 L60 30 Q65 50 65 75 Z" fill="currentColor" opacity="0.9"/>
+              <rect x="45" y="25" width="10" height="15" fill="currentColor"/>
+              <path d="M45 20 Q50 10 50 10 Q50 10 55 20" stroke="currentColor" stroke-width="2" fill="none" class="steam steam1"/>
+              <path d="M48 20 Q48 5 48 5 Q48 5 48 20" stroke="currentColor" stroke-width="2" fill="none" class="steam steam2"/>
+              <path d="M52 20 Q52 5 52 5 Q52 5 52 20" stroke="currentColor" stroke-width="2" fill="none" class="steam steam3"/>
+            </svg>
+          </div>
+          <h3>Hjemme Diffuser</h3>
+          <p>Aromaterapi hjemme</p>
+        </div>
+      </div>
+      
       <a href="{{ section.settings.button_link }}" class="btn magnetic-button">
         {{ section.settings.button_text }}
       </a>
@@ -34,6 +89,172 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  
+  /* Product showcase styles */
+  .hero-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin: 60px 0;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-product {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+  }
+  
+  .hero-product:nth-child(1) { animation-delay: 0.2s; }
+  .hero-product:nth-child(2) { animation-delay: 0.4s; }
+  .hero-product:nth-child(3) { animation-delay: 0.6s; }
+  
+  .hero-product:hover {
+    transform: translateY(-20px) scale(1.05);
+  }
+  
+  .product-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 30px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+  }
+  
+  .hero-product:hover .product-icon {
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  
+  .animated-icon {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+  }
+  
+  .hero-product h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+  
+  .hero-product p {
+    opacity: 0.8;
+    font-size: 0.95rem;
+  }
+  
+  /* Scent particles animation */
+  .scent-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatParticle 10s infinite;
+  }
+  
+  .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+  .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+  .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
+  .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
+  
+  @keyframes floatParticle {
+    0% {
+      bottom: 0;
+      opacity: 0;
+      transform: translateX(0) scale(0);
+    }
+    10% {
+      opacity: 0.6;
+      transform: translateX(10px) scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: translateX(-10px) scale(1.5);
+    }
+    100% {
+      bottom: 100%;
+      opacity: 0;
+      transform: translateX(20px) scale(0.5);
+    }
+  }
+  
+  /* SVG Animations */
+  .air-flow {
+    animation: flowAnimation 2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes flowAnimation {
+    0%, 100% { transform: translateX(0); opacity: 0.3; }
+    50% { transform: translateX(10px); opacity: 1; }
+  }
+  
+  .pulse-circle {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  .swing {
+    animation: swingAnimation 3s ease-in-out infinite;
+    transform-origin: 50% 0%;
+  }
+  
+  @keyframes swingAnimation {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+  
+  .steam {
+    animation: steamAnimation 3s ease-out infinite;
+    opacity: 0;
+  }
+  
+  .steam1 { animation-delay: 0s; }
+  .steam2 { animation-delay: 1s; }
+  .steam3 { animation-delay: 2s; }
+  
+  @keyframes steamAnimation {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-products {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .product-icon {
+      width: 100px;
+      height: 100px;
+    }
   }
 </style>
 
