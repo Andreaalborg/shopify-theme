@@ -1,472 +1,1188 @@
-<section class="product-showcase section">
-  <div class="container">
-    <h2 class="section-title animate-on-scroll">
-      <span class="gradient-text">Våre Produkter</span>
-    </h2>
+<section class="fullscreen-products" id="fullscreen-products">
+  <!-- Progress indicator -->
+  <div class="progress-indicator">
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="progress-dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+    </div>
+  </div>
+
+  <!-- Product slides -->
+  <div class="product-slides">
     
-    <div class="showcase-wrapper">
-      <!-- Car Vent Product -->
-      <div class="showcase-item" data-product="vent">
-        <div class="showcase-content">
-          <div class="product-number">01</div>
-          <h3 class="product-name">Car Vent</h3>
-          <p class="product-description">
-            Diskré og effektiv luftfrisker som festes enkelt i bilens ventilasjon. 
-            Aktiveres av luftstrømmen og gir en jevn, behagelig duft.
-          </p>
-          <ul class="product-features">
-            <li>✓ Varer opptil 45 dager</li>
-            <li>✓ Justerbar duftintensitet</li>
-            <li>✓ Universal passform</li>
-          </ul>
-          <div class="product-price">kr 149,-</div>
-          <a href="/products/car-vent-luftfrisker" class="btn-product magnetic-button">Se produkt</a>
+    <!-- Slide 1: Car Vent -->
+    <div class="product-slide active" data-bg="#1a1a2e" data-accent="#16213e">
+      <div class="slide-bg car-bg">
+        <div class="bg-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+        </div>
+      </div>
+      
+      <div class="slide-content">
+        <div class="product-info">
+          <div class="product-category">Bil Tilbehør</div>
+          <h1 class="product-title">Car Vent<br>Luftfrisker</h1>
+          <p class="product-desc">Diskré og kraftfull. Festes enkelt i ventilasjonssprekken og aktiveres av luftstrømmen. Gir jevn, langvarig duft i opptil 45 dager.</p>
+          
+          <div class="product-features-modern">
+            <div class="feature">
+              <span class="feature-icon">⏰</span>
+              <span>45 dager varighet</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🎛️</span>
+              <span>Justerbar intensitet</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔧</span>
+              <span>Universal passform</span>
+            </div>
+          </div>
+          
+          <div class="product-price-modern">149 kr</div>
+          
+          <div class="product-actions">
+            <a href="/products/car-vent" class="btn-modern primary">Kjøp nå</a>
+            <a href="/products/car-vent" class="btn-modern secondary">Mer info</a>
+          </div>
         </div>
         
-        <div class="showcase-visual">
-          <div class="product-3d-container">
-            <div class="product-3d car-vent-3d">
-              <div class="vent-body"></div>
+        <div class="product-visual">
+          <div class="product-image-container">
+            <div class="product-3d-modern car-vent-modern">
+              <div class="vent-main"></div>
               <div class="vent-clip"></div>
-              <div class="scent-waves">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div class="air-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Slide 2: Mirror Hanger -->
+    <div class="product-slide" data-bg="#2d1b69" data-accent="#8b5cf6">
+      <div class="slide-bg mirror-bg">
+        <div class="bg-gradient"></div>
+        <div class="floating-orbs">
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="orb orb-3"></div>
+        </div>
+      </div>
       
-      <!-- Mirror Hanger Product -->
-      <div class="showcase-item reverse" data-product="mirror">
-        <div class="showcase-content">
-          <div class="product-number">02</div>
-          <h3 class="product-name">Mirror Hanger</h3>
-          <p class="product-description">
-            Elegant luftfrisker som henger i bakspeilet. Kombinerer stilfullt design 
-            med langvarig duft. Perfekt for de som ønsker en synlig, dekorativ løsning.
-          </p>
-          <ul class="product-features">
-            <li>✓ Premium design</li>
-            <li>✓ Varer opptil 30 dager</li>
-            <li>✓ Flere duftvalg</li>
-          </ul>
-          <div class="product-price">kr 99,-</div>
-          <a href="/products/mirror-hanger-luftfrisker" class="btn-product magnetic-button">Se produkt</a>
+      <div class="slide-content">
+        <div class="product-info">
+          <div class="product-category">Premium Design</div>
+          <h1 class="product-title">Mirror Hanger<br>Elegant</h1>
+          <p class="product-desc">Stilfull og elegant. Henger diskré i bakspeilet og kombinerer moderne design med langvarig duft. Perfekt for den kresne bilentusiasten.</p>
+          
+          <div class="product-features-modern">
+            <div class="feature">
+              <span class="feature-icon">✨</span>
+              <span>Premium design</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🎨</span>
+              <span>Flere duftvalg</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">⏰</span>
+              <span>30 dager varighet</span>
+            </div>
+          </div>
+          
+          <div class="product-price-modern">99 kr</div>
+          
+          <div class="product-actions">
+            <a href="/products/mirror-hanger" class="btn-modern primary">Kjøp nå</a>
+            <a href="/products/mirror-hanger" class="btn-modern secondary">Mer info</a>
+          </div>
         </div>
         
-        <div class="showcase-visual">
-          <div class="product-3d-container">
-            <div class="product-3d mirror-hanger-3d">
-              <div class="hanger-string"></div>
+        <div class="product-visual">
+          <div class="product-image-container">
+            <div class="product-3d-modern mirror-hanger-modern">
+              <div class="hanger-cord"></div>
               <div class="hanger-body">
-                <div class="hanger-design"></div>
+                <div class="hanger-pattern"></div>
+                <div class="hanger-glow"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Slide 3: Home Diffuser -->
+    <div class="product-slide" data-bg="#065f46" data-accent="#10b981">
+      <div class="slide-bg home-bg">
+        <div class="zen-elements">
+          <div class="zen-circle"></div>
+          <div class="zen-waves"></div>
+        </div>
+        <div class="mist-bg">
+          <div class="mist"></div>
+          <div class="mist"></div>
+          <div class="mist"></div>
+        </div>
+      </div>
       
-      <!-- Home Diffuser Product -->
-      <div class="showcase-item" data-product="home">
-        <div class="showcase-content">
-          <div class="product-number">03</div>
-          <h3 class="product-name">Home Diffuser</h3>
-          <p class="product-description">
-            Stilfull aromdiffuser for hjemmet. Bruker ultralydteknologi for å 
-            spre behagelig duft og skape en avslappende atmosfære.
-          </p>
-          <ul class="product-features">
-            <li>✓ 7 LED farger</li>
-            <li>✓ Timer-funksjon</li>
-            <li>✓ Støyfri drift</li>
-          </ul>
-          <div class="product-price">kr 399,-</div>
-          <a href="/products/home-diffuser" class="btn-product magnetic-button">Se produkt</a>
+      <div class="slide-content">
+        <div class="product-info">
+          <div class="product-category">Hjemme Wellness</div>
+          <h1 class="product-title">Home Diffuser<br>Aromaterapi</h1>
+          <p class="product-desc">Avansert ultralydteknologi. Skaper den perfekte atmosfæren med duft, lys og ro. 7 LED-farger og timer-funksjon for fullstendig kontroll.</p>
+          
+          <div class="product-features-modern">
+            <div class="feature">
+              <span class="feature-icon">🌈</span>
+              <span>7 LED farger</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">⏲️</span>
+              <span>Timer-funksjon</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔇</span>
+              <span>Støyfri drift</span>
+            </div>
+          </div>
+          
+          <div class="product-price-modern">399 kr</div>
+          
+          <div class="product-actions">
+            <a href="/products/home-diffuser" class="btn-modern primary">Kjøp nå</a>
+            <a href="/products/home-diffuser" class="btn-modern secondary">Mer info</a>
+          </div>
         </div>
         
-        <div class="showcase-visual">
-          <div class="product-3d-container">
-            <div class="product-3d home-diffuser-3d">
+        <div class="product-visual">
+          <div class="product-image-container">
+            <div class="product-3d-modern home-diffuser-modern">
               <div class="diffuser-base"></div>
               <div class="diffuser-top"></div>
-              <div class="mist-effect">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div class="led-ring"></div>
+              <div class="steam-effect">
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
               </div>
-              <div class="led-glow"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Navigation hints -->
+  <div class="scroll-hint">
+    <span>Scroll for å se neste produkt</span>
+    <div class="scroll-arrow">↓</div>
+  </div>
 </section>
 
 <style>
-  .product-showcase {
-    padding: 100px 0;
+  /* Fullscreen Products Section */
+  .fullscreen-products {
+    height: 100vh;
+    width: 100%;
+    position: relative;
     overflow: hidden;
   }
   
-  .showcase-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 120px;
+  /* Progress Indicator */
+  .progress-indicator {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    z-index: 1000;
   }
   
-  .showcase-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .showcase-item.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .showcase-item.reverse {
-    direction: rtl;
-  }
-  
-  .showcase-item.reverse .showcase-content {
-    direction: ltr;
-  }
-  
-  .showcase-content {
+  .progress-bar {
+    width: 4px;
+    height: 200px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    margin-bottom: 20px;
     position: relative;
   }
   
-  .product-number {
-    font-size: 6rem;
-    font-weight: 700;
-    color: rgba(0,0,0,0.05);
-    position: absolute;
-    top: -50px;
-    left: -20px;
-    z-index: -1;
+  .progress-fill {
+    width: 100%;
+    height: 33.33%;
+    background: white;
+    border-radius: 2px;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: top;
   }
   
-  .product-name {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--primary-color);
+  .progress-dots {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
   }
   
-  .product-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    opacity: 0.8;
-  }
-  
-  .product-features {
-    list-style: none;
-    margin-bottom: 30px;
-  }
-  
-  .product-features li {
-    padding: 10px 0;
-    font-size: 1rem;
-    color: var(--primary-color);
-  }
-  
-  .product-price {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--accent-color);
-    margin-bottom: 30px;
-  }
-  
-  .btn-product {
-    display: inline-block;
-    padding: 15px 40px;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 50px;
-    text-decoration: none;
+  .progress-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
     transition: all 0.3s ease;
   }
   
-  /* 3D Product Visualizations */
-  .product-3d-container {
+  .progress-dots .dot.active {
+    background: white;
+    transform: scale(1.3);
+  }
+  
+  /* Product Slides */
+  .product-slides {
+    height: 100vh;
     position: relative;
+  }
+  
+  .product-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 400px;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .product-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .product-slide.next {
+    transform: translateY(-100%);
+  }
+  
+  .product-slide.prev {
+    transform: translateY(100%);
+  }
+  
+  /* Slide Backgrounds */
+  .slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  /* Car Background */
+  .car-bg {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+  
+  .bg-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    animation: floatShape 20s infinite ease-in-out;
+  }
+  
+  .shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+  
+  .shape-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 20%;
+    right: -5%;
+    animation-delay: 7s;
+  }
+  
+  .shape-3 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    left: 70%;
+    animation-delay: 14s;
+  }
+  
+  @keyframes floatShape {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(30px, -30px) rotate(120deg); }
+    66% { transform: translate(-20px, 20px) rotate(240deg); }
+  }
+  
+  /* Mirror Background */
+  .mirror-bg {
+    background: linear-gradient(135deg, #2d1b69 0%, #8b5cf6 100%);
+  }
+  
+  .bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
+  }
+  
+  .floating-orbs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+    animation: floatOrb 15s infinite linear;
+  }
+  
+  .orb-1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  .orb-2 {
+    width: 60px;
+    height: 60px;
+    bottom: 30%;
+    right: 20%;
+    animation-delay: 5s;
+  }
+  
+  .orb-3 {
+    width: 80px;
+    height: 80px;
+    top: 70%;
+    left: 60%;
+    animation-delay: 10s;
+  }
+  
+  @keyframes floatOrb {
+    0% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-50px) scale(1.2); opacity: 0.6; }
+    100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  }
+  
+  /* Home Background */
+  .home-bg {
+    background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+  }
+  
+  .zen-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .zen-circle {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: rotateZen 30s linear infinite;
+  }
+  
+  .zen-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes rotateZen {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .mist-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+  }
+  
+  .mist-bg .mist {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+    border-radius: 50%;
+    animation: mistFlow 12s infinite ease-in-out;
+  }
+  
+  .mist-bg .mist:nth-child(1) {
+    bottom: 0;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  
+  .mist-bg .mist:nth-child(2) {
+    bottom: 10px;
+    left: 50%;
+    animation-delay: 4s;
+  }
+  
+  .mist-bg .mist:nth-child(3) {
+    bottom: 5px;
+    left: 80%;
+    animation-delay: 8s;
+  }
+  
+  @keyframes mistFlow {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(-100px) scale(1.2); opacity: 0.6; }
+    100% { transform: translateY(-200px) scale(0.8); opacity: 0; }
+  }
+  
+  /* Slide Content */
+  .slide-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 5%;
+    gap: 80px;
+  }
+  
+  .product-info {
+    color: white;
+    animation: slideInLeft 1s ease 0.3s both;
+  }
+  
+  .product-slide.active .product-info {
+    animation: slideInLeft 1s ease 0.3s both;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .product-category {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+  }
+  
+  .product-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 0.9;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, white, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .product-desc {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 500px;
+  }
+  
+  .product-features-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+  }
+  
+  .feature-icon {
+    font-size: 1.3rem;
+  }
+  
+  .product-price-modern {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #ffd700;
+  }
+  
+  .product-actions {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .btn-modern {
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  
+  .btn-modern.primary {
+    background: white;
+    color: #1a1a2e;
+  }
+  
+  .btn-modern.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  
+  .btn-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  
+  /* Product Visual */
+  .product-visual {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: slideInRight 1s ease 0.5s both;
+  }
+  
+  .product-slide.active .product-visual {
+    animation: slideInRight 1s ease 0.5s both;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .product-image-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
     perspective: 1000px;
   }
   
-  .product-3d {
+  .product-3d-modern {
     position: relative;
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
-    animation: rotate3d 20s linear infinite;
+    animation: float3d 6s ease-in-out infinite;
   }
   
-  @keyframes rotate3d {
-    0% { transform: rotateY(0deg) rotateX(0deg); }
-    50% { transform: rotateY(180deg) rotateX(10deg); }
-    100% { transform: rotateY(360deg) rotateX(0deg); }
+  @keyframes float3d {
+    0%, 100% { transform: rotateY(0deg) translateY(0); }
+    25% { transform: rotateY(90deg) translateY(-20px); }
+    50% { transform: rotateY(180deg) translateY(0); }
+    75% { transform: rotateY(270deg) translateY(-10px); }
   }
   
-  /* Car Vent 3D */
-  .car-vent-3d {
-    width: 200px;
+  /* Car Vent Modern 3D */
+  .car-vent-modern .vent-main {
+    width: 250px;
     height: 150px;
-  }
-  
-  .vent-body {
-    width: 200px;
-    height: 100px;
-    background: linear-gradient(135deg, #333, #666);
-    border-radius: 15px;
+    background: linear-gradient(135deg, #2a2a3e, #3a3a4e);
+    border-radius: 20px;
     position: absolute;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    transform: translateZ(20px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
   }
   
-  .vent-body::before {
+  .car-vent-modern .vent-main::before {
     content: '';
     position: absolute;
-    width: 60%;
-    height: 3px;
-    background: rgba(255,255,255,0.2);
+    width: 80%;
+    height: 8px;
+    background: linear-gradient(90deg, transparent, #16213e, transparent);
     top: 30%;
-    left: 20%;
-    box-shadow: 0 10px 0 rgba(255,255,255,0.2), 0 20px 0 rgba(255,255,255,0.2);
+    left: 10%;
+    box-shadow: 0 20px 0 linear-gradient(90deg, transparent, #16213e, transparent),
+                0 40px 0 linear-gradient(90deg, transparent, #16213e, transparent);
   }
   
-  .vent-clip {
-    width: 80px;
-    height: 30px;
-    background: linear-gradient(135deg, #555, #888);
+  .car-vent-modern .vent-clip {
+    width: 100px;
+    height: 40px;
+    background: linear-gradient(135deg, #444, #666);
     position: absolute;
-    bottom: -20px;
+    bottom: 20%;
     left: 50%;
-    transform: translateX(-50%) translateZ(-10px);
-    border-radius: 5px;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   }
   
-  .scent-waves {
+  .air-particles {
     position: absolute;
-    right: -50px;
+    right: -100px;
     top: 50%;
     transform: translateY(-50%);
   }
   
-  .scent-waves span {
-    display: block;
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--accent-color);
-    border-radius: 50%;
+  .air-particles .particle {
     position: absolute;
-    animation: wave 3s ease-out infinite;
-    opacity: 0;
+    width: 6px;
+    height: 6px;
+    background: #16213e;
+    border-radius: 50%;
+    animation: airFlow 3s ease-out infinite;
   }
   
-  .scent-waves span:nth-child(1) { animation-delay: 0s; }
-  .scent-waves span:nth-child(2) { animation-delay: 1s; }
-  .scent-waves span:nth-child(3) { animation-delay: 2s; }
+  .air-particles .particle:nth-child(1) { animation-delay: 0s; top: 0; }
+  .air-particles .particle:nth-child(2) { animation-delay: 0.5s; top: 15px; }
+  .air-particles .particle:nth-child(3) { animation-delay: 1s; top: 30px; }
+  .air-particles .particle:nth-child(4) { animation-delay: 1.5s; top: 45px; }
   
-  @keyframes wave {
+  @keyframes airFlow {
     0% {
-      transform: scale(0);
+      transform: translateX(0) scale(1);
       opacity: 1;
     }
     100% {
-      transform: scale(3);
+      transform: translateX(200px) scale(0);
       opacity: 0;
     }
   }
   
-  /* Mirror Hanger 3D */
-  .mirror-hanger-3d {
-    width: 150px;
-    height: 250px;
-    animation: swing 4s ease-in-out infinite;
-  }
-  
-  @keyframes swing {
-    0%, 100% { transform: rotateZ(-5deg) rotateY(0deg); }
-    25% { transform: rotateZ(5deg) rotateY(90deg); }
-    50% { transform: rotateZ(-5deg) rotateY(180deg); }
-    75% { transform: rotateZ(5deg) rotateY(270deg); }
-  }
-  
-  .hanger-string {
-    width: 2px;
-    height: 100px;
-    background: #666;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .hanger-body {
-    width: 120px;
+  /* Mirror Hanger Modern 3D */
+  .mirror-hanger-modern .hanger-cord {
+    width: 3px;
     height: 120px;
-    background: linear-gradient(135deg, #f0f0f0, #fff);
-    border-radius: 20px;
+    background: linear-gradient(180deg, #666, #888);
     position: absolute;
-    top: 100px;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
   
-  .hanger-design {
+  .mirror-hanger-modern .hanger-body {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border-radius: 25px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: gentleSwing 4s ease-in-out infinite;
+  }
+  
+  @keyframes gentleSwing {
+    0%, 100% { transform: translateX(-50%) rotate(-3deg); }
+    50% { transform: translateX(-50%) rotate(3deg); }
+  }
+  
+  .mirror-hanger-modern .hanger-pattern {
     width: 80%;
     height: 80%;
-    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-    border-radius: 15px;
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    border-radius: 20px;
     position: absolute;
     top: 10%;
     left: 10%;
-    opacity: 0.8;
+    opacity: 0.9;
   }
   
-  /* Home Diffuser 3D */
-  .home-diffuser-3d {
-    width: 180px;
-    height: 220px;
-  }
-  
-  .diffuser-base {
-    width: 180px;
-    height: 100px;
-    background: linear-gradient(135deg, #8b7355, #d4a574);
-    border-radius: 50% 50% 45% 45%;
+  .mirror-hanger-modern .hanger-glow {
     position: absolute;
-    bottom: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+  }
+  
+  /* Home Diffuser Modern 3D */
+  .home-diffuser-modern .diffuser-base {
+    width: 200px;
+    height: 120px;
+    background: linear-gradient(135deg, #8b7355, #d4a574);
+    border-radius: 50% 50% 40% 40%;
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   }
   
-  .diffuser-top {
-    width: 140px;
-    height: 140px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
-    border-radius: 50% 50% 40% 40%;
+  .home-diffuser-modern .diffuser-top {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+    border-radius: 50% 50% 30% 30%;
     position: absolute;
-    top: 0;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
   }
   
-  .mist-effect {
+  .home-diffuser-modern .led-ring {
     position: absolute;
-    top: -50px;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 20px;
+    background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+    border-radius: 50px;
+    opacity: 0.8;
+    animation: ledPulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes ledPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+  
+  .steam-effect {
+    position: absolute;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
   }
   
-  .mist-effect span {
-    display: block;
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, rgba(255,255,255,0.8), transparent);
+  .steam-effect .steam {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.6), transparent);
     border-radius: 50%;
-    position: absolute;
-    animation: mist 4s ease-out infinite;
-    opacity: 0;
+    animation: steamRise 4s ease-out infinite;
   }
   
-  .mist-effect span:nth-child(1) { animation-delay: 0s; left: -10px; }
-  .mist-effect span:nth-child(2) { animation-delay: 1.3s; left: 0; }
-  .mist-effect span:nth-child(3) { animation-delay: 2.6s; left: 10px; }
+  .steam-effect .steam:nth-child(1) {
+    left: -20px;
+    animation-delay: 0s;
+  }
   
-  @keyframes mist {
+  .steam-effect .steam:nth-child(2) {
+    left: 0;
+    animation-delay: 1s;
+  }
+  
+  .steam-effect .steam:nth-child(3) {
+    left: 20px;
+    animation-delay: 2s;
+  }
+  
+  @keyframes steamRise {
     0% {
-      transform: translateY(0) scale(0.5);
+      transform: translateY(0) scale(0.3);
       opacity: 0;
     }
     20% {
-      opacity: 0.6;
+      opacity: 0.8;
     }
     100% {
-      transform: translateY(-80px) scale(2);
+      transform: translateY(-150px) scale(1.5);
       opacity: 0;
     }
   }
   
-  .led-glow {
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, var(--accent-color), transparent);
+  /* Scroll Hint */
+  .scroll-hint {
     position: absolute;
-    bottom: -50px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0.3;
-    animation: glow 3s ease-in-out infinite alternate;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    z-index: 10;
+    animation: bounceHint 2s ease-in-out infinite;
   }
   
-  @keyframes glow {
-    0% { opacity: 0.2; transform: translateX(-50%) scale(0.9); }
-    100% { opacity: 0.5; transform: translateX(-50%) scale(1.1); }
+  @keyframes bounceHint {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+  
+  .scroll-arrow {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    animation: arrowBounce 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .slide-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 5% 3%;
+    }
+    
+    .product-info {
+      text-align: center;
+      order: 2;
+    }
+    
+    .product-visual {
+      order: 1;
+    }
+    
+    .product-image-container {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+    }
+    
+    .progress-indicator {
+      right: 15px;
+    }
   }
   
   @media (max-width: 768px) {
-    .showcase-item {
-      grid-template-columns: 1fr;
-      gap: 40px;
+    .product-title {
+      font-size: 3rem;
     }
     
-    .showcase-item.reverse {
-      direction: ltr;
+    .product-desc {
+      font-size: 1rem;
     }
     
-    .product-3d-container {
-      height: 300px;
+    .product-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn-modern {
+      width: 200px;
+      text-align: center;
+    }
+    
+    .product-image-container {
+      width: 250px;
+      height: 250px;
     }
   }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Intersection Observer for animations
-  const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -100px 0px'
-  };
+class FullscreenProductSlider {
+  constructor() {
+    this.currentSlide = 0;
+    this.slides = document.querySelectorAll('.product-slide');
+    this.dots = document.querySelectorAll('.progress-dots .dot');
+    this.progressFill = document.querySelector('.progress-fill');
+    this.scrollHint = document.querySelector('.scroll-hint');
+    this.isScrolling = false;
+    this.scrollTimeout = null;
+    this.totalSlides = this.slides.length;
+    
+    this.init();
+  }
   
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
+  init() {
+    this.bindEvents();
+    this.updateProgress();
+  }
+  
+  bindEvents() {
+    // Scroll hijacking
+    window.addEventListener('wheel', (e) => this.handleWheel(e), { passive: false });
+    
+    // Dot navigation
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => this.goToSlide(index));
+    });
+    
+    // Touch events for mobile
+    let startY = 0;
+    let startX = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+      startX = e.touches[0].clientX;
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+      if (!this.isInProductSection()) return;
+      e.preventDefault();
+    }, { passive: false });
+    
+    document.addEventListener('touchend', (e) => {
+      if (!this.isInProductSection()) return;
+      
+      const endY = e.changedTouches[0].clientY;
+      const endX = e.changedTouches[0].clientX;
+      const diffY = startY - endY;
+      const diffX = Math.abs(startX - endX);
+      
+      // Only handle vertical swipes
+      if (Math.abs(diffY) > 50 && diffX < 100) {
+        if (diffY > 0) {
+          this.nextSlide();
+        } else {
+          this.prevSlide();
+        }
       }
     });
-  }, observerOptions);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!this.isInProductSection()) return;
+      
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        this.nextSlide();
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        this.prevSlide();
+      }
+    });
+    
+    // Update scroll hint when entering/leaving section
+    window.addEventListener('scroll', () => {
+      this.updateScrollHint();
+    });
+  }
   
-  document.querySelectorAll('.showcase-item').forEach(item => {
-    observer.observe(item);
-  });
+  handleWheel(e) {
+    if (!this.isInProductSection()) return;
+    
+    e.preventDefault();
+    
+    if (this.isScrolling) return;
+    
+    // Clear any existing timeout
+    clearTimeout(this.scrollTimeout);
+    
+    // Set scrolling flag
+    this.isScrolling = true;
+    
+    if (e.deltaY > 0) {
+      // Scrolling down
+      if (this.currentSlide < this.totalSlides - 1) {
+        this.nextSlide();
+      } else {
+        // Allow normal scrolling to continue to next section
+        this.allowNormalScroll();
+      }
+    } else {
+      // Scrolling up
+      if (this.currentSlide > 0) {
+        this.prevSlide();
+      } else {
+        // Allow normal scrolling to previous section
+        this.allowNormalScroll();
+      }
+    }
+    
+    // Reset scrolling flag after animation
+    this.scrollTimeout = setTimeout(() => {
+      this.isScrolling = false;
+    }, 1200);
+  }
   
-  // Interactive 3D rotation on mouse move
-  const containers = document.querySelectorAll('.product-3d-container');
+  isInProductSection() {
+    const section = document.getElementById('fullscreen-products');
+    const rect = section.getBoundingClientRect();
+    return rect.top <= 0 && rect.bottom >= window.innerHeight;
+  }
   
-  containers.forEach(container => {
+  allowNormalScroll() {
+    // Temporarily allow normal scrolling
+    this.isScrolling = false;
+    setTimeout(() => {
+      // Re-enable scroll hijacking after a brief moment
+      this.isScrolling = false;
+    }, 100);
+  }
+  
+  updateScrollHint() {
+    if (this.isInProductSection()) {
+      this.scrollHint.style.opacity = '1';
+      this.scrollHint.style.visibility = 'visible';
+    } else {
+      this.scrollHint.style.opacity = '0';
+      this.scrollHint.style.visibility = 'hidden';
+    }
+  }
+  
+  nextSlide() {
+    if (this.currentSlide >= this.totalSlides - 1) return;
+    this.goToSlide(this.currentSlide + 1);
+  }
+  
+  prevSlide() {
+    if (this.currentSlide <= 0) return;
+    this.goToSlide(this.currentSlide - 1);
+  }
+  
+  goToSlide(index) {
+    if (index === this.currentSlide || index < 0 || index >= this.totalSlides) return;
+    
+    // Remove active class from current slide
+    this.slides[this.currentSlide].classList.remove('active');
+    this.dots[this.currentSlide].classList.remove('active');
+    
+    // Add next/prev classes for animation direction
+    if (index > this.currentSlide) {
+      this.slides[this.currentSlide].classList.add('prev');
+      this.slides[index].classList.add('next');
+    } else {
+      this.slides[this.currentSlide].classList.add('next');
+      this.slides[index].classList.add('prev');
+    }
+    
+    // Update current slide
+    this.currentSlide = index;
+    
+    // Add active class to new slide
+    setTimeout(() => {
+      this.slides[this.currentSlide].classList.add('active');
+      this.dots[this.currentSlide].classList.add('active');
+      
+      // Clean up transition classes
+      this.slides.forEach(slide => {
+        slide.classList.remove('next', 'prev');
+      });
+    }, 50);
+    
+    this.updateProgress();
+    this.updateBackgroundColor();
+  }
+  
+  updateProgress() {
+    const progress = ((this.currentSlide + 1) / this.totalSlides) * 100;
+    this.progressFill.style.transform = `scaleY(${progress / 100})`;
+  }
+  
+  updateBackgroundColor() {
+    const currentSlideElement = this.slides[this.currentSlide];
+    const bgColor = currentSlideElement.dataset.bg;
+    const accentColor = currentSlideElement.dataset.accent;
+    
+    // Update CSS custom properties for smooth color transitions
+    document.documentElement.style.setProperty('--current-bg', bgColor);
+    document.documentElement.style.setProperty('--current-accent', accentColor);
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  new FullscreenProductSlider();
+  
+  // Add interactive hover effects to 3D products
+  const productContainers = document.querySelectorAll('.product-image-container');
+  
+  productContainers.forEach(container => {
+    const product3d = container.querySelector('.product-3d-modern');
+    
+    container.addEventListener('mouseenter', () => {
+      product3d.style.animationPlayState = 'paused';
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      product3d.style.animationPlayState = 'running';
+      product3d.style.transform = '';
+    });
+    
     container.addEventListener('mousemove', (e) => {
       const rect = container.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
       
-      const product3d = container.querySelector('.product-3d');
-      product3d.style.transform = `rotateY(${x * 30}deg) rotateX(${-y * 30}deg)`;
+      const rotateY = x * 30;
+      const rotateX = -y * 30;
+      
+      product3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+    });
+  });
+  
+  // Add magnetic effect to buttons
+  const buttons = document.querySelectorAll('.btn-modern');
+  
+  buttons.forEach(button => {
+    button.addEventListener('mousemove', (e) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) translateY(-3px)`;
     });
     
-    container.addEventListener('mouseleave', () => {
-      const product3d = container.querySelector('.product-3d');
-      product3d.style.transform = '';
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = '';
     });
   });
 });
