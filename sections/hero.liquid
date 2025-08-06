@@ -1,259 +1,427 @@
-<section class="hero section">
-  <div class="blob" style="top: -200px; left: -200px;"></div>
-  <div class="blob" style="bottom: -200px; right: -200px;"></div>
-  
-  <!-- Floating particles for scent visualization -->
-  <div class="scent-particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-  
+<section class="hero-essentia section">
   <div class="container">
-    <div class="hero-content">
-      <h1 class="hero-title reveal-text">{{ section.settings.title }}</h1>
-      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+    <div class="hero-grid">
       
-      <!-- 3 Product showcase -->
-      <div class="hero-products">
-        <div class="hero-product car-vent" data-product="vent">
-          <div class="product-icon">
-            <svg viewBox="0 0 100 100" class="animated-icon">
-              <rect x="10" y="30" width="80" height="40" rx="5" fill="currentColor" opacity="0.9"/>
-              <line x1="25" y1="40" x2="75" y2="40" stroke="white" stroke-width="2" class="air-flow"/>
-              <line x1="25" y1="50" x2="75" y2="50" stroke="white" stroke-width="2" class="air-flow"/>
-              <line x1="25" y1="60" x2="75" y2="60" stroke="white" stroke-width="2" class="air-flow"/>
-              <circle cx="50" cy="50" r="8" fill="white" opacity="0.8" class="pulse-circle"/>
-            </svg>
-          </div>
-          <h3>Bil Ventilasjon</h3>
-          <p>Perfekt duft i bilen</p>
+      <!-- Left Column - Content -->
+      <div class="hero-content fade-in">
+        <div class="hero-badge">
+          <span class="badge-text">Premium Air Care</span>
         </div>
         
-        <div class="hero-product car-mirror" data-product="mirror">
-          <div class="product-icon">
-            <svg viewBox="0 0 100 100" class="animated-icon">
-              <rect x="35" y="10" width="30" height="20" rx="10" fill="currentColor" opacity="0.9"/>
-              <line x1="50" y1="30" x2="50" y2="60" stroke="currentColor" stroke-width="3"/>
-              <circle cx="50" cy="70" r="15" fill="currentColor" opacity="0.9" class="swing"/>
-              <circle cx="50" cy="70" r="10" fill="white" opacity="0.3"/>
-            </svg>
+        <h1 class="hero-title">
+          {{ section.settings.title | default: "Frisk luft, overalt" }}
+        </h1>
+        
+        <p class="hero-description">
+          {{ section.settings.subtitle | default: "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi." }}
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Fornøyde kunder</div>
           </div>
-          <h3>Bilspeil Henger</h3>
-          <p>Elegant og diskré</p>
+          <div class="stat-item">
+            <div class="stat-number">4.9</div>
+            <div class="stat-label">⭐ Rating</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Unike produkter</div>
+          </div>
         </div>
         
-        <div class="hero-product home-diffuser" data-product="home">
-          <div class="product-icon">
-            <svg viewBox="0 0 100 100" class="animated-icon">
-              <ellipse cx="50" cy="75" rx="20" ry="5" fill="currentColor" opacity="0.3"/>
-              <path d="M35 75 Q35 50 40 30 L60 30 Q65 50 65 75 Z" fill="currentColor" opacity="0.9"/>
-              <rect x="45" y="25" width="10" height="15" fill="currentColor"/>
-              <path d="M45 20 Q50 10 50 10 Q50 10 55 20" stroke="currentColor" stroke-width="2" fill="none" class="steam steam1"/>
-              <path d="M48 20 Q48 5 48 5 Q48 5 48 20" stroke="currentColor" stroke-width="2" fill="none" class="steam steam2"/>
-              <path d="M52 20 Q52 5 52 5 Q52 5 52 20" stroke="currentColor" stroke-width="2" fill="none" class="steam steam3"/>
-            </svg>
-          </div>
-          <h3>Hjemme Diffuser</h3>
-          <p>Aromaterapi hjemme</p>
+        <div class="hero-actions">
+          <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="btn btn-primary">
+            {{ section.settings.button_text | default: "Se produkter" }}
+          </a>
+          <a href="/pages/om-oss" class="btn btn-ghost">
+            Lær mer
+          </a>
         </div>
       </div>
       
-      <a href="{{ section.settings.button_link }}" class="btn magnetic-button">
-        {{ section.settings.button_text }}
-      </a>
+      <!-- Right Column - Visual -->
+      <div class="hero-visual fade-in">
+        <div class="visual-container">
+          
+          <!-- Background Elements -->
+          <div class="bg-element bg-circle"></div>
+          <div class="bg-element bg-dots"></div>
+          
+          <!-- Product Preview Cards -->
+          <div class="product-preview-grid">
+            
+            <div class="product-preview-card card-1">
+              <div class="preview-image">
+                <div class="product-icon icon-vent">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2z"/>
+                    <path d="M8 9l8 0"/>
+                    <path d="M8 12l8 0"/>
+                    <path d="M8 15l8 0"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="preview-content">
+                <h4>Car Vent</h4>
+                <p class="text-muted">Fra 149 kr</p>
+              </div>
+            </div>
+            
+            <div class="product-preview-card card-2">
+              <div class="preview-image">
+                <div class="product-icon icon-mirror">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="7"/>
+                    <path d="M12 5v14"/>
+                    <path d="M5 12h14"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="preview-content">
+                <h4>Mirror Hanger</h4>
+                <p class="text-muted">Fra 99 kr</p>
+              </div>
+            </div>
+            
+            <div class="product-preview-card card-3">
+              <div class="preview-image">
+                <div class="product-icon icon-diffuser">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2v20"/>
+                    <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="preview-content">
+                <h4>Home Diffuser</h4>
+                <p class="text-muted">Fra 399 kr</p>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+      
     </div>
   </div>
-  
-  {% if section.settings.hero_image %}
-    <div class="hero-image parallax-element" data-speed="0.5">
-      <img src="{{ section.settings.hero_image | img_url: '1920x' }}" alt="{{ section.settings.title }}">
-    </div>
-  {% endif %}
 </section>
 
 <style>
-  .hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.3;
+  .hero-essentia {
+    padding: 96px 0 120px 0;
+    background: var(--white);
+    overflow: hidden;
   }
   
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Product showcase styles */
-  .hero-products {
+  .hero-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin: 60px 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    min-height: 80vh;
+  }
+  
+  /* Content Column */
+  .hero-content {
+    max-width: 520px;
+  }
+  
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+  
+  .badge-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--primary);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  
+  .hero-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+  
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+  
+  .stat-item {
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  /* Visual Column */
+  .hero-visual {
+    position: relative;
+    height: 600px;
+  }
+  
+  .visual-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Background Elements */
+  .bg-element {
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .bg-circle {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50px;
+    right: 50px;
+    opacity: 0.3;
+    animation: floatSlow 20s ease-in-out infinite;
+  }
+  
+  .bg-dots {
+    width: 120px;
+    height: 120px;
+    background-image: radial-gradient(circle, var(--border) 2px, transparent 2px);
+    background-size: 20px 20px;
+    bottom: 100px;
+    left: 20px;
+    opacity: 0.4;
+  }
+  
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+  }
+  
+  /* Product Preview Grid */
+  .product-preview-grid {
     position: relative;
     z-index: 2;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
   }
   
-  .hero-product {
+  .product-preview-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
   
-  .hero-product:nth-child(1) { animation-delay: 0.2s; }
-  .hero-product:nth-child(2) { animation-delay: 0.4s; }
-  .hero-product:nth-child(3) { animation-delay: 0.6s; }
+  .product-preview-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    border-color: var(--accent);
+  }
   
-  .hero-product:hover {
-    transform: translateY(-20px) scale(1.05);
+  .card-1 {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    animation: slideInLeft 0.8s ease 0.2s both;
+  }
+  
+  .card-2 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    animation: slideInRight 0.8s ease 0.4s both;
+  }
+  
+  .card-3 {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+    animation: slideInLeft 0.8s ease 0.6s both;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .preview-image {
+    width: 60px;
+    height: 60px;
+    background: var(--secondary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .product-preview-card:hover .preview-image {
+    background: var(--accent);
+    transform: scale(1.1);
   }
   
   .product-icon {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    border-radius: 30px;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+    transition: all 0.3s ease;
   }
   
-  .hero-product:hover .product-icon {
-    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  .product-preview-card:hover .product-icon {
+    color: var(--white);
   }
   
-  .animated-icon {
-    width: 100%;
-    height: 100%;
-    color: var(--primary-color);
+  .preview-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 4px;
   }
   
-  .hero-product h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--primary-color);
+  .preview-content p {
+    font-size: 0.875rem;
+    margin: 0;
   }
   
-  .hero-product p {
-    opacity: 0.8;
-    font-size: 0.95rem;
-  }
-  
-  /* Scent particles animation */
-  .scent-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    opacity: 0;
-    animation: floatParticle 10s infinite;
-  }
-  
-  .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-  .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
-  .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
-  .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
-  .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
-  
-  @keyframes floatParticle {
-    0% {
-      bottom: 0;
-      opacity: 0;
-      transform: translateX(0) scale(0);
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-grid {
+      gap: 60px;
     }
-    10% {
-      opacity: 0.6;
-      transform: translateX(10px) scale(1);
+    
+    .hero-stats {
+      gap: 32px;
     }
-    50% {
-      opacity: 0.3;
-      transform: translateX(-10px) scale(1.5);
-    }
-    100% {
-      bottom: 100%;
-      opacity: 0;
-      transform: translateX(20px) scale(0.5);
-    }
-  }
-  
-  /* SVG Animations */
-  .air-flow {
-    animation: flowAnimation 2s ease-in-out infinite;
-    transform-origin: center;
-  }
-  
-  @keyframes flowAnimation {
-    0%, 100% { transform: translateX(0); opacity: 0.3; }
-    50% { transform: translateX(10px); opacity: 1; }
-  }
-  
-  .pulse-circle {
-    animation: pulse 2s ease-in-out infinite;
-  }
-  
-  .swing {
-    animation: swingAnimation 3s ease-in-out infinite;
-    transform-origin: 50% 0%;
-  }
-  
-  @keyframes swingAnimation {
-    0%, 100% { transform: rotate(-10deg); }
-    50% { transform: rotate(10deg); }
-  }
-  
-  .steam {
-    animation: steamAnimation 3s ease-out infinite;
-    opacity: 0;
-  }
-  
-  .steam1 { animation-delay: 0s; }
-  .steam2 { animation-delay: 1s; }
-  .steam3 { animation-delay: 2s; }
-  
-  @keyframes steamAnimation {
-    0% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-    20% {
-      opacity: 0.6;
-    }
-    100% {
-      transform: translateY(-20px);
-      opacity: 0;
+    
+    .stat-number {
+      font-size: 1.5rem;
     }
   }
   
   @media (max-width: 768px) {
-    .hero-products {
-      grid-template-columns: 1fr;
-      gap: 30px;
+    .hero-essentia {
+      padding: 80px 0;
     }
     
-    .product-icon {
-      width: 100px;
-      height: 100px;
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 100%;
+      order: 2;
+    }
+    
+    .hero-visual {
+      order: 1;
+      height: 400px;
+    }
+    
+    .hero-stats {
+      gap: 24px;
+      justify-content: center;
+    }
+    
+    .hero-actions {
+      justify-content: center;
+    }
+    
+    .product-preview-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, auto);
+      gap: 16px;
+    }
+    
+    .card-1,
+    .card-2,
+    .card-3 {
+      grid-column: 1;
+      animation: fadeInUp 0.8s ease both;
+    }
+    
+    .card-1 { animation-delay: 0.2s; }
+    .card-2 { animation-delay: 0.4s; }
+    .card-3 { animation-delay: 0.6s; }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>

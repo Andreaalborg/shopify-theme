@@ -1,25 +1,230 @@
-<header class="header">
+<header class="header-essentia">
   <div class="container">
-    <nav class="nav">
-      <a href="/" class="logo">{{ shop.name }}</a>
+    <nav class="nav-essentia">
+      <a href="/" class="logo-essentia">
+        {{ shop.name | default: "Nura" }}
+      </a>
       
-      <ul class="nav-menu">
-        <li><a href="/" class="nav-link">Hjem</a></li>
-        <li><a href="/collections/all" class="nav-link">Produkter</a></li>
-        <li><a href="/pages/om-oss" class="nav-link">Om oss</a></li>
-        <li><a href="/pages/faq" class="nav-link">FAQ</a></li>
-        <li><a href="/pages/kontakt" class="nav-link">Kontakt</a></li>
-        <li><a href="/cart" class="nav-link">Handlekurv ({{ cart.item_count }})</a></li>
+      <ul class="nav-menu-essentia">
+        <li><a href="/" class="nav-link-essentia">Hjem</a></li>
+        <li><a href="/collections/all" class="nav-link-essentia">Produkter</a></li>
+        <li><a href="/pages/om-oss" class="nav-link-essentia">Om oss</a></li>
+        <li><a href="/pages/faq" class="nav-link-essentia">FAQ</a></li>
+        <li><a href="/pages/kontakt" class="nav-link-essentia">Kontakt</a></li>
       </ul>
       
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-actions">
+        <a href="/cart" class="cart-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="m1 1 4 4 16 2 1-14"/>
+          </svg>
+          <span class="cart-count">{{ cart.item_count }}</span>
+        </a>
+        
+        <button class="hamburger-essentia" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
   </div>
 </header>
+
+<style>
+  .header-essentia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-essentia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+  }
+  
+  .logo-essentia {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  
+  .nav-menu-essentia {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    margin: 0;
+  }
+  
+  .nav-link-essentia {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  
+  .nav-link-essentia:hover {
+    color: var(--text-muted);
+  }
+  
+  .nav-link-essentia::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link-essentia:hover::after {
+    width: 100%;
+  }
+  
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .cart-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+  }
+  
+  .cart-link:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+  
+  .cart-count {
+    min-width: 20px;
+    height: 20px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .hamburger-essentia {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  
+  .hamburger-essentia span {
+    width: 20px;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger-essentia.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger-essentia.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-essentia.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .nav-menu-essentia {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      flex-direction: column;
+      padding: var(--spacing-md);
+      gap: var(--spacing-sm);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-menu-essentia.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .hamburger-essentia {
+      display: flex;
+    }
+    
+    .nav-link-essentia {
+      display: block;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .nav-link-essentia:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger-essentia');
+  const navMenu = document.querySelector('.nav-menu-essentia');
+  
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+  });
+});
+</script>
 
 {% schema %}
 {

@@ -4,26 +4,22 @@
       "type": "hero",
       "settings": {
         "title": "Frisk luft, overalt",
-        "subtitle": "Premium luftfriskere for bil og hjem",
-        "button_text": "Utforsk produkter",
+        "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
+        "button_text": "Se produkter",
         "button_link": "/collections/all"
       }
     },
-    "product-showcase": {
-      "type": "product-showcase",
-      "settings": {}
+    "products-essentia": {
+      "type": "products-essentia",
+      "settings": {
+        "title": "Premium Luftfriskere",
+        "description": "Tre unike produkter designet for moderne livsstil. Hver med sin egen personlighet og anvendelse."
+      }
     },
     "testimonials": {
       "type": "testimonials",
       "settings": {
         "title": "Hva kundene sier"
-      }
-    },
-    "featured-products": {
-      "type": "featured-products",
-      "settings": {
-        "title": "Bestselgere",
-        "collection": "frontpage"
       }
     },
     "newsletter": {
@@ -40,5 +36,5 @@
       }
     }
   },
-  "order": ["hero", "product-showcase", "testimonials", "featured-products", "newsletter", "about-preview"]
+  "order": ["hero", "products-essentia", "testimonials", "newsletter", "about-preview"]
 }
