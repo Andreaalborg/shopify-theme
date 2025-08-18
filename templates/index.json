@@ -12,6 +12,14 @@
         "secondary_link": "/collections/all"
       }
     },
+    "featured-pro": {
+      "type": "featured-products-pro",
+      "settings": {
+        "title": "Utvalgte produkter",
+        "subtitle": "Raskt overblikk. Kjøp på sekunder.",
+        "limit": 6
+      }
+    },
     "product-configurator": {
       "type": "product-configurator",
       "settings": {
@@ -46,5 +54,5 @@
       }
     }
   },
-  "order": ["hero-pro", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
+  "order": ["hero-pro", "featured-pro", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
 }
