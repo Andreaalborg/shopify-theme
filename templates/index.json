@@ -20,6 +20,20 @@
         "limit": 6
       }
     },
+    "benefits-pro": {
+      "type": "benefits-pro",
+      "settings": {
+        "title": "Hvorfor velge Nura",
+        "subtitle": "Kvalitet, enkelhet og profesjonelt uttrykk."
+      }
+    },
+    "how-it-works-pro": {
+      "type": "how-it-works-pro",
+      "settings": {
+        "title": "Slik fungerer det",
+        "subtitle": "Velg type, duft og eventuelt refill – resten ordner vi."
+      }
+    },
     "product-configurator": {
       "type": "product-configurator",
       "settings": {
@@ -54,5 +68,5 @@
       }
     }
   },
-  "order": ["hero-pro", "featured-pro", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
+  "order": ["hero-pro", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
 }
