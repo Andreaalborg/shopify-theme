@@ -108,4 +108,22 @@ p { color: var(--color-text-dim); margin: 0 0 12px; }
 .stack-md > * + * { margin-top: 14px; }
 .stack-lg > * + * { margin-top: 20px; }
 
+/* Sticky scroll (fjernet) */
+
+/* Reveal animations */
+.fade-in { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+.fade-in-up { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+.fade-in-up.visible { opacity: 1; transform: none; }
+
+.fade-in-left { opacity: 0; transform: translateX(-16px); transition: opacity .7s ease, transform .7s ease; }
+.fade-in-left.visible { opacity: 1; transform: none; }
+
+.fade-in-right { opacity: 0; transform: translateX(16px); transition: opacity .7s ease, transform .7s ease; }
+.fade-in-right.visible { opacity: 1; transform: none; }
+
+.fade-in-scale { opacity: 0; transform: scale(.98); transition: opacity .7s ease, transform .7s ease; }
+.fade-in-scale.visible { opacity: 1; transform: none; }
+
 

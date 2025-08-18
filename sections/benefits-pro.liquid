@@ -1,23 +1,23 @@
 <section class="section" id="benefits">
   <div class="container">
-    <div class="center" style="margin-bottom:24px;">
-      <h2>{{ section.settings.title | default: 'Hvorfor velge Nura' }}</h2>
+    <div class="center fade-in-up" style="margin-bottom:24px;">
+      <h2 class="fade-in-up">{{ section.settings.title | default: 'Hvorfor velge Nura' }}</h2>
       {% if section.settings.subtitle != blank %}
-        <p class="muted">{{ section.settings.subtitle }}</p>
+        <p class="muted fade-in">{{ section.settings.subtitle }}</p>
       {% endif %}
     </div>
 
     <div class="grid grid-4">
       {% for block in section.blocks %}
-        <article class="card" {{ block.shopify_attributes }}>
+        <article class="card fade-in-up" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;" {{ block.shopify_attributes }}>
           <div class="card-content">
             <div class="stack-md">
               {% if block.settings.icon != blank %}
-                <div aria-hidden="true" style="font-size:28px;">{{ block.settings.icon }}</div>
+                <div aria-hidden="true" class="fade-in-scale" style="font-size:28px;">{{ block.settings.icon }}</div>
               {% endif %}
               <div class="stack-sm">
-                <h3 style="margin:0; font-size:1.05rem;">{{ block.settings.heading }}</h3>
-                <p class="muted" style="margin:0;">{{ block.settings.text }}</p>
+                <h3 class="fade-in-left" style="margin:0; font-size:1.05rem;">{{ block.settings.heading }}</h3>
+                <p class="muted fade-in" style="margin:0;">{{ block.settings.text }}</p>
               </div>
             </div>
           </div>

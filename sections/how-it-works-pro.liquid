@@ -1,20 +1,20 @@
 <section class="section" id="how-it-works">
   <div class="container">
-    <div class="center" style="margin-bottom:24px;">
-      <h2>{{ section.settings.title | default: 'Slik fungerer det' }}</h2>
+    <div class="center fade-in-up" style="margin-bottom:24px;">
+      <h2 class="fade-in-up">{{ section.settings.title | default: 'Slik fungerer det' }}</h2>
       {% if section.settings.subtitle %}
-        <p class="muted">{{ section.settings.subtitle }}</p>
+        <p class="muted fade-in">{{ section.settings.subtitle }}</p>
       {% endif %}
     </div>
 
     <div class="grid grid-3">
       {% for block in section.blocks %}
-        <article class="card" {{ block.shopify_attributes }}>
+        <article class="card fade-in-up" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;" {{ block.shopify_attributes }}>
           <div class="card-content">
             <div class="stack-md">
-              <div class="muted" style="font-weight:700;">Steg {{ forloop.index }}</div>
-              <h3 style="margin:0; font-size:1.1rem;">{{ block.settings.heading }}</h3>
-              <p class="muted" style="margin:0;">{{ block.settings.text }}</p>
+              <div class="muted fade-in" style="font-weight:700;">Steg {{ forloop.index }}</div>
+              <h3 class="fade-in-left" style="margin:0; font-size:1.1rem;">{{ block.settings.heading }}</h3>
+              <p class="muted fade-in-right" style="margin:0;">{{ block.settings.text }}</p>
             </div>
           </div>
         </article>

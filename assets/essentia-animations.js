@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     rootMargin: '0px 0px -50px 0px'
   });
 
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in').forEach(el => {
+  // Observe all fade-in elements (inkl. varianter)
+  document.querySelectorAll('.fade-in, .fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale').forEach(el => {
     fadeInObserver.observe(el);
   });
 

@@ -1,15 +1,15 @@
 {% assign collection = section.settings.collection %}
 <section class="section" id="featured">
   <div class="container">
-    <div class="stack-md center" style="margin-bottom:28px;">
-      <h2>{{ section.settings.title | default: 'Utvalgte produkter' }}</h2>
-      <p class="muted">{{ section.settings.subtitle | default: 'Raskt overblikk. Kjøp på sekunder.' }}</p>
+    <div class="stack-md center fade-in-up" style="margin-bottom:28px;">
+      <h2 class="fade-in-up">{{ section.settings.title | default: 'Utvalgte produkter' }}</h2>
+      <p class="muted fade-in">{{ section.settings.subtitle | default: 'Raskt overblikk. Kjøp på sekunder.' }}</p>
     </div>
 
-    <div class="grid grid-3">
+    <div class="grid grid-3 fade-in-scale">
       {% if collection %}
         {% for product in collection.products limit: section.settings.limit %}
-          <article class="card product-card">
+          <article class="card product-card fade-in-up" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;">
             <a href="{{ product.url }}" class="card-content" style="display:block; text-decoration:none;">
               <div class="media">
                 {% if product.featured_image %}
@@ -17,14 +17,14 @@
                 {% endif %}
               </div>
               <div class="stack-sm" style="padding:14px 8px 16px;">
-                <div class="title">{{ product.title }}</div>
-                <div class="price">{{ product.price | money }}</div>
+                <div class="title fade-in">{{ product.title }}</div>
+                <div class="price fade-in-right">{{ product.price | money }}</div>
               </div>
             </a>
           </article>
         {% endfor %}
       {% else %}
-        <div class="muted">Velg en kolleksjon i seksjonsinnstillingene.</div>
+        <div class="muted fade-in">Velg en kolleksjon i seksjonsinnstillingene.</div>
       {% endif %}
     </div>
   </div>
