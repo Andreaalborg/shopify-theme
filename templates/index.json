@@ -1,15 +1,12 @@
 {
   "sections": {
-    "hero-pro": {
-      "type": "hero-pro",
+    "hero": {
+      "type": "hero",
       "settings": {
-        "eyebrow": "Nura",
-        "title": "Friskere luft. Enklere valg.",
-        "subtitle": "Velg mellom speil- eller ventilløsning til bilen. 7 dufter. Refill når du vil.",
-        "primary_label": "Bygg din pakke",
-        "primary_link": "#configurator",
-        "secondary_label": "Se produkter",
-        "secondary_link": "/collections/all"
+        "title": "Frisk luft, overalt",
+        "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
+        "button_text": "Se produkter",
+        "button_link": "/collections/all"
       }
     },
     "featured-pro": {
@@ -68,5 +65,5 @@
       }
     }
   },
-  "order": ["hero-pro", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
+  "order": ["hero", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
 }
