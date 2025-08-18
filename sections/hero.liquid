@@ -18,16 +18,16 @@
         
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Fornøyde kunder</div>
+            <div class="stat-number">{{ section.settings.stat1_value | default: "Nylig" }}</div>
+            <div class="stat-label">{{ section.settings.stat1_label | default: "Lansert" }}</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">4.9</div>
-            <div class="stat-label">⭐ Rating</div>
+            <div class="stat-number">{{ section.settings.stat2_value | default: "2" }}</div>
+            <div class="stat-label">{{ section.settings.stat2_label | default: "Bilprodukter" }}</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Unike produkter</div>
+            <div class="stat-number">{{ section.settings.stat3_value | default: "7" }}</div>
+            <div class="stat-label">{{ section.settings.stat3_label | default: "Dufter & refills" }}</div>
           </div>
         </div>
         
@@ -246,7 +246,13 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Background image"
-    }
+    },
+    { "type": "text", "id": "stat1_value", "label": "Stat 1 verdi", "default": "Nylig" },
+    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Lansert" },
+    { "type": "text", "id": "stat2_value", "label": "Stat 2 verdi", "default": "2" },
+    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Bilprodukter" },
+    { "type": "text", "id": "stat3_value", "label": "Stat 3 verdi", "default": "7" },
+    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Dufter & refills" }
   ],
   "presets": [
     {
