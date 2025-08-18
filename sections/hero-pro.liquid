@@ -13,8 +13,10 @@
           <span>4.9/5 av fornøyde bilentusiaster</span>
         </div>
       </div>
-      <div class="hero-art">
-        <div class="halo"></div>
+      <div class="hero-media">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | img_url: '1200x' }}" alt="{{ section.settings.title | default: shop.name }}">
+        {% endif %}
       </div>
     </div>
   </div>
@@ -30,7 +32,8 @@
     { "type": "text", "id": "primary_label", "label": "Primærknapp", "default": "Bygg din pakke" },
     { "type": "url", "id": "primary_link", "label": "Primærlenke", "default": "#configurator" },
     { "type": "text", "id": "secondary_label", "label": "Sekundærknapp", "default": "Se produkter" },
-    { "type": "url", "id": "secondary_link", "label": "Sekundærlenke", "default": "/collections/all" }
+    { "type": "url", "id": "secondary_link", "label": "Sekundærlenke", "default": "/collections/all" },
+    { "type": "image_picker", "id": "image", "label": "Hero-bilde" }
   ],
   "presets": [{ "name": "Hero Pro" }]
 }
