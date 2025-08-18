@@ -41,6 +41,16 @@
         </div>
       </div>
       
+      <!-- Right Column - Video Visual -->
+      {% if section.settings.show_video %}
+      <div class="hero-video fade-in-right">
+        <div class="video-frame">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="{{ '4154241-uhd_4096_2160_25fps.mp4' | asset_url }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      {% endif %}
       
       
     </div>
@@ -56,17 +66,17 @@
   
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: center;
     min-height: 70vh;
-    text-align: center;
+    text-align: left;
   }
   
   /* Content Column */
   .hero-content {
     max-width: 720px;
-    margin: 0 auto;
+    margin: 0 auto 0 0;
   }
   
   .hero-badge {
@@ -135,10 +145,17 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
   
-  /* Removed visual grid & product cards */
+  .hero-video .video-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background: var(--secondary);
+  }
+  .hero-video video { display: block; width: 100%; height: auto; }
   
   /* Responsive */
   @media (max-width: 1024px) {
@@ -160,21 +177,10 @@
       padding: 80px 0;
     }
     
-    .hero-grid {
-      grid-template-columns: 1fr;
-      gap: 60px;
-      text-align: center;
-    }
+    .hero-grid { grid-template-columns: 1fr; gap: 60px; text-align: center; }
     
-    .hero-content {
-      max-width: 100%;
-      order: 2;
-    }
-    
-    .hero-visual {
-      order: 1;
-      height: 400px;
-    }
+    .hero-content { max-width: 100%; order: 2; margin: 0 auto; }
+    .hero-video { order: 1; }
     
     .hero-stats {
       gap: 24px;
@@ -252,7 +258,8 @@
     { "type": "text", "id": "stat2_value", "label": "Stat 2 verdi", "default": "2" },
     { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Bilprodukter" },
     { "type": "text", "id": "stat3_value", "label": "Stat 3 verdi", "default": "7" },
-    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Dufter & refills" }
+    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Dufter & refills" },
+    { "type": "checkbox", "id": "show_video", "label": "Vis hero-video", "default": true }
   ],
   "presets": [
     {
