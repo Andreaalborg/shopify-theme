@@ -9,6 +9,13 @@
         "button_link": "/collections/all"
       }
     },
+    "product-configurator": {
+      "type": "product-configurator",
+      "settings": {
+        "title": "Bygg din luftfrisker",
+        "subtitle": "Velg biltype (vent/speil), din favorittduft og legg til refill om ønskelig."
+      }
+    },
     "products-essentia": {
       "type": "products-essentia",
       "settings": {
@@ -36,5 +43,5 @@
       }
     }
   },
-  "order": ["hero", "products-essentia", "testimonials", "newsletter", "about-preview"]
+  "order": ["hero", "product-configurator", "products-essentia", "testimonials", "newsletter", "about-preview"]
 }
