@@ -8,6 +8,7 @@
     </div>
 
     <div class="grid grid-3">
+      {% if section.blocks.size > 0 %}
       {% for block in section.blocks %}
         <article class="card fade-in-up" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;" {{ block.shopify_attributes }}>
           <div class="card-content">
@@ -19,6 +20,35 @@
           </div>
         </article>
       {% endfor %}
+      {% else %}
+        <article class="card fade-in-up">
+          <div class="card-content">
+            <div class="stack-md">
+              <div class="muted fade-in" style="font-weight:700;">Steg 1</div>
+              <h3 class="fade-in-left" style="margin:0; font-size:1.1rem;">Velg type</h3>
+              <p class="muted fade-in-right" style="margin:0;">Ventilasjon eller speil – begge er enkle å montere.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card fade-in-up" style="transition-delay:60ms;">
+          <div class="card-content">
+            <div class="stack-md">
+              <div class="muted fade-in" style="font-weight:700;">Steg 2</div>
+              <h3 class="fade-in-left" style="margin:0; font-size:1.1rem;">Velg duft</h3>
+              <p class="muted fade-in-right" style="margin:0;">7 varianter – bytt når du vil, eller legg til refill.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card fade-in-up" style="transition-delay:120ms;">
+          <div class="card-content">
+            <div class="stack-md">
+              <div class="muted fade-in" style="font-weight:700;">Steg 3</div>
+              <h3 class="fade-in-left" style="margin:0; font-size:1.1rem;">Legg i handlekurv</h3>
+              <p class="muted fade-in-right" style="margin:0;">Vi legger inn riktig kombinasjon for deg, klart til kassen.</p>
+            </div>
+          </div>
+        </article>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -40,7 +70,16 @@
       ]
     }
   ],
-  "presets": [ { "name": "How It Works Pro" } ]
+  "presets": [
+    {
+      "name": "How It Works Pro",
+      "blocks": [
+        { "type": "step", "settings": { "heading": "Velg type", "text": "Ventilasjon eller speil – begge er enkle å montere." } },
+        { "type": "step", "settings": { "heading": "Velg duft", "text": "7 varianter – bytt når du vil, eller legg til refill." } },
+        { "type": "step", "settings": { "heading": "Legg i handlekurv", "text": "Vi legger inn riktig kombinasjon for deg, klart til kassen." } }
+      ]
+    }
+  ]
 }
 {% endschema %}
 
