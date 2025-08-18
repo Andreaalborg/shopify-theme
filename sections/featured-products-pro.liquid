@@ -1,0 +1,46 @@
+{% assign collection = section.settings.collection %}
+<section class="section" id="featured">
+  <div class="container">
+    <div class="stack-md center" style="margin-bottom:28px;">
+      <h2>{{ section.settings.title | default: 'Utvalgte produkter' }}</h2>
+      <p class="muted">{{ section.settings.subtitle | default: 'Raskt overblikk. Kjøp på sekunder.' }}</p>
+    </div>
+
+    <div class="grid grid-3">
+      {% if collection %}
+        {% for product in collection.products limit: section.settings.limit %}
+          <article class="card product-card">
+            <a href="{{ product.url }}" class="card-content" style="display:block; text-decoration:none;">
+              <div class="media">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}">
+                {% endif %}
+              </div>
+              <div class="stack-sm" style="padding:14px 8px 16px;">
+                <div class="title">{{ product.title }}</div>
+                <div class="price">{{ product.price | money }}</div>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="muted">Velg en kolleksjon i seksjonsinnstillingene.</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products Pro",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Tittel", "default": "Utvalgte produkter" },
+    { "type": "textarea", "id": "subtitle", "label": "Undertittel", "default": "Raskt overblikk. Kjøp på sekunder." },
+    { "type": "collection", "id": "collection", "label": "Kolleksjon" },
+    { "type": "range", "id": "limit", "label": "Antall", "min": 3, "max": 12, "step": 3, "default": 6 }
+  ],
+  "presets": [{ "name": "Featured Products Pro" }]
+}
+{% endschema %}
+
+

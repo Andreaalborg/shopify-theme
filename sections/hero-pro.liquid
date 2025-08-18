@@ -1,0 +1,39 @@
+<section class="hero-pro" id="hero">
+  <div class="container">
+    <div class="wrap">
+      <div>
+        <div class="hero-eyebrow">{{ section.settings.eyebrow | default: 'Nura' }}</div>
+        <h1 class="hero-title">{{ section.settings.title | default: 'Friskere luft. Enklere valg.' }}</h1>
+        <p class="hero-lead">{{ section.settings.subtitle | default: 'Velg mellom speil- eller ventilløsning til bilen. 7 dufter. Refill når du vil.' }}</p>
+        <div class="hero-cta">
+          <a href="{{ section.settings.primary_link | default: '#configurator' }}" class="btn btn-lg btn-primary">{{ section.settings.primary_label | default: 'Bygg din pakke' }}</a>
+          <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" class="btn btn-lg btn-ghost">{{ section.settings.secondary_label | default: 'Se produkter' }}</a>
+        </div>
+        <div class="muted stack-sm" style="margin-top:14px;">
+          <span>4.9/5 av fornøyde bilentusiaster</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="halo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Pro",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Overtekst", "default": "Nura" },
+    { "type": "text", "id": "title", "label": "Tittel", "default": "Friskere luft. Enklere valg." },
+    { "type": "textarea", "id": "subtitle", "label": "Undertittel", "default": "Velg mellom speil- eller ventilløsning til bilen. 7 dufter. Refill når du vil." },
+    { "type": "text", "id": "primary_label", "label": "Primærknapp", "default": "Bygg din pakke" },
+    { "type": "url", "id": "primary_link", "label": "Primærlenke", "default": "#configurator" },
+    { "type": "text", "id": "secondary_label", "label": "Sekundærknapp", "default": "Se produkter" },
+    { "type": "url", "id": "secondary_link", "label": "Sekundærlenke", "default": "/collections/all" }
+  ],
+  "presets": [{ "name": "Hero Pro" }]
+}
+{% endschema %}
+
+
