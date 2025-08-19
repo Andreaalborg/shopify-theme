@@ -1,0 +1,99 @@
+<section class="sticky-slides">
+  <div class="slides">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% assign from = block.settings.from_color | default: '#a7f3d0' %}
+        {% assign to = block.settings.to_color | default: '#bfdbfe' %}
+        {% assign text = block.settings.text_color | default: '#111111' %}
+        <section class="slide" style="--from: {{ from }}; --to: {{ to }}; --text: {{ text }};" {{ block.shopify_attributes }}>
+          <div class="slide-inner">
+            <h2 class="slide-title">{{ block.settings.title | default: 'Sticky slide' }}</h2>
+            {% if block.settings.subtitle != blank %}
+              <p class="slide-sub">{{ block.settings.subtitle }}</p>
+            {% endif %}
+          </div>
+        </section>
+      {% endfor %}
+    {% else %}
+      <section class="slide" style="--from:#bbf7d0; --to:#bfdbfe; --text:#111111;">
+        <div class="slide-inner">
+          <h2 class="slide-title">Første slide</h2>
+          <p class="slide-sub">Scroll ned for neste</p>
+        </div>
+      </section>
+      <section class="slide" style="--from:#3730a3; --to:#6d28d9; --text:#ffffff;">
+        <div class="slide-inner">
+          <h2 class="slide-title">Andre slide</h2>
+          <p class="slide-sub">Scroll ned for neste</p>
+        </div>
+      </section>
+      <section class="slide" style="--from:#6d28d9; --to:#db2777; --text:#ffffff;">
+        <div class="slide-inner">
+          <h2 class="slide-title">Tredje slide</h2>
+          <p class="slide-sub">Scroll ned</p>
+        </div>
+      </section>
+      <section class="slide" style="--from:#bfdbfe; --to:#e0e7ff; --text:#111111;">
+        <div class="slide-inner">
+          <h2 class="slide-title">Fjerde slide</h2>
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .sticky-slides { position: relative; width: 100%; }
+  .slides { position: relative; }
+  .slide {
+    position: sticky; top: 0; min-height: 100vh; display: flex;
+    align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(180deg, var(--from), var(--to));
+    color: var(--text);
+  }
+  .slide-inner { padding: 24px; }
+  .slide-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin: 0 0 12px; }
+  .slide-sub { margin: 0; opacity: 0.9; }
+  
+  /* Smooth snap (valgfritt) */
+  .slides { scroll-snap-type: y mandatory; }
+  .slide { scroll-snap-align: start; }
+
+  /* Subtil fade når slide blir sticky */
+  .slide { opacity: 0.98; }
+</style>
+
+{% schema %}
+{
+  "name": "Sticky Slides",
+  "settings": [
+    { "type": "text", "id": "section_title", "label": "Intern tittel", "default": "Sticky Slides" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tittel", "default": "Sticky slide" },
+        { "type": "text", "id": "subtitle", "label": "Undertittel" },
+        { "type": "color", "id": "from_color", "label": "Bakgrunn start", "default": "#bbf7d0" },
+        { "type": "color", "id": "to_color", "label": "Bakgrunn slutt", "default": "#bfdbfe" },
+        { "type": "color", "id": "text_color", "label": "Tekstfarge", "default": "#111111" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky Slides",
+      "blocks": [
+        { "type": "slide", "settings": { "title": "The First slide", "subtitle": "Scroll Down for next slide", "from_color": "#bbf7d0", "to_color": "#bfdbfe", "text_color": "#111111" } },
+        { "type": "slide", "settings": { "title": "The Second slide", "subtitle": "Scroll Down for next slide", "from_color": "#3730a3", "to_color": "#6d28d9", "text_color": "#ffffff" } },
+        { "type": "slide", "settings": { "title": "The Third slide", "subtitle": "Scroll Down", "from_color": "#6d28d9", "to_color": "#db2777", "text_color": "#ffffff" } },
+        { "type": "slide", "settings": { "title": "The Fourth slide", "from_color": "#bfdbfe", "to_color": "#e0e7ff", "text_color": "#111111" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
