@@ -8,18 +8,43 @@
     </div>
 
     <div class="grid grid-3">
-      {% for block in section.blocks %}
-        <article class="card" {{ block.shopify_attributes }}>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <article class="card" {{ block.shopify_attributes }}>
+            <div class="card-content">
+              <div class="stack-md">
+                <p style="margin:0; font-size:1.05rem;">“{{ block.settings.quote }}”</p>
+                <div class="muted">— {{ block.settings.author_name }}{% if block.settings.author_role != blank %}, {{ block.settings.author_role }}{% endif %}</div>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <article class="card">
           <div class="card-content">
             <div class="stack-md">
-              <p style="margin:0; font-size:1.05rem;">“{{ block.settings.quote }}”</p>
-              <div class="muted">
-                — {{ block.settings.author_name }}{% if block.settings.author_role != blank %}, {{ block.settings.author_role }}{% endif %}
-              </div>
+              <p style="margin:0; font-size:1.05rem;">“Lukten er akkurat passe – diskret og behagelig. Anbefales!”</p>
+              <div class="muted">— Kunde</div>
             </div>
           </div>
         </article>
-      {% endfor %}
+        <article class="card">
+          <div class="card-content">
+            <div class="stack-md">
+              <p style="margin:0; font-size:1.05rem;">“Enkel å montere i bilen, og refillen gjør det rimelig i lengden.”</p>
+              <div class="muted">— Kunde</div>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <div class="stack-md">
+              <p style="margin:0; font-size:1.05rem;">“Rask levering og god oppfølging. Kommer til å kjøpe igjen.”</p>
+              <div class="muted">— Kunde</div>
+            </div>
+          </div>
+        </article>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -42,6 +67,15 @@
       ]
     }
   ],
-  "presets": [ { "name": "Testimonials" } ]
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "quote": "Lukten er akkurat passe – diskret og behagelig. Anbefales!", "author_name": "Kunde", "author_role": "" } },
+        { "type": "testimonial", "settings": { "quote": "Enkel å montere i bilen, og refillen gjør det rimelig i lengden.", "author_name": "Kunde", "author_role": "" } },
+        { "type": "testimonial", "settings": { "quote": "Rask levering og god oppfølging. Kommer til å kjøpe igjen.", "author_name": "Kunde", "author_role": "" } }
+      ]
+    }
+  ]
 }
 {% endschema %}

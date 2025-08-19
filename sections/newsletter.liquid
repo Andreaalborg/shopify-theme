@@ -65,6 +65,10 @@
         <input type="hidden" name="contact[body]" value="Ønsker å melde meg på nyhetsbrevet">
       </form>
       
+      {% unless form %}
+      <div class="muted" style="margin-top:16px;">Vi sender kun nyttige oppdateringer 1–2 ganger i måneden.</div>
+      {% endunless %}
+      
       <div class="newsletter-benefits">
         <div class="benefit">
           <span class="benefit-icon">🎁</span>

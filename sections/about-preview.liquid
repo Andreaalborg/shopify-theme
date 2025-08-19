@@ -2,18 +2,24 @@
   <div class="container">
     <div class="grid grid-2 animate-on-scroll">
       <div class="about-content">
-        <h2>{{ section.settings.title }}</h2>
-        <p>{{ section.settings.text }}</p>
+        <h2>{{ section.settings.title | default: 'Hvorfor Nura' }}</h2>
+        <p>{{ section.settings.text | default: 'Vi kombinerer skandinavisk design med funksjonell enkelhet. Våre produkter er laget for å vare – og for å gjøre hverdagen litt friskere.' }}</p>
+        {% if section.settings.button_link %}
         <a href="{{ section.settings.button_link }}" class="btn">
-          {{ section.settings.button_text }}
+          {{ section.settings.button_text | default: 'Les mer' }}
         </a>
+        {% endif %}
       </div>
       {% if section.settings.image %}
         <div class="about-image">
           <img src="{{ section.settings.image | img_url: '800x' }}" 
-               alt="{{ section.settings.title }}"
+               alt="{{ section.settings.title | default: 'Hvorfor Nura' }}"
                class="parallax-element"
                data-speed="0.3">
+        </div>
+      {% else %}
+        <div class="about-image" style="background: var(--secondary); display:grid; place-items:center; min-height:260px; border-radius:20px;">
+          <div class="muted">Legg til et bilde i seksjonsinnstillingene</div>
         </div>
       {% endif %}
     </div>
