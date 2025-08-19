@@ -1,16 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "sticky-slides": {
-      "type": "sticky-slides",
-      "settings": {}
-    },
     "hero": {
       "type": "hero",
       "settings": {
         "title": "Frisk luft, overalt",
         "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
         "button_text": "Se produkter",
-        "button_link": "/collections/all"
+        "button_link": "/collections/all",
+        "stat1_value": "Nylig",
+        "stat1_label": "Lansert",
+        "stat2_value": "2",
+        "stat2_label": "Bilprodukter",
+        "stat3_value": "7",
+        "stat3_label": "Dufter & refills",
+        "show_video": true
       }
     },
     "featured-pro": {
@@ -18,7 +30,8 @@
       "settings": {
         "title": "Utvalgte produkter",
         "subtitle": "Raskt overblikk. Kjøp på sekunder.",
-        "limit": 6
+        "collection": "luftfriskere",
+        "limit": 3
       }
     },
     "benefits-pro": {
@@ -39,7 +52,17 @@
       "type": "product-configurator",
       "settings": {
         "title": "Bygg din luftfrisker",
-        "subtitle": "Velg biltype (vent/speil), din favorittduft og legg til refill om ønskelig."
+        "subtitle": "Velg biltype (vent/speil), din favorittduft og legg til refill om ønskelig.",
+        "vent_product": "",
+        "mirror_product": "",
+        "refill_product": "",
+        "oil_1": "",
+        "oil_2": "",
+        "oil_3": "",
+        "oil_4": "",
+        "oil_5": "",
+        "oil_6": "",
+        "oil_7": ""
       }
     },
     "products-essentia": {
@@ -52,12 +75,17 @@
     "testimonials": {
       "type": "testimonials",
       "settings": {
-        "title": "Hva kundene sier"
+        "title": "Hva kundene sier",
+        "subtitle": ""
       }
     },
     "newsletter": {
       "type": "newsletter",
-      "settings": {}
+      "settings": {
+        "title": "Hold deg oppdatert",
+        "subtitle": "Få eksklusive tilbud og tips om hvordan du holder hjemmet og bilen frisk",
+        "button_text": "Abonner"
+      }
     },
     "about-preview": {
       "type": "about-preview",
@@ -69,5 +97,15 @@
       }
     }
   },
-  "order": ["hero", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "sticky-slides", "testimonials", "newsletter", "about-preview"]
+  "order": [
+    "hero",
+    "featured-pro",
+    "benefits-pro",
+    "how-it-works-pro",
+    "product-configurator",
+    "products-essentia",
+    "testimonials",
+    "newsletter",
+    "about-preview"
+  ]
 }
