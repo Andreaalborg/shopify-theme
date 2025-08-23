@@ -1,3 +1,38 @@
+<section class="section about-clean" style="position:relative; z-index:10;">
+  <div class="container">
+    <div class="grid grid-2">
+      <div class="about-content">
+        <h2 style="margin:0 0 12px; color:var(--primary);">{{ section.settings.title | default: 'Hvorfor Nura' }}</h2>
+        <p style="color:var(--text-muted);">{{ section.settings.text | default: 'Vi kombinerer skandinavisk design med funksjonell enkelhet. Våre produkter er laget for å vare – og for å gjøre hverdagen litt friskere.' }}</p>
+        {% if section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="btn btn-primary">{{ section.settings.button_text | default: 'Les mer' }}</a>
+        {% endif %}
+      </div>
+      <div class="about-image">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | img_url: '900x' }}" alt="{{ section.settings.title | default: 'Hvorfor Nura' }}" style="width:100%; height:auto; display:block; border-radius:20px; border:1px solid var(--border); object-fit:cover;" />
+        {% else %}
+          <div style="background:var(--secondary); border:1px solid var(--border); border-radius:20px; min-height:280px; display:grid; place-items:center; color:var(--text-muted);">Legg til et bilde i seksjonsinnstillingene</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Preview",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Tittel", "default": "Hvorfor Nura" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Vi kombinerer skandinavisk design med funksjonell enkelhet. Våre produkter er laget for å vare – og for å gjøre hverdagen litt friskere." },
+    { "type": "text", "id": "button_text", "label": "Knappetekst", "default": "Les mer" },
+    { "type": "url", "id": "button_link", "label": "Knappelenke" },
+    { "type": "image_picker", "id": "image", "label": "Bilde" }
+  ],
+  "presets": [ { "name": "About Preview" } ]
+}
+{% endschema %}
+
 <section class="section" style="position:relative; z-index:5; isolation:isolate;">
   <div class="container">
     <div class="grid grid-2 animate-on-scroll">

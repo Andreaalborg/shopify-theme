@@ -1,3 +1,44 @@
+<section class="section newsletter-clean" style="position:relative; z-index:10;">
+  <div class="container">
+    <div class="card" style="max-width:760px; margin:0 auto;">
+      <div class="card-content">
+        <div class="text-center" style="margin-bottom:16px;">
+          <h2 style="margin:0 0 8px; color:var(--primary);">{{ section.settings.title | default: 'Hold deg oppdatert' }}</h2>
+          {% if section.settings.subtitle != blank %}
+            <p style="margin:0; color:var(--text-muted);">{{ section.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+
+        <form action="/contact#contact_form" method="post" class="newsletter-form" style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+          <input type="hidden" name="form_type" value="customer" />
+          <input type="email" name="contact[email]" required placeholder="Din e-postadresse" class="input" style="min-width:260px; flex:1; border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
+          <button type="submit" class="btn btn-primary">{{ section.settings.button_text | default: 'Abonner' }}</button>
+          <input type="hidden" name="contact[tags]" value="newsletter" />
+          <input type="hidden" name="contact[subject]" value="Nyhetsbrev registrering" />
+          <input type="hidden" name="contact[body]" value="Ønsker å melde meg på nyhetsbrevet" />
+        </form>
+
+        {% if section.settings.privacy_note != blank %}
+          <p class="text-center" style="margin-top:12px; font-size:0.9rem; color:var(--text-muted);">{{ section.settings.privacy_note }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Tittel", "default": "Hold deg oppdatert" },
+    { "type": "textarea", "id": "subtitle", "label": "Undertittel", "default": "Få eksklusive tilbud og tips om hvordan du holder bilen frisk" },
+    { "type": "text", "id": "button_text", "label": "Knappetekst", "default": "Abonner" },
+    { "type": "textarea", "id": "privacy_note", "label": "Personvern-note", "default": "Vi sender kun 1–2 e-poster i måneden. Du kan melde deg av når som helst." }
+  ],
+  "presets": [ { "name": "Newsletter" } ]
+}
+{% endschema %}
+
 <section class="newsletter section">
   <div class="newsletter-bg">
     <div class="floating-elements">
