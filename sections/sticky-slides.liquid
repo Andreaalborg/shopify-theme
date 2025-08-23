@@ -46,27 +46,25 @@
   .sticky-slides { position: relative; width: 100%; z-index: 0; }
   .slides { position: relative; }
   .slide {
-    position: sticky; top: 0; min-height: 100vh; display: flex;
+    position: relative; min-height: 100vh; display: flex;
     align-items: center; justify-content: center; text-align: center;
     background: linear-gradient(180deg, var(--from), var(--to));
     color: var(--text);
-    z-index: 1;
+    z-index: 0;
   }
   .slide-inner { padding: 24px; }
   .slide-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin: 0 0 12px; }
   .slide-sub { margin: 0; opacity: 0.9; }
   
   /* Smooth snap (valgfritt) */
-  .slides { scroll-snap-type: y mandatory; }
-  .slide { scroll-snap-align: start; }
+  .slides { scroll-snap-type: none; }
+  .slide { scroll-snap-align: none; }
 
   /* Subtil fade når slide blir sticky */
   .slide { opacity: 0.98; }
   
   /* Deaktiver sticky på mobil for å forhindre overlapp, og la seksjoner under være synlige */
-  @media (max-width: 768px) {
-    .slide { position: relative; min-height: 70vh; }
-  }
+  @media (max-width: 768px) { .slide { position: relative; min-height: 70vh; } }
 </style>
 
 {% schema %}

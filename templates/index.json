@@ -1,9 +1,5 @@
 {
   "sections": {
-    "sticky-slides": {
-      "type": "sticky-slides",
-      "settings": {}
-    },
     "hero": {
       "type": "hero",
       "settings": {
@@ -69,5 +65,5 @@
       }
     }
   },
-  "order": ["hero", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "testimonials", "newsletter", "about-preview", "sticky-slides"]
+  "order": ["hero", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "testimonials", "newsletter", "about-preview"]
 }
