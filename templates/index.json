@@ -69,5 +69,5 @@
       }
     }
   },
-  "order": ["hero", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "sticky-slides", "testimonials", "newsletter", "about-preview"]
+  "order": ["hero", "featured-pro", "benefits-pro", "how-it-works-pro", "product-configurator", "testimonials", "newsletter", "about-preview", "sticky-slides"]
 }

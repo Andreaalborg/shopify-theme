@@ -97,14 +97,8 @@
     position: relative;
     overflow: hidden;
     padding: 100px 0;
+    color: var(--primary);
   }
-  /* Tydelig tekstfarge for lys bakgrunn */
-  .newsletter-content,
-  .newsletter-title,
-  .newsletter-subtitle,
-  .benefit span,
-  .privacy-note { color: var(--primary); }
-  .newsletter-subtitle { opacity: 0.8; }
   
   .newsletter-bg {
     position: absolute;
@@ -173,6 +167,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    color: var(--primary);
   }
   
   .newsletter-icon {
@@ -197,18 +192,9 @@
     50% { stroke-dasharray: 80, 20; }
   }
   
-  .newsletter-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
+  .newsletter-title { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; color: var(--primary); }
   
-  .newsletter-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.8;
-    margin-bottom: 40px;
-    line-height: 1.6;
-  }
+  .newsletter-subtitle { font-size: 1.2rem; margin-bottom: 40px; line-height: 1.6; color: var(--text-muted); }
   
   .newsletter-form {
     margin-bottom: 40px;
@@ -247,24 +233,9 @@
     color: #999;
   }
   
-  .newsletter-submit {
-    padding: 18px 30px;
-    background: var(--accent-color);
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    font-weight: 500;
-  }
+  .newsletter-submit { padding: 18px 30px; background: var(--primary); border: none; color: var(--white); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-size: 1rem; font-weight: 500; }
   
-  .newsletter-submit:hover {
-    background: var(--primary-color);
-    transform: translateX(5px);
-  }
+  .newsletter-submit:hover { background: var(--primary-light); transform: translateX(5px); }
   
   .btn-icon {
     width: 20px;
