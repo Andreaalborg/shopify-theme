@@ -1,0 +1,38 @@
+<section class="section about-nordic-essence" style="position:relative; z-index:10;">
+  <div class="container">
+    <div class="grid grid-2">
+      <div class="about-content">
+        <h2 style="margin:0 0 12px; color:var(--primary);">{{ section.settings.title | default: 'Nordic Essence' }}</h2>
+        <p style="color:var(--text-muted);">{{ section.settings.text | default: 'Nordisk enkelhet. Premium materialer. Duftopplevelser som varer – i bil og hverdag.' }}</p>
+        {% if section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="btn btn-primary">{{ section.settings.button_text | default: 'Les historien' }}</a>
+        {% endif %}
+      </div>
+      <div>
+        <div style="border-radius:20px; border:1px solid var(--border); overflow:hidden;">
+          {% if section.settings.image %}
+            <img src="{{ section.settings.image | img_url: '900x' }}" alt="{{ section.settings.title | default: 'Nordic Essence' }}" style="width:100%; height:auto; display:block; object-fit:cover;" />
+          {% else %}
+            <div style="min-height:300px; background:var(--secondary); display:grid; place-items:center; color:var(--text-muted);">Legg til et bilde</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nordic Essence About",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Tittel", "default": "Nordic Essence" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Nordisk enkelhet. Premium materialer. Duftopplevelser som varer – i bil og hverdag." },
+    { "type": "text", "id": "button_text", "label": "Knappetekst", "default": "Les historien" },
+    { "type": "url", "id": "button_link", "label": "Knappelenke" },
+    { "type": "image_picker", "id": "image", "label": "Bilde" }
+  ],
+  "presets": [ { "name": "Nordic Essence About" } ]
+}
+{% endschema %}
+
+

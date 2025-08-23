@@ -1,0 +1,43 @@
+<section class="section newsletter-aurora" style="position:relative; z-index:10;">
+  <div class="container">
+    <div class="card" style="max-width:820px; margin:0 auto; overflow:hidden;">
+      <div class="card-content" style="position:relative;">
+        <div style="position:absolute; inset:-40% -20% auto auto; width:320px; height:320px; background:radial-gradient(closest-side, var(--accent), transparent); filter:blur(20px); opacity:.3; pointer-events:none;"></div>
+        <div class="text-center" style="margin-bottom:16px;">
+          <h2 style="margin:0 0 8px; color:var(--primary);">{{ section.settings.title | default: 'Aurora Newsletter' }}</h2>
+          {% if section.settings.subtitle != blank %}
+            <p style="margin:0; color:var(--text-muted);">{{ section.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+
+        <form action="/contact#contact_form" method="post" style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+          <input type="hidden" name="form_type" value="customer" />
+          <input type="email" name="contact[email]" required placeholder="Din e-postadresse" class="input" style="min-width:280px; flex:1; border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
+          <button type="submit" class="btn btn-primary">{{ section.settings.button_text | default: 'Meld meg på' }}</button>
+          <input type="hidden" name="contact[tags]" value="newsletter, aurora" />
+          <input type="hidden" name="contact[subject]" value="Aurora newsletter" />
+          <input type="hidden" name="contact[body]" value="Ønsker å motta Aurora-nyhetsbrev" />
+        </form>
+
+        {% if section.settings.privacy_note != blank %}
+          <p class="text-center" style="margin-top:12px; font-size:0.9rem; color:var(--text-muted);">{{ section.settings.privacy_note }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aurora Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Tittel", "default": "Aurora Newsletter" },
+    { "type": "textarea", "id": "subtitle", "label": "Undertittel", "default": "Eksklusive tips og tilbud – rett i innboksen." },
+    { "type": "text", "id": "button_text", "label": "Knappetekst", "default": "Meld meg på" },
+    { "type": "textarea", "id": "privacy_note", "label": "Personvern-note", "default": "1–2 e-poster i måneden. Du kan melde deg av når som helst." }
+  ],
+  "presets": [ { "name": "Aurora Newsletter" } ]
+}
+{% endschema %}
+
+
