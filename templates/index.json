@@ -78,24 +78,6 @@
         "title": "Hva kundene sier",
         "subtitle": ""
       }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "title": "Hold deg oppdatert",
-        "subtitle": "Få eksklusive tilbud og tips om hvordan du holder hjemmet og bilen frisk",
-        "button_text": "Abonner"
-      }
-    },
-    "about-preview": {
-      "type": "about-preview",
-      "settings": {
-        "title": "Hvorfor velge oss?",
-        "text": "Vi kombinerer skandinavisk design med premium kvalitet. Våre luftfriskere er miljøvennlige, langvarige og designet for å gi deg den perfekte duften.",
-        "button_text": "Les mer",
-        "button_link": "/pages/om-oss",
-        "image": "shopify://shop_images/Bilde05.08.2025_192105.jpg"
-      }
     }
   },
   "order": [
@@ -105,8 +87,6 @@
     "how-it-works-pro",
     "product-configurator",
     "products-essentia",
-    "testimonials",
-    "newsletter",
-    "about-preview"
+    "testimonials"
   ]
 }
