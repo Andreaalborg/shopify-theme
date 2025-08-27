@@ -11,6 +11,30 @@
   "sections": {
     "hero": {
       "type": "hero",
+      "blocks": {
+        "chip_1": {
+          "type": "chip",
+          "settings": {
+            "icon": "✨",
+            "label": "Lang varighet"
+          }
+        },
+        "chip_2": {
+          "type": "chip",
+          "settings": {
+            "icon": "🌿",
+            "label": "Naturlige dufter"
+          }
+        },
+        "chip_3": {
+          "type": "chip",
+          "settings": {
+            "icon": "♻️",
+            "label": "Påfyllbar"
+          }
+        }
+      },
+      "block_order": ["chip_1", "chip_2", "chip_3"],
       "settings": {
         "title": "Frisk luft, overalt",
         "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
@@ -22,7 +46,13 @@
         "stat2_label": "Bilprodukter",
         "stat3_value": "7",
         "stat3_label": "Dufter & refills",
-        "show_video": false
+        "show_video": false,
+        "show_badge": true,
+        "badge_text": "Premium Air Care",
+        "primary_label": "Bygg din pakke",
+        "primary_link": "#product-configurator",
+        "secondary_label": "Se produkter",
+        "secondary_link": "/collections/all"
       }
     },
     "featured-pro": {
