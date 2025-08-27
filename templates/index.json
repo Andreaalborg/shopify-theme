@@ -9,23 +9,6 @@
  */
 {
   "sections": {
-    "newsletter-aurora": {
-      "type": "newsletter-aurora",
-      "settings": {
-        "title": "Aurora Newsletter",
-        "subtitle": "Eksklusive tips og tilbud – rett i innboksen.",
-        "button_text": "Meld meg på"
-      }
-    },
-    "about-nordic-essence": {
-      "type": "about-nordic-essence",
-      "settings": {
-        "title": "Nordic Essence",
-        "text": "Nordisk enkelhet. Premium materialer. Duftopplevelser som varer – i bil og hverdag.",
-        "button_text": "Les historien",
-        "button_link": "/pages/om-oss"
-      }
-    },
     "hero": {
       "type": "hero",
       "settings": {
@@ -44,6 +27,7 @@
     },
     "featured-pro": {
       "type": "featured-products-pro",
+      "disabled": true,
       "settings": {
         "title": "Utvalgte produkter",
         "subtitle": "Raskt overblikk. Kjøp på sekunder.",
@@ -84,6 +68,7 @@
     },
     "products-essentia": {
       "type": "products-essentia",
+      "disabled": true,
       "settings": {
         "title": "Premium Luftfriskere",
         "description": "Tre unike produkter designet for moderne livsstil. Hver med sin egen personlighet og anvendelse."
@@ -95,16 +80,34 @@
         "title": "Hva kundene sier",
         "subtitle": ""
       }
+    },
+    "newsletter-aurora": {
+      "type": "newsletter-aurora",
+      "settings": {
+        "title": "Aurora Newsletter",
+        "subtitle": "Eksklusive tips og tilbud – rett i innboksen.",
+        "button_text": "Meld meg på",
+        "privacy_note": "1–2 e-poster i måneden. Du kan melde deg av når som helst."
+      }
+    },
+    "about-nordic-essence": {
+      "type": "about-nordic-essence",
+      "settings": {
+        "title": "Nordic Essence",
+        "text": "Nordisk enkelhet. Premium materialer. Duftopplevelser som varer – i bil og hverdag.",
+        "button_text": "Les historien",
+        "button_link": "/pages/om-oss"
+      }
     }
   },
   "order": [
     "hero",
     "featured-pro",
-    "benefits-pro",
     "how-it-works-pro",
     "product-configurator",
     "products-essentia",
     "testimonials",
+    "benefits-pro",
     "newsletter-aurora",
     "about-nordic-essence"
   ]
