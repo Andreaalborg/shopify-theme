@@ -5,19 +5,24 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-card fade-in-scale">
-        {% if section.settings.show_video %}
         <div class="hero-card-media">
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="{{ '4154241-uhd_4096_2160_25fps.mp4' | asset_url }}" type="video/mp4">
-          </video>
+          <div class="hero-spotlight" aria-hidden="true"></div>
+          <div class="hero-product">
+            {% if section.settings.product_image %}
+              <img src="{{ section.settings.product_image | img_url: '900x' }}" alt="{{ section.settings.title | default: 'Produkt' }}" />
+            {% else %}
+              <img src="{{ 'Bilde_05.08.2025__19_21_05-removebg-preview.png' | asset_url }}" alt="Produkt" />
+            {% endif %}
+          </div>
         </div>
-        {% endif %}
-        <div class="hero-card-overlay"></div>
+        <div class="hero-card-overlay" aria-hidden="true"></div>
         <div class="hero-card-body">
           <div class="hero-content fade-in">
+            {% if section.settings.show_badge %}
             <div class="hero-badge">
-              <span class="badge-text">Premium Air Care</span>
+              <span class="badge-text">{{ section.settings.badge_text | default: 'Premium Air Care' }}</span>
             </div>
+            {% endif %}
             
             <h1 class="hero-title fade-in-up">
               {{ section.settings.title | default: "Frisk luft, overalt" }}
@@ -41,13 +46,24 @@
                 <div class="stat-label">{{ section.settings.stat3_label | default: "Dufter & refills" }}</div>
               </div>
             </div>
+
+            {% if section.blocks.size > 0 %}
+            <div class="hero-chips">
+              {% for block in section.blocks %}
+                <span class="chip" {{ block.shopify_attributes }}>
+                  {% if block.settings.icon %}<span aria-hidden="true">{{ block.settings.icon }}</span>{% endif %}
+                  <span>{{ block.settings.label }}</span>
+                </span>
+              {% endfor %}
+            </div>
+            {% endif %}
             
             <div class="hero-actions fade-in-up">
-              <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="btn btn-primary">
-                {{ section.settings.button_text | default: "Se produkter" }}
+              <a href="{{ section.settings.primary_link | default: '#newsletter' }}" class="btn btn-primary">
+                {{ section.settings.primary_label | default: "Bygg din pakke" }}
               </a>
-              <a href="/pages/om-oss" class="btn btn-ghost">
-                Lær mer
+              <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" class="btn btn-ghost">
+                {{ section.settings.secondary_label | default: "Se produkter" }}
               </a>
             </div>
           </div>
@@ -76,25 +92,26 @@
     z-index: 2;
   }
   
-  /* Card with rounded video background */
+  /* Card with rounded media background */
   .hero-card {
     position: relative;
     border-radius: 24px;
     overflow: hidden;
     border: 1px solid var(--border);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-    background: var(--secondary);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    background: #0a0a0a;
   }
-  .hero-card-media video {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    aspect-ratio: 16/9;
-  }
+  .hero-card-media { position: relative; aspect-ratio: 16/9; background:#000; }
+  .hero-spotlight { position:absolute; inset:auto 10% 10% auto; width:min(42vw,560px); height:min(42vw,560px); background:radial-gradient(closest-side, rgba(255,255,255,0.22), rgba(255,255,255,0.06) 55%, transparent 70%); filter: blur(18px); }
+  .hero-product { position:absolute; inset:0; display:grid; place-items:center; }
+  .hero-product img { display:block; width:min(48vw,520px); height:auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)); }
   .hero-card-overlay {
     position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.84) 40%, rgba(255,255,255,0.78) 100%);
+    background: linear-gradient(180deg,
+      rgba(255,255,255, {{ section.settings.overlay_strength | default: 85 | times: 0.01 }}) 0%,
+      rgba(255,255,255, {{ section.settings.overlay_strength | default: 85 | minus: 5 | at_least: 0 | times: 0.01 }}) 40%,
+      rgba(255,255,255, {{ section.settings.overlay_strength | default: 85 | minus: 10 | at_least: 0 | times: 0.01 }}) 100%
+    );
   }
   .hero-card-body {
     position: absolute; inset: 0; display: grid; place-items: center; padding: 32px;
@@ -104,6 +121,7 @@
   .hero-content {
     max-width: 720px;
     margin: 0 auto;
+    color: var(--white);
   }
   
   .hero-badge {
@@ -128,7 +146,7 @@
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.1;
-    color: var(--primary);
+    color: var(--white);
     margin-bottom: 24px;
     letter-spacing: -0.02em;
   }
@@ -136,7 +154,7 @@
   .hero-description {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.8);
     margin-bottom: 40px;
   }
   
@@ -151,10 +169,13 @@
   }
   
   .stat-item { text-align: center; }
-  .stat-number { font-size: 1.75rem; font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 4px; }
-  .stat-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+  .stat-number { font-size: 1.75rem; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.75); font-weight: 500; }
   
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  .hero-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; justify-content:center; }
+  .chip { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:999px; padding:6px 10px; background:var(--white); font-size:.9rem; color:var(--primary); }
   
   /* Responsive */
   @media (max-width: 1024px) {
@@ -191,7 +212,24 @@
     { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Bilprodukter" },
     { "type": "text", "id": "stat3_value", "label": "Stat 3 verdi", "default": "7" },
     { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Dufter & refills" },
-    { "type": "checkbox", "id": "show_video", "label": "Vis hero-video", "default": true }
+    { "type": "checkbox", "id": "show_video", "label": "Vis hero-video", "default": true },
+    { "type": "checkbox", "id": "show_badge", "label": "Vis badge", "default": true },
+    { "type": "text", "id": "badge_text", "label": "Badge-tekst", "default": "Premium Air Care" },
+    { "type": "range", "id": "overlay_strength", "label": "Overlay styrke (0-100)", "min": 0, "max": 100, "step": 5, "default": 85 },
+    { "type": "text", "id": "primary_label", "label": "Primærknapp", "default": "Bygg din pakke" },
+    { "type": "url", "id": "primary_link", "label": "Primærlenke", "default": "#newsletter" },
+    { "type": "text", "id": "secondary_label", "label": "Sekundærknapp", "default": "Se produkter" },
+    { "type": "url", "id": "secondary_link", "label": "Sekundærlenke", "default": "/collections/all" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Hero Chip",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Ikon/emoji", "default": "✨" },
+        { "type": "text", "id": "label", "label": "Tekst", "default": "Lang varighet" }
+      ]
+    }
   ],
   "presets": [ { "name": "Hero" } ]
 }
