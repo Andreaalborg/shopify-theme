@@ -76,7 +76,7 @@
 <style>
   .hero-essentia {
     padding: 96px 0 120px 0;
-    background: var(--white);
+    background: #0a0a0a; /* fallback mørk bakgrunn for hele seksjonen */
     overflow: hidden;
     position: relative;
   }
@@ -101,21 +101,19 @@
     box-shadow: 0 16px 48px rgba(0,0,0,0.18);
     background: #0a0a0a;
   }
-  .hero-card-media { position: relative; aspect-ratio: 16/9; background:#000; }
+  .hero-card-media { position: relative; aspect-ratio: 16/9; background:#000; min-height: 420px; }
   .hero-spotlight { position:absolute; inset:auto 10% 10% auto; width:min(42vw,560px); height:min(42vw,560px); background:radial-gradient(closest-side, rgba(255,255,255,0.22), rgba(255,255,255,0.06) 55%, transparent 70%); filter: blur(18px); }
   .hero-product { position:absolute; inset:0; display:grid; place-items:center; }
   .hero-product img { display:block; width:min(48vw,520px); height:auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)); }
   .hero-card-overlay {
-    position: absolute; inset: 0; pointer-events: none;
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
     background: linear-gradient(180deg,
-      rgba(255,255,255, {{ section.settings.overlay_strength | default: 85 | times: 0.01 }}) 0%,
-      rgba(255,255,255, {{ section.settings.overlay_strength | default: 85 | minus: 5 | at_least: 0 | times: 0.01 }}) 40%,
-      rgba(255,255,255, {{ section.settings.overlay_strength | default: 85 | minus: 10 | at_least: 0 | times: 0.01 }}) 100%
+      rgba(0,0,0, 0.35) 0%,
+      rgba(0,0,0, 0.25) 40%,
+      rgba(0,0,0, 0.2) 100%
     );
   }
-  .hero-card-body {
-    position: absolute; inset: 0; display: grid; place-items: center; padding: 32px;
-  }
+  .hero-card-body { position: absolute; inset: 0; display: grid; place-items: center; padding: 32px; z-index: 2; }
   
   /* Content Column */
   .hero-content {
