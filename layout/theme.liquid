@@ -10,35 +10,86 @@
   
   {{ content_for_header }}
   
+  <!-- Midlertidig kommentert ut CSS-filer for debugging
   {{ 'essentia-styles.css' | asset_url | stylesheet_tag }}
   {{ 'nura-theme.css' | asset_url | stylesheet_tag }}
   {{ 'animations.css' | asset_url | stylesheet_tag }}
+  -->
   
+  <!-- Midlertidig kommentert ut JavaScript for debugging
   <script src="{{ 'essentia-animations.js' | asset_url }}" defer></script>
   <script src="{{ 'nura-theme.js' | asset_url }}" defer></script>
   <script src="{{ 'smooth-scroll.js' | asset_url }}" defer></script>
+  -->
   
   <style>
-    :root {
-      --primary-color: {{ settings.primary_color }};
-      --secondary-color: {{ settings.secondary_color }};
-      --accent-color: {{ settings.accent_color }};
-      --heading-font: {{ settings.heading_font | font_face }};
-      --body-font: {{ settings.body_font | font_face }};
+    /* Minimal base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Basic button styles */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+    
+    .btn-ghost {
+      background: white;
+      color: #007bff;
+      border: 2px solid #e0e0e0;
+    }
+    
+    .btn-ghost:hover {
+      background: #f5f5f5;
+    }
+    
+    /* Section spacing */
+    .section {
+      padding: 60px 0;
     }
   </style>
 </head>
 <body class="template-{{ template.name }}">
   
+  {% comment %}
   {% section 'header' %}
+  {% endcomment %}
   
   <main id="main-content" role="main">
     {{ content_for_layout }}
   </main>
   
+  {% comment %}
   {% section 'footer' %}
-  
-  <div class="page-transition"></div>
+  {% endcomment %}
   
 </body>
 </html>
