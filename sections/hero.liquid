@@ -1,73 +1,65 @@
 <section class="hero-essentia section">
-  {% if section.settings.show_video %}
-  <div class="hero-bg-video" style="display:none;"></div>
-  {% endif %}
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-card fade-in-scale">
-        <div class="hero-card-media">
-          <div class="hero-spotlight" aria-hidden="true"></div>
-          <div class="hero-product">
-            {% if section.settings.product_image %}
-              <img src="{{ section.settings.product_image | img_url: '900x' }}" alt="{{ section.settings.title | default: 'Produkt' }}" />
-            {% else %}
-              <img src="{{ 'Bilde_05.08.2025__19_21_05-removebg-preview.png' | asset_url }}" alt="Produkt" />
-            {% endif %}
+    <div class="hero-wrapper">
+      <!-- Venstre side: Innhold -->
+      <div class="hero-content">
+        {% if section.settings.show_badge %}
+        <div class="hero-badge">
+          <span>{{ section.settings.badge_text | default: 'Premium Air Care' }}</span>
+        </div>
+        {% endif %}
+        
+        <h1 class="hero-title">
+          {{ section.settings.title | default: "Frisk luft, overalt" }}
+        </h1>
+        
+        <p class="hero-description">
+          {{ section.settings.subtitle | default: "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi." }}
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">{{ section.settings.stat1_value | default: "Nylig" }}</div>
+            <div class="stat-label">{{ section.settings.stat1_label | default: "Lansert" }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">{{ section.settings.stat2_value | default: "2" }}</div>
+            <div class="stat-label">{{ section.settings.stat2_label | default: "Bilprodukter" }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">{{ section.settings.stat3_value | default: "7" }}</div>
+            <div class="stat-label">{{ section.settings.stat3_label | default: "Dufter & refills" }}</div>
           </div>
         </div>
-        <div class="hero-card-overlay" aria-hidden="true"></div>
-        <div class="hero-card-body">
-          <div class="hero-content fade-in">
-            {% if section.settings.show_badge %}
-            <div class="hero-badge">
-              <span class="badge-text">{{ section.settings.badge_text | default: 'Premium Air Care' }}</span>
-            </div>
-            {% endif %}
-            
-            <h1 class="hero-title fade-in-up">
-              {{ section.settings.title | default: "Frisk luft, overalt" }}
-            </h1>
-            
-            <p class="hero-description fade-in">
-              {{ section.settings.subtitle | default: "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi." }}
-            </p>
-            
-            <div class="hero-stats">
-              <div class="stat-item">
-                <div class="stat-number">{{ section.settings.stat1_value | default: "Nylig" }}</div>
-                <div class="stat-label">{{ section.settings.stat1_label | default: "Lansert" }}</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">{{ section.settings.stat2_value | default: "2" }}</div>
-                <div class="stat-label">{{ section.settings.stat2_label | default: "Bilprodukter" }}</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">{{ section.settings.stat3_value | default: "7" }}</div>
-                <div class="stat-label">{{ section.settings.stat3_label | default: "Dufter & refills" }}</div>
-              </div>
-            </div>
 
-            {% if section.blocks.size > 0 %}
-            <div class="hero-chips">
-              {% for block in section.blocks %}
-                <span class="chip" {{ block.shopify_attributes }}>
-                  {% if block.settings.icon %}<span aria-hidden="true">{{ block.settings.icon }}</span>{% endif %}
-                  <span>{{ block.settings.label }}</span>
-                </span>
-              {% endfor %}
-            </div>
-            {% endif %}
-            
-            <div class="hero-actions fade-in-up">
-              <a href="{{ section.settings.primary_link | default: '#newsletter' }}" class="btn btn-primary">
-                {{ section.settings.primary_label | default: "Bygg din pakke" }}
-              </a>
-              <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" class="btn btn-ghost">
-                {{ section.settings.secondary_label | default: "Se produkter" }}
-              </a>
-            </div>
-          </div>
+        {% if section.blocks.size > 0 %}
+        <div class="hero-chips">
+          {% for block in section.blocks %}
+            <span class="chip" {{ block.shopify_attributes }}>
+              {% if block.settings.icon %}{{ block.settings.icon }}{% endif %}
+              {{ block.settings.label }}
+            </span>
+          {% endfor %}
         </div>
+        {% endif %}
+        
+        <div class="hero-actions">
+          <a href="{{ section.settings.primary_link | default: '#product-configurator' }}" class="btn btn-primary btn-lg">
+            {{ section.settings.primary_label | default: "Bygg din pakke" }}
+          </a>
+          <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" class="btn btn-ghost btn-lg">
+            {{ section.settings.secondary_label | default: "Se produkter" }}
+          </a>
+        </div>
+      </div>
+      
+      <!-- Høyre side: Bilde -->
+      <div class="hero-media">
+        {% if section.settings.product_image %}
+          <img src="{{ section.settings.product_image | img_url: '900x' }}" alt="{{ section.settings.title | default: 'Produkt' }}" />
+        {% else %}
+          <img src="{{ 'Bilde_05.08.2025__19_21_05-removebg-preview.png' | asset_url }}" alt="Produkt" />
+        {% endif %}
       </div>
     </div>
   </div>
@@ -75,123 +67,167 @@
 
 <style>
   .hero-essentia {
-    padding: 96px 0 120px 0;
-    background: #0a0a0a; /* fallback mørk bakgrunn for hele seksjonen */
-    overflow: hidden;
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
     position: relative;
+    overflow: hidden;
   }
   
-  .hero-grid {
+  .hero-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
-    min-height: 80vh;
-    text-align: center;
-    position: relative;
-    z-index: 2;
+    min-height: 500px;
   }
   
-  /* Card with rounded media background */
-  .hero-card {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
-    background: #0a0a0a;
-  }
-  .hero-card-media { position: relative; aspect-ratio: 16/9; background:#000; min-height: 420px; }
-  .hero-spotlight { position:absolute; inset:auto 10% 10% auto; width:min(42vw,560px); height:min(42vw,560px); background:radial-gradient(closest-side, rgba(255,255,255,0.22), rgba(255,255,255,0.06) 55%, transparent 70%); filter: blur(18px); }
-  .hero-product { position:absolute; inset:0; display:grid; place-items:center; }
-  .hero-product img { display:block; width:min(48vw,520px); height:auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)); }
-  .hero-card-overlay {
-    position: absolute; inset: 0; pointer-events: none; z-index: 1;
-    background: linear-gradient(180deg,
-      rgba(0,0,0, 0.35) 0%,
-      rgba(0,0,0, 0.25) 40%,
-      rgba(0,0,0, 0.2) 100%
-    );
-  }
-  .hero-card-body { position: absolute; inset: 0; display: grid; place-items: center; padding: 32px; z-index: 2; }
-  
-  /* Content Column */
   .hero-content {
-    max-width: 720px;
-    margin: 0 auto;
-    color: var(--white);
+    max-width: 600px;
   }
   
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    padding: 6px 16px;
-    background: var(--secondary);
-    border: 1px solid var(--border);
+    padding: 8px 20px;
+    background: #f0f9ff;
+    border: 1px solid #e0f2fe;
     border-radius: 100px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
   
-  .badge-text {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--primary);
+  .hero-badge span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0369a1;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
   }
   
   .hero-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.1;
-    color: var(--white);
-    margin-bottom: 24px;
+    color: #1a1a1a;
+    margin: 0 0 20px 0;
     letter-spacing: -0.02em;
   }
   
   .hero-description {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 40px;
+    color: #666666;
+    margin: 0 0 32px 0;
   }
   
   .hero-stats {
     display: flex;
-    gap: 48px;
-    margin-bottom: 48px;
+    gap: 40px;
+    margin: 32px 0;
     padding: 24px 0;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .stat-item {
+    text-align: left;
+  }
+  
+  .stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: #999999;
+    font-weight: 500;
+  }
+  
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    color: #666666;
+    transition: all 0.2s ease;
+  }
+  
+  .chip:hover {
+    border-color: #0369a1;
+    color: #0369a1;
+    transform: translateY(-1px);
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .hero-media {
+    position: relative;
+    display: flex;
+    align-items: center;
     justify-content: center;
   }
   
-  .stat-item { text-align: center; }
-  .stat-number { font-size: 1.75rem; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 4px; }
-  .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.75); font-weight: 500; }
-  
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-
-  .hero-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; justify-content:center; }
-  .chip { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:999px; padding:6px 10px; background:var(--white); font-size:.9rem; color:var(--primary); }
+  .hero-media img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+  }
   
   /* Responsive */
-  @media (max-width: 1024px) {
-    .hero-grid { gap: 40px; }
-    .hero-stats { gap: 32px; }
-    .stat-number { font-size: 1.5rem; }
-  }
-  
   @media (max-width: 768px) {
-    .hero-essentia { padding: 80px 0; }
-    .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-    .hero-content { max-width: 100%; margin: 0 auto; }
-    .hero-actions { justify-content: center; }
-  }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    .hero-essentia {
+      padding: 40px 0;
+    }
+    
+    .hero-wrapper {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    .hero-stats {
+      justify-content: center;
+      gap: 30px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .hero-chips {
+      justify-content: center;
+    }
+    
+    .hero-actions {
+      justify-content: center;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
   }
 </style>
 
