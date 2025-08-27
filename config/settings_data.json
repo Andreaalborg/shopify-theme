@@ -21,6 +21,10 @@
           "show_video": false
         }
       },
+      "hero-atlas": {
+        "type": "hero-atlas",
+        "settings": {}
+      },
       "featured-pro": {
         "type": "featured-products-pro",
         "settings": {}
@@ -59,7 +63,7 @@
       }
     },
     "content_for_index": [
-      "hero",
+      "hero-atlas",
       "featured-pro",
       "benefits-pro",
       "how-it-works-pro",
