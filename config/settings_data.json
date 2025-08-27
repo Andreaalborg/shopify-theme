@@ -1,0 +1,63 @@
+{
+  "current": {
+    "primary_color": "#000000",
+    "secondary_color": "#f5f5f5",
+    "accent_color": "#007bff",
+    "heading_font": "helvetica_n4",
+    "body_font": "helvetica_n4",
+    "sections": {
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "show_video": false
+        }
+      },
+      "featured-pro": {
+        "type": "featured-products-pro",
+        "settings": {}
+      },
+      "benefits-pro": {
+        "type": "benefits-pro",
+        "settings": {}
+      },
+      "how-it-works-pro": {
+        "type": "how-it-works-pro",
+        "settings": {}
+      },
+      "product-configurator": {
+        "type": "product-configurator",
+        "settings": {}
+      },
+      "testimonials": {
+        "type": "testimonials",
+        "settings": {}
+      },
+      "newsletter-aurora": {
+        "type": "newsletter-aurora",
+        "settings": {}
+      },
+      "about-nordic-essence": {
+        "type": "about-nordic-essence",
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "hero",
+      "featured-pro",
+      "benefits-pro",
+      "how-it-works-pro",
+      "product-configurator",
+      "testimonials",
+      "newsletter-aurora",
+      "about-nordic-essence"
+    ]
+  }
+}
