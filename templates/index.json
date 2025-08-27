@@ -35,13 +35,6 @@
         "limit": 3
       }
     },
-    "benefits-pro": {
-      "type": "benefits-pro",
-      "settings": {
-        "title": "Hvorfor velge Nura",
-        "subtitle": "Kvalitet, enkelhet og profesjonelt uttrykk."
-      }
-    },
     "how-it-works-pro": {
       "type": "how-it-works-pro",
       "settings": {
@@ -79,6 +72,13 @@
       "settings": {
         "title": "Hva kundene sier",
         "subtitle": ""
+      }
+    },
+    "benefits-pro": {
+      "type": "benefits-pro",
+      "settings": {
+        "title": "Hvorfor velge Nura",
+        "subtitle": "Kvalitet, enkelhet og profesjonelt uttrykk."
       }
     },
     "newsletter-aurora": {
