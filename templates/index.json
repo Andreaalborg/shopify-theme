@@ -22,7 +22,7 @@
         "stat2_label": "Bilprodukter",
         "stat3_value": "7",
         "stat3_label": "Dufter & refills",
-        "show_video": true
+        "show_video": false
       }
     },
     "featured-pro": {
