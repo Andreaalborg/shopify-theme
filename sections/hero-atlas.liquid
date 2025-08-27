@@ -1,0 +1,63 @@
+<section class="hero-atlas section" style="background:#0a0a0a; position:relative; overflow:hidden;">
+  <div class="container">
+    <div class="atlas-grid">
+      <div class="atlas-media">
+        <div class="atlas-spotlight" aria-hidden="true"></div>
+        <div class="atlas-product">
+          {% assign img = section.settings.product_image %}
+          {% if img %}
+            <img src="{{ img | img_url: '900x' }}" alt="{{ section.settings.title | escape }}" />
+          {% else %}
+            <img src="{{ 'Bilde_05.08.2025__19_21_05-removebg-preview.png' | asset_url }}" alt="Produkt" />
+          {% endif %}
+        </div>
+      </div>
+      <div class="atlas-content">
+        {% if section.settings.badge_text != blank %}
+        <div class="atlas-badge"><span>{{ section.settings.badge_text }}</span></div>
+        {% endif %}
+        <h1 class="atlas-title">{{ section.settings.title | default: 'Friskere luft. Enklere valg.' }}</h1>
+        {% if section.settings.subtitle != blank %}
+        <p class="atlas-sub">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        <div class="atlas-actions">
+          <a href="{{ section.settings.primary_link | default: '#newsletter' }}" class="btn btn-primary">{{ section.settings.primary_label | default: 'Meld deg på' }}</a>
+          <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" class="btn btn-ghost">{{ section.settings.secondary_label | default: 'Se produkter' }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .atlas-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;min-height:70vh}
+    .atlas-media{position:relative;aspect-ratio:16/9;min-height:440px;background:#000;border-radius:24px;border:1px solid var(--border);box-shadow:0 24px 64px rgba(0,0,0,.4)}
+    .atlas-spotlight{position:absolute;inset:auto 8% 8% auto;width:min(44vw,560px);height:min(44vw,560px);background:radial-gradient(closest-side, rgba(255,255,255,.22), rgba(255,255,255,.07) 55%, transparent 70%);filter:blur(20px)}
+    .atlas-product{position:absolute;inset:0;display:grid;place-items:center}
+    .atlas-product img{display:block;width:min(48vw,520px);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))}
+    .atlas-content{color:#fff;text-align:left}
+    .atlas-badge{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 12px;margin-bottom:16px;color:#fff;opacity:.9}
+    .atlas-title{font-size:clamp(2.5rem,5vw,3.4rem);line-height:1.1;margin:0 0 14px}
+    .atlas-sub{color:rgba(255,255,255,.82);font-size:1.125rem;margin:0 0 22px}
+    .atlas-actions{display:flex;gap:12px;flex-wrap:wrap}
+    @media(max-width: 980px){.atlas-grid{grid-template-columns:1fr;gap:28px;text-align:center}.atlas-content{text-align:center}.atlas-actions{justify-content:center}}
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Atlas",
+  "settings": [
+    {"type":"text","id":"badge_text","label":"Badge","default":"Premium Air Care"},
+    {"type":"text","id":"title","label":"Tittel","default":"Friskere luft. Enklere valg."},
+    {"type":"textarea","id":"subtitle","label":"Undertittel","default":"Velg biltype, duft og refill. Klar på 30 sekunder."},
+    {"type":"image_picker","id":"product_image","label":"Produktbilde"},
+    {"type":"text","id":"primary_label","label":"Primærknapp","default":"Meld deg på"},
+    {"type":"url","id":"primary_link","label":"Primærlenke","default":"#newsletter"},
+    {"type":"text","id":"secondary_label","label":"Sekundærknapp","default":"Se produkter"},
+    {"type":"url","id":"secondary_link","label":"Sekundærlenke","default":"/collections/all"}
+  ],
+  "presets": [{"name":"Hero Atlas"}]
+}
+{% endschema %}
+
+
