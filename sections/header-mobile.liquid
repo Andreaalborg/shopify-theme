@@ -30,15 +30,15 @@
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobile-overlay" style="display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 98;" onclick="toggleMobileMenu()"></div>
+  <div id="mobile-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 98;" onclick="toggleMobileMenu()"></div>
   
   <!-- Mobile Menu -->
-  <div id="mobile-menu" style="display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background-color: #ffffff; z-index: 99; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-    <nav style="display: flex; flex-direction: column; gap: 20px;">
-      <a href="/" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Hjem</a>
-      <a href="/collections/all" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Produkter</a>
-      <a href="/pages/om-oss" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Om oss</a>
-      <a href="/pages/kontakt" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Kontakt</a>
+  <div id="mobile-menu" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff !important; background-color: #ffffff !important; z-index: 999; padding-top: 90px; overflow-y: auto;">
+    <nav style="display: flex; flex-direction: column; gap: 20px; background: #ffffff; padding: 10px;">
+      <a href="/" style="display: block; padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #e0e0e0; background: #ffffff;">Hjem</a>
+      <a href="/collections/all" style="display: block; padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #e0e0e0; background: #ffffff;">Produkter</a>
+      <a href="/pages/om-oss" style="display: block; padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #e0e0e0; background: #ffffff;">Om oss</a>
+      <a href="/pages/kontakt" style="display: block; padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #e0e0e0; background: #ffffff;">Kontakt</a>
       <a href="/cart" style="margin-top: 20px; padding: 15px; background: #1a1a1a; color: white; text-decoration: none; border-radius: 10px; text-align: center; font-size: 18px; font-weight: 600;">
         Handlekurv ({{ cart.item_count }})
       </a>
