@@ -106,6 +106,7 @@
   },
   "order": [
     "hero-atlas",
+    "hero",
     "featured-pro",
     "how-it-works-pro",
     "product-configurator",

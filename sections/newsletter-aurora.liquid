@@ -1,4 +1,4 @@
-<section class="section newsletter-aurora" style="position:relative; z-index:10;">
+<section id="newsletter" class="section newsletter-aurora" style="position:relative; z-index:10;">
   <div class="container">
     <div class="card" style="max-width:820px; margin:0 auto; overflow:hidden;">
       <div class="card-content" style="position:relative;">
@@ -10,14 +10,18 @@
           {% endif %}
         </div>
 
-        <form action="/contact#contact_form" method="post" style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+        <form action="/contact#contact_form" method="post" data-ajax="true" style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
           <input type="hidden" name="form_type" value="customer" />
-          <input type="email" name="contact[email]" required placeholder="Din e-postadresse" class="input" style="min-width:280px; flex:1; border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
+          <input type="email" name="contact[email]" required inputmode="email" autocomplete="email" placeholder="Din e-postadresse" class="input" style="min-width:280px; flex:1; border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
           <button type="submit" class="btn btn-primary">{{ section.settings.button_text | default: 'Meld meg på' }}</button>
           <input type="hidden" name="contact[tags]" value="newsletter, aurora" />
           <input type="hidden" name="contact[subject]" value="Aurora newsletter" />
           <input type="hidden" name="contact[body]" value="Ønsker å motta Aurora-nyhetsbrev" />
+          <!-- Honeypot -->
+          <input type="text" name="contact[website]" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px;" />
         </form>
+
+        <div class="nl-message" role="status" aria-live="polite" style="margin-top:10px; text-align:center; font-size:.95rem;"></div>
 
         {% if section.settings.privacy_note != blank %}
           <p class="text-center" style="margin-top:12px; font-size:0.9rem; color:var(--text-muted);">{{ section.settings.privacy_note }}</p>
@@ -26,6 +30,45 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function(){
+    const root = document.currentScript && document.currentScript.previousElementSibling ? document.currentScript.previousElementSibling : document.querySelector('#newsletter');
+    if(!root) return;
+    const form = root.querySelector('form[data-ajax="true"]');
+    const msg = root.querySelector('.nl-message');
+    if(!form || !msg) return;
+
+    function setMessage(text, ok){
+      msg.textContent = text || '';
+      msg.style.color = ok ? 'var(--primary)' : '#b00020';
+    }
+
+    form.addEventListener('submit', function(e){
+      try {
+        const hp = form.querySelector('input[name="contact[website]"]');
+        if(hp && hp.value){ e.preventDefault(); return; }
+        const email = form.querySelector('input[name="contact[email]"]').value.trim();
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!re.test(email)){
+          e.preventDefault();
+          setMessage('Vennligst skriv inn en gyldig e‑postadresse.', false);
+          return;
+        }
+        if (form.dataset.ajax !== 'true') return;
+        e.preventDefault();
+        setMessage('Sender …', true);
+        const fd = new FormData(form);
+        fetch('/contact', { method: 'POST', body: fd, headers: { 'Accept': 'text/html' }})
+          .then(function(res){
+            if(res.ok){ setMessage('Takk! Du er nå påmeldt nyhetsbrevet.', true); form.reset(); }
+            else { setMessage('Noe gikk galt. Prøv igjen.', false); }
+          })
+          .catch(function(){ setMessage('Kunne ikke sende nå. Sjekk nettet og prøv igjen.', false); });
+      } catch(err){ /* stille fallback */ }
+    });
+  })();
+  </script>
 
 {% schema %}
 {

@@ -4,6 +4,16 @@
       <div class="about-content">
         <h2 style="margin:0 0 12px; color:var(--primary);">{{ section.settings.title | default: 'Nordic Essence' }}</h2>
         <p style="color:var(--text-muted);">{{ section.settings.text | default: 'Nordisk enkelhet. Premium materialer. Duftopplevelser som varer – i bil og hverdag.' }}</p>
+        {% if section.blocks.size > 0 %}
+        <div class="feature-chips" style="display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 16px;">
+          {% for block in section.blocks %}
+            <span class="chip" style="display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); border-radius:999px; padding:8px 12px; background:var(--white);">
+              {% if block.settings.icon %}<span aria-hidden="true">{{ block.settings.icon }}</span>{% endif %}
+              <span style="color:var(--primary); font-size:.95rem;">{{ block.settings.label }}</span>
+            </span>
+          {% endfor %}
+        </div>
+        {% endif %}
         {% if section.settings.button_link %}
         <a href="{{ section.settings.button_link }}" class="btn btn-primary">{{ section.settings.button_text | default: 'Les historien' }}</a>
         {% endif %}
@@ -31,7 +41,26 @@
     { "type": "url", "id": "button_link", "label": "Knappelenke" },
     { "type": "image_picker", "id": "image", "label": "Bilde" }
   ],
-  "presets": [ { "name": "Nordic Essence About" } ]
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature chip",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Ikon/emoji", "default": "✨" },
+        { "type": "text", "id": "label", "label": "Tekst", "default": "Premium kvalitet" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nordic Essence About",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "🌿", "label": "Naturlige dufter" } },
+        { "type": "feature", "settings": { "icon": "🧩", "label": "Modulært system" } },
+        { "type": "feature", "settings": { "icon": "🔁", "label": "Refill-vennlig" } }
+      ]
+    }
+  ]
 }
 {% endschema %}
 
