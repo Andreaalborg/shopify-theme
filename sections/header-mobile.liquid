@@ -29,8 +29,11 @@
     </div>
   </div>
 
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-overlay" style="display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 98;" onclick="toggleMobileMenu()"></div>
+  
   <!-- Mobile Menu -->
-  <div id="mobile-menu" style="display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: white; z-index: 99; padding: 20px;">
+  <div id="mobile-menu" style="display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background-color: #ffffff; z-index: 99; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
     <nav style="display: flex; flex-direction: column; gap: 20px;">
       <a href="/" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Hjem</a>
       <a href="/collections/all" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Produkter</a>
@@ -66,15 +69,18 @@
 <script>
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
     const icon = document.getElementById('menu-icon');
     const body = document.body;
     
     if (menu.style.display === 'none' || menu.style.display === '') {
       menu.style.display = 'block';
+      overlay.style.display = 'block';
       icon.textContent = '✕';
       body.classList.add('menu-open');
     } else {
       menu.style.display = 'none';
+      overlay.style.display = 'none';
       icon.textContent = '☰';
       body.classList.remove('menu-open');
     }
@@ -84,6 +90,7 @@
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('mobile-menu').style.display = 'none';
+      document.getElementById('mobile-overlay').style.display = 'none';
       document.getElementById('menu-icon').textContent = '☰';
       document.body.classList.remove('menu-open');
     });
