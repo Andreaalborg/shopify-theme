@@ -84,8 +84,8 @@
       }
     },
     "hero_v2_BgYkWp": {
-      "type": "hero-v2",
-      "name": "Hero V2",
+      "type": "hero-v3-mobile",
+      "name": "Hero V3 Mobile",
       "settings": {
         "title": "Frisk luft, overalt",
         "subtitle": "Premium luftfriskere designet for moderne hjem og biler.",

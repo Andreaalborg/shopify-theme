@@ -1,0 +1,364 @@
+<section class="hero-section">
+  <div class="hero-container">
+    
+    <!-- Badge -->
+    {% if section.settings.show_badge %}
+    <div class="hero-badge">
+      <span>{{ section.settings.badge_text | default: 'Premium Air Care' }}</span>
+    </div>
+    {% endif %}
+    
+    <!-- Title -->
+    <h1 class="hero-title">
+      {{ section.settings.title | default: "Frisk luft, overalt" }}
+    </h1>
+    
+    <!-- Subtitle -->
+    <p class="hero-subtitle">
+      {{ section.settings.subtitle | default: "Premium luftfriskere designet for moderne hjem og biler." }}
+    </p>
+    
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-value">{{ section.settings.stat1_value | default: "100%" }}</div>
+        <div class="stat-label">{{ section.settings.stat1_label | default: "Norsk" }}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ section.settings.stat2_value | default: "100%" }}</div>
+        <div class="stat-label">{{ section.settings.stat2_label | default: "Naturlig" }}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ section.settings.stat3_value | default: "30" }}</div>
+        <div class="stat-label">{{ section.settings.stat3_label | default: "Dagers garanti" }}</div>
+      </div>
+    </div>
+    
+    <!-- Buttons -->
+    <div class="hero-buttons">
+      <a href="{{ section.settings.primary_link | default: '#' }}" class="btn-primary">
+        {{ section.settings.primary_label | default: "Bygg din pakke" }}
+      </a>
+      <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" class="btn-secondary">
+        {{ section.settings.secondary_label | default: "Se produkter" }}
+      </a>
+    </div>
+    
+    <!-- Product Image -->
+    {% if section.settings.product_image %}
+    <div class="hero-image">
+      <img src="{{ section.settings.product_image | img_url: '600x' }}" 
+           alt="{{ section.settings.title }}" />
+    </div>
+    {% endif %}
+    
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    margin-bottom: 24px;
+  }
+
+  .hero-badge span {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary {
+    background: white;
+    color: #1a1a1a;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 50px 15px;
+    }
+
+    .hero-badge {
+      padding: 6px 16px;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge span {
+      font-size: 11px;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      margin-bottom: 16px;
+      padding: 0 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      margin-bottom: 30px;
+      padding: 0 10px;
+      line-height: 1.4;
+    }
+
+    .hero-stats {
+      gap: 20px;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      margin-bottom: 3px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 20px;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+
+    .hero-image {
+      margin-top: 30px;
+      padding: 0 20px;
+    }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 375px) {
+    .hero-title {
+      font-size: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+    }
+
+    .hero-stats {
+      gap: 15px;
+    }
+
+    .stat-value {
+      font-size: 20px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero V3 Mobile",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tittel",
+      "default": "Frisk luft, overalt"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Undertittel",
+      "default": "Premium luftfriskere designet for moderne hjem og biler."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Vis badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge tekst",
+      "default": "Premium Air Care"
+    },
+    {
+      "type": "text",
+      "id": "stat1_value",
+      "label": "Stat 1 verdi",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat1_label",
+      "label": "Stat 1 label",
+      "default": "Norsk"
+    },
+    {
+      "type": "text",
+      "id": "stat2_value",
+      "label": "Stat 2 verdi",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat2_label",
+      "label": "Stat 2 label",
+      "default": "Naturlig"
+    },
+    {
+      "type": "text",
+      "id": "stat3_value",
+      "label": "Stat 3 verdi",
+      "default": "30"
+    },
+    {
+      "type": "text",
+      "id": "stat3_label",
+      "label": "Stat 3 label",
+      "default": "Dagers garanti"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primær knapp tekst",
+      "default": "Bygg din pakke"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primær knapp lenke"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Sekundær knapp tekst",
+      "default": "Se produkter"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Sekundær knapp lenke"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Produktbilde"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero V3 Mobile"
+    }
+  ]
+}
+{% endschema %}

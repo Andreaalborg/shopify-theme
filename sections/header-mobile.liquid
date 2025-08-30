@@ -1,0 +1,110 @@
+<header class="site-header" style="position: sticky; top: 0; background: white; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div class="header-inner" style="display: flex; justify-content: space-between; align-items: center; height: 70px;">
+      
+      <!-- Logo -->
+      <a href="/" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a1a1a; font-weight: 700; font-size: 20px;">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ shop.name }}" style="height: 32px; width: auto;">
+        {% endif %}
+        <span>{{ section.settings.brand_text | default: shop.name }}</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" style="display: flex; gap: 30px; align-items: center;">
+        <a href="/" style="text-decoration: none; color: #1a1a1a; font-weight: 500;">Hjem</a>
+        <a href="/collections/all" style="text-decoration: none; color: #1a1a1a; font-weight: 500;">Produkter</a>
+        <a href="/pages/om-oss" style="text-decoration: none; color: #1a1a1a; font-weight: 500;">Om oss</a>
+        <a href="/pages/kontakt" style="text-decoration: none; color: #1a1a1a; font-weight: 500;">Kontakt</a>
+        <a href="/cart" class="cart-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #1a1a1a; color: white; text-decoration: none; border-radius: 50px; font-weight: 600;">
+          <span>Handlekurv</span>
+          <span style="background: white; color: #1a1a1a; padding: 2px 6px; border-radius: 10px; font-size: 12px;">{{ cart.item_count }}</span>
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; font-size: 28px; cursor: pointer; padding: 10px;">
+        <span id="menu-icon">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" style="display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: white; z-index: 99; padding: 20px;">
+    <nav style="display: flex; flex-direction: column; gap: 20px;">
+      <a href="/" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Hjem</a>
+      <a href="/collections/all" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Produkter</a>
+      <a href="/pages/om-oss" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Om oss</a>
+      <a href="/pages/kontakt" style="padding: 15px; text-decoration: none; color: #1a1a1a; font-size: 18px; font-weight: 500; border-bottom: 1px solid #f0f0f0;">Kontakt</a>
+      <a href="/cart" style="margin-top: 20px; padding: 15px; background: #1a1a1a; color: white; text-decoration: none; border-radius: 10px; text-align: center; font-size: 18px; font-weight: 600;">
+        Handlekurv ({{ cart.item_count }})
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none !important;
+    }
+    .mobile-menu-btn {
+      display: block !important;
+    }
+    .brand span {
+      font-size: 18px !important;
+    }
+  }
+
+  /* Prevent scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    const body = document.body;
+    
+    if (menu.style.display === 'none' || menu.style.display === '') {
+      menu.style.display = 'block';
+      icon.textContent = '✕';
+      body.classList.add('menu-open');
+    } else {
+      menu.style.display = 'none';
+      icon.textContent = '☰';
+      body.classList.remove('menu-open');
+    }
+  }
+
+  // Close menu when clicking on a link
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobile-menu').style.display = 'none';
+      document.getElementById('menu-icon').textContent = '☰';
+      document.body.classList.remove('menu-open');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Header Mobile",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Merkenavn",
+      "default": "Nura"
+    }
+  ]
+}
+{% endschema %}
