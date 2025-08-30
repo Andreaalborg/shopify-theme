@@ -585,7 +585,7 @@
   }
   
   .btn-modern:hover {
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); removed */
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   
@@ -1157,6 +1157,7 @@ document.addEventListener('DOMContentLoaded', function() {
       product3d.style.transform = '';
     });
     
+    /* Removed mouse-following 3D rotation
     container.addEventListener('mousemove', (e) => {
       const rect = container.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -1167,8 +1168,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       product3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
     });
+    */
   });
   
+  /* Removed magnetic button effect
   // Add magnetic effect to buttons
   const buttons = document.querySelectorAll('.btn-modern');
   
@@ -1185,6 +1188,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.style.transform = '';
     });
   });
+  */
 });
 </script>
 
