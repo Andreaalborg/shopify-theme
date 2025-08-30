@@ -9,53 +9,6 @@
  */
 {
   "sections": {
-    "hero-simple": {
-      "type": "hero-simple",
-      "settings": {
-        "title": "TEST - SER DU DETTE?",
-        "subtitle": "Hvis du ser denne teksten, fungerer seksjoner!",
-        "button_text": "Fungerer!"
-      }
-    },
-    "hero-v2": {
-      "type": "hero-v2",
-      "settings": {
-        "title": "Frisk luft, overalt",
-        "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
-        "show_badge": true,
-        "badge_text": "Premium Air Care",
-        "stat1_value": "100%",
-        "stat1_label": "Norsk",
-        "stat2_value": "Premium",
-        "stat2_label": "Kvalitet",
-        "stat3_value": "30",
-        "stat3_label": "Dagers garanti",
-        "primary_label": "Bygg din pakke",
-        "primary_link": "#newsletter",
-        "secondary_label": "Se produkter",
-        "secondary_link": "/collections/all"
-      }
-    },
-    "hero-atlas": {
-      "type": "hero-atlas",
-      "settings": {}
-    },
-    "hero": {
-      "type": "hero",
-      "settings": {
-        "title": "Frisk luft, overalt",
-        "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
-        "button_text": "Se produkter",
-        "button_link": "/collections/all",
-        "stat1_value": "Nylig",
-        "stat1_label": "Lansert",
-        "stat2_value": "2",
-        "stat2_label": "Bilprodukter",
-        "stat3_value": "7",
-        "stat3_label": "Dufter & refills",
-        "show_video": false
-      }
-    },
     "featured-pro": {
       "type": "featured-products-pro",
       "disabled": true,
@@ -129,12 +82,30 @@
         "button_text": "Les historien",
         "button_link": "/pages/om-oss"
       }
+    },
+    "hero_v2_BgYkWp": {
+      "type": "hero-v2",
+      "name": "Hero V2",
+      "settings": {
+        "title": "Frisk luft, overalt",
+        "subtitle": "Premium luftfriskere designet for moderne hjem og biler.",
+        "show_badge": true,
+        "badge_text": "Premium Air Care",
+        "stat1_value": "100%",
+        "stat1_label": "Norsk",
+        "stat2_value": "Premium",
+        "stat2_label": "Kvalitet",
+        "stat3_value": "30",
+        "stat3_label": "Dagers garanti",
+        "primary_label": "Bygg din pakke",
+        "primary_link": "",
+        "secondary_label": "Se produkter",
+        "secondary_link": ""
+      }
     }
   },
   "order": [
-    "hero-simple",
-    "hero-v2",
-    "hero-atlas",
+    "hero_v2_BgYkWp",
     "featured-pro",
     "how-it-works-pro",
     "product-configurator",
