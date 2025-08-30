@@ -21,10 +21,6 @@
           "show_video": false
         }
       },
-      "hero-atlas": {
-        "type": "hero-atlas",
-        "settings": {}
-      },
       "featured-pro": {
         "type": "featured-products-pro",
         "settings": {}
@@ -59,11 +55,22 @@
       },
       "footer": {
         "type": "footer",
-        "settings": {}
+        "settings": {
+          "title": "Nura",
+          "footer_text": "Frisk luft, enklere valg. Premium bildufter og refills.",
+          "facebook_url": "",
+          "instagram_url": "",
+          "twitter_url": ""
+        }
+      },
+      "header-mobile": {
+        "type": "header-mobile",
+        "settings": {
+          "brand_text": "NURA"
+        }
       }
     },
     "content_for_index": [
-      "hero-atlas",
       "featured-pro",
       "benefits-pro",
       "how-it-works-pro",
