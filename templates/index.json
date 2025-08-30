@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "hero-simple": {
+      "type": "hero-simple",
+      "settings": {
+        "title": "TEST - SER DU DETTE?",
+        "subtitle": "Hvis du ser denne teksten, fungerer seksjoner!",
+        "button_text": "Fungerer!"
+      }
+    },
     "hero-atlas": {
       "type": "hero-atlas",
       "settings": {}
@@ -105,6 +113,7 @@
     }
   },
   "order": [
+    "hero-simple",
     "hero-atlas",
     "hero",
     "featured-pro",

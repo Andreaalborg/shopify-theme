@@ -1,0 +1,50 @@
+<section style="background: #f0f0f0; padding: 80px 20px; text-align: center;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h1 style="font-size: 48px; color: #333; margin-bottom: 20px;">
+      {{ section.settings.title | default: 'TEST HERO SEKSJON' }}
+    </h1>
+    <p style="font-size: 20px; color: #666; margin-bottom: 30px;">
+      {{ section.settings.subtitle | default: 'Hvis du ser denne teksten, fungerer seksjonen!' }}
+    </p>
+    <a href="{{ section.settings.button_link | default: '#' }}" 
+       style="display: inline-block; padding: 15px 30px; background: #333; color: white; text-decoration: none; border-radius: 5px;">
+      {{ section.settings.button_text | default: 'Klikk her' }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Simple Test",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tittel",
+      "default": "TEST HERO"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Undertittel",
+      "default": "Dette er en test"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Knappetekst",
+      "default": "Test knapp"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Knappelenke"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Simple Test"
+    }
+  ]
+}
+{% endschema %}
