@@ -80,7 +80,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); removed for stability */
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 

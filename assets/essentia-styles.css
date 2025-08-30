@@ -165,7 +165,7 @@ a:hover {
 
 .btn-primary:hover {
   background: var(--primary-light);
-  transform: translateY(-1px);
+  /* transform: translateY(-1px); removed for stability */
 }
 
 .btn-secondary {
@@ -176,7 +176,7 @@ a:hover {
 
 .btn-secondary:hover {
   background: var(--border-light);
-  transform: translateY(-1px);
+  /* transform: translateY(-1px); removed for stability */
 }
 
 .btn-ghost {
@@ -187,7 +187,7 @@ a:hover {
 
 .btn-ghost:hover {
   background: var(--secondary);
-  transform: translateY(-1px);
+  /* transform: translateY(-1px); removed for stability */
 }
 
 /* Cards */
@@ -200,7 +200,7 @@ a:hover {
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  /* transform: translateY(-4px); removed for stability */
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
   border-color: var(--accent);
 }
