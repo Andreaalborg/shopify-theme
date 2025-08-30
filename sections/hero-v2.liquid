@@ -1,0 +1,161 @@
+<section style="background: linear-gradient(135deg, #1a1a1a, #333); padding: 100px 20px; text-align: center; color: white;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Badge -->
+    {% if section.settings.show_badge %}
+    <div style="display: inline-block; padding: 8px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; margin-bottom: 30px;">
+      <span style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+        {{ section.settings.badge_text | default: 'Premium Air Care' }}
+      </span>
+    </div>
+    {% endif %}
+    
+    <!-- Title -->
+    <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 700;">
+      {{ section.settings.title | default: "Frisk luft, overalt" }}
+    </h1>
+    
+    <!-- Subtitle -->
+    <p style="font-size: 20px; margin-bottom: 40px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+      {{ section.settings.subtitle | default: "Premium luftfriskere designet for moderne hjem og biler." }}
+    </p>
+    
+    <!-- Stats -->
+    <div style="display: flex; gap: 60px; justify-content: center; margin-bottom: 40px; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2);">
+      <div>
+        <div style="font-size: 32px; font-weight: bold; margin-bottom: 5px;">{{ section.settings.stat1_value | default: "Nylig" }}</div>
+        <div style="font-size: 14px; opacity: 0.8;">{{ section.settings.stat1_label | default: "Lansert" }}</div>
+      </div>
+      <div>
+        <div style="font-size: 32px; font-weight: bold; margin-bottom: 5px;">{{ section.settings.stat2_value | default: "2" }}</div>
+        <div style="font-size: 14px; opacity: 0.8;">{{ section.settings.stat2_label | default: "Bilprodukter" }}</div>
+      </div>
+      <div>
+        <div style="font-size: 32px; font-weight: bold; margin-bottom: 5px;">{{ section.settings.stat3_value | default: "7" }}</div>
+        <div style="font-size: 14px; opacity: 0.8;">{{ section.settings.stat3_label | default: "Dufter" }}</div>
+      </div>
+    </div>
+    
+    <!-- Buttons -->
+    <div style="display: flex; gap: 20px; justify-content: center;">
+      <a href="{{ section.settings.primary_link | default: '#' }}" 
+         style="display: inline-block; padding: 15px 30px; background: white; color: #1a1a1a; text-decoration: none; border-radius: 50px; font-weight: 600;">
+        {{ section.settings.primary_label | default: "Bygg din pakke" }}
+      </a>
+      <a href="{{ section.settings.secondary_link | default: '/collections/all' }}" 
+         style="display: inline-block; padding: 15px 30px; background: transparent; color: white; text-decoration: none; border: 2px solid white; border-radius: 50px; font-weight: 600;">
+        {{ section.settings.secondary_label | default: "Se produkter" }}
+      </a>
+    </div>
+    
+    <!-- Product Image -->
+    {% if section.settings.product_image %}
+    <div style="margin-top: 60px;">
+      <img src="{{ section.settings.product_image | img_url: '600x' }}" 
+           alt="{{ section.settings.title }}" 
+           style="max-width: 100%; height: auto;">
+    </div>
+    {% endif %}
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero V2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tittel",
+      "default": "Frisk luft, overalt"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Undertittel",
+      "default": "Premium luftfriskere designet for moderne hjem og biler."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Vis badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge tekst",
+      "default": "Premium Air Care"
+    },
+    {
+      "type": "text",
+      "id": "stat1_value",
+      "label": "Stat 1 verdi",
+      "default": "Nylig"
+    },
+    {
+      "type": "text",
+      "id": "stat1_label",
+      "label": "Stat 1 label",
+      "default": "Lansert"
+    },
+    {
+      "type": "text",
+      "id": "stat2_value",
+      "label": "Stat 2 verdi",
+      "default": "2"
+    },
+    {
+      "type": "text",
+      "id": "stat2_label",
+      "label": "Stat 2 label",
+      "default": "Bilprodukter"
+    },
+    {
+      "type": "text",
+      "id": "stat3_value",
+      "label": "Stat 3 verdi",
+      "default": "7"
+    },
+    {
+      "type": "text",
+      "id": "stat3_label",
+      "label": "Stat 3 label",
+      "default": "Dufter & refills"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primær knapp tekst",
+      "default": "Bygg din pakke"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primær knapp lenke"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Sekundær knapp tekst",
+      "default": "Se produkter"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Sekundær knapp lenke"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Produktbilde"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero V2"
+    }
+  ]
+}
+{% endschema %}

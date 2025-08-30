@@ -17,6 +17,25 @@
         "button_text": "Fungerer!"
       }
     },
+    "hero-v2": {
+      "type": "hero-v2",
+      "settings": {
+        "title": "Frisk luft, overalt",
+        "subtitle": "Premium luftfriskere designet for moderne hjem og biler. Nordisk kvalitet møter innovativ teknologi.",
+        "show_badge": true,
+        "badge_text": "Premium Air Care",
+        "stat1_value": "Nylig",
+        "stat1_label": "Lansert",
+        "stat2_value": "2",
+        "stat2_label": "Bilprodukter",
+        "stat3_value": "7",
+        "stat3_label": "Dufter & refills",
+        "primary_label": "Bygg din pakke",
+        "primary_link": "#newsletter",
+        "secondary_label": "Se produkter",
+        "secondary_link": "/collections/all"
+      }
+    },
     "hero-atlas": {
       "type": "hero-atlas",
       "settings": {}
@@ -114,8 +133,8 @@
   },
   "order": [
     "hero-simple",
+    "hero-v2",
     "hero-atlas",
-    "hero",
     "featured-pro",
     "how-it-works-pro",
     "product-configurator",
