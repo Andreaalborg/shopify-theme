@@ -229,11 +229,11 @@ a:hover {
 }
 
 .scale-on-hover {
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; removed for stability */
 }
 
 .scale-on-hover:hover {
-  transform: scale(1.02);
+  /* transform: scale(1.02); removed for stability */
 }
 
 /* Text Utilities */

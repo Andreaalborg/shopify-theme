@@ -7,8 +7,14 @@ En moderne og stilfull Shopify-tema med fokus på brukeropplevelse og moderne de
 - 🎨 Moderne og minimalistisk design
 - 📱 Fullt responsiv
 - ⚡ Raske animasjoner og scroll-effekter
-- 🛒 Optimalisert for e-handel
-- 🎯 SEO-vennlig struktur
+- 🛒 Optimalisert for e‑handel
+- 🎯 SEO‑vennlig struktur
+- 🧩 Seksjoner fra scratch:
+  - Hero med videoboks, justerbar overlay, chips (USP) og doble CTA‑er
+  - Produktkonfigurator (biltype + duft + refill, legger flere varer i handlekurv)
+  - Aurora Newsletter (AJAX, validering, honeypot, suksessmelding uten reload)
+  - Nordic Essence About (feature‑chips som blocks + bilde/placeholder)
+  - Sticky Slides (valgfri fullpage scroll, ren CSS)
 
 ## Sider
 
@@ -63,12 +69,15 @@ shopify theme push
 Rediger farger og fonter via Shopify Theme Editor eller direkte i `config/settings_schema.json`
 
 ### CSS
-- Hovedstiler: `assets/modern-styles.css`
+- Base: `assets/essentia-styles.css`
+- Tema UI: `assets/nura-theme.css`
 - Animasjoner: `assets/animations.css`
 
 ### JavaScript
-- Hovedfunksjonalitet: `assets/modern-scripts.js`
+- Animasjons‑observer: `assets/essentia-animations.js`
+- Tema interaksjoner: `assets/nura-theme.js`
 - Smooth scroll: `assets/smooth-scroll.js`
+- Merk: Aurora Newsletter bruker en liten inline‑script for AJAX‑innsending
 
 ## Struktur
 
@@ -81,6 +90,24 @@ Rediger farger og fonter via Shopify Theme Editor eller direkte i `config/settin
 ├── snippets/        # Små gjenbrukbare deler
 └── templates/       # Sidemaler
 ```
+
+## Seksjoner (utdrag)
+
+- Hero: `sections/hero.liquid` (video, overlay, chips, CTA)
+- Featured Products Pro: `sections/featured-products-pro.liquid`
+- Benefits Pro: `sections/benefits-pro.liquid`
+- How It Works Pro: `sections/how-it-works-pro.liquid`
+- Produktkonfigurator: `sections/product-configurator.liquid`
+- Aurora Newsletter: `sections/newsletter-aurora.liquid`
+- Nordic Essence About: `sections/about-nordic-essence.liquid`
+- Sticky Slides (valgfri): `sections/sticky-slides.liquid`
+
+### Tips
+
+- Hero primærknapp kan peke til nyhetsbrev: sett `Primary link` = `#newsletter` i Hero‑innstillinger.
+- Hvis en seksjon ikke vises: Theme Editor kan overstyre `templates/index.json`.
+  - Gå til Customize → Hjem → Legg til riktig seksjon og Lagre.
+  - Hard refresh / inkognito etter lagring.
 
 ## Teknologier
 
