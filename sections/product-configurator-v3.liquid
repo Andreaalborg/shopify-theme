@@ -96,8 +96,8 @@
               {% endfor %}
             </div>
             {% if oil_count > 3 %}
-              <button type="button" class="show-more-btn" id="show-more-scents">
-                <span class="show-more-text">+ {{ oil_count | minus: 3 }} dufter</span>
+              <button type="button" class="show-more-btn" id="show-more-scents" onclick="toggleScents()">
+                <span class="show-more-text">+ {{ oil_count | minus: 3 }} {% if oil_count == 4 %}duft{% else %}dufter{% endif %}</span>
                 <span class="show-less-text" style="display: none;">Vis færre</span>
               </button>
             {% endif %}
@@ -641,34 +641,32 @@
 </style>
 
 <script>
+// Global toggle function
+function toggleScents() {
+  const scentGrid = document.getElementById('scent-grid');
+  const showMoreBtn = document.getElementById('show-more-scents');
+  const showMoreText = showMoreBtn.querySelector('.show-more-text');
+  const showLessText = showMoreBtn.querySelector('.show-less-text');
+  
+  scentGrid.classList.toggle('expanded');
+  
+  if (scentGrid.classList.contains('expanded')) {
+    showMoreText.style.display = 'none';
+    showLessText.style.display = 'inline';
+  } else {
+    showMoreText.style.display = 'inline';
+    showLessText.style.display = 'none';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const state = {
     type: null,
     oil: null,
     refill: false,
     refillScent: null,
-    quantities: {}
+    quantities: { type: 1, oil: 1, refill: 1 }
   };
-
-  // Show more/less scents functionality
-  const showMoreBtn = document.getElementById('show-more-scents');
-  const scentGrid = document.getElementById('scent-grid');
-  
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', function() {
-      scentGrid.classList.toggle('expanded');
-      const showMoreText = this.querySelector('.show-more-text');
-      const showLessText = this.querySelector('.show-less-text');
-      
-      if (scentGrid.classList.contains('expanded')) {
-        showMoreText.style.display = 'none';
-        showLessText.style.display = 'inline';
-      } else {
-        showMoreText.style.display = 'inline';
-        showLessText.style.display = 'none';
-      }
-    });
-  }
 
   // Refill checkbox and dropdown
   const refillCheckbox = document.getElementById('add-refill');
@@ -698,6 +696,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const summaryItems = document.getElementById('summary-items');
     const totalPrice = document.getElementById('total-price');
     const addToCartBtn = document.getElementById('add-to-cart');
+    
+    console.log('UpdateSummary called. State:', state);
     
     let html = '';
     let total = 0;
@@ -749,8 +749,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Refill
     if (state.refill && state.refillScent) {
       const refillQty = state.quantities['refill'] || 1;
-      const refillPrice = parseInt('{{ section.settings.refill_product.selected_or_first_available_variant.price }}');
-      html += `
+      const refillPrice = parseInt('{{ section.settings.refill_product.selected_or_first_available_variant.price }}') || 0;
+      if (refillPrice > 0) {
+        html += `
         <div class="summary-item" data-item-type="refill">
           <div class="item-details">
             <div class="item-name">Refill</div>
@@ -765,8 +766,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="item-price">${formatMoney(refillPrice * refillQty)}</div>
           </div>
         </div>
-      `;
-      total += refillPrice * refillQty;
+        `;
+        total += refillPrice * refillQty;
+      }
     }
 
     if (html === '') {
@@ -813,9 +815,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Type selection
   document.querySelectorAll('.type-card').forEach(card => {
     card.addEventListener('click', function() {
+      const title = this.querySelector('.type-name').textContent;
       state.type = {
         id: this.dataset.variantId,
-        title: this.dataset.title,
+        title: title,
         price: parseInt(this.dataset.price)
       };
       if (!state.quantities['type']) {
@@ -831,7 +834,7 @@ document.addEventListener('DOMContentLoaded', function() {
       state.oil = {
         id: this.dataset.oilId,
         title: this.dataset.oilTitle,
-        price: parseInt(this.dataset.oilPrice)
+        price: parseInt(this.dataset.oilPrice) || 0
       };
       if (!state.quantities['oil']) {
         state.quantities['oil'] = 1;
@@ -897,12 +900,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Initialize quantities
-  state.quantities = {
-    type: 1,
-    oil: 1,
-    refill: 1
-  };
+  // Initialize
+  updateSummary();
 });
 </script>
 
