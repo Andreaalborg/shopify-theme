@@ -48,6 +48,7 @@
     },
     "product-configurator": {
       "type": "product-configurator",
+      "disabled": true,
       "settings": {
         "title": "Bygg din luftfrisker",
         "subtitle": "Velg biltype (vent/speil), din favorittduft og legg til refill om ønskelig.",
@@ -126,12 +127,12 @@
     "hero_v2_BgYkWp",
     "featured-pro",
     "how-it-works-pro",
+    "product_configurator_v2_Th3qc6",
     "product-configurator",
     "products-essentia",
     "testimonials",
     "benefits-pro",
     "newsletter-aurora",
-    "about-nordic-essence",
-    "product_configurator_v2_Th3qc6"
+    "about-nordic-essence"
   ]
 }
