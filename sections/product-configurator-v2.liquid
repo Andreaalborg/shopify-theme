@@ -1,0 +1,813 @@
+<section id="configurator-{{ section.id }}" class="product-configurator-v2">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ section.settings.title | default: "Bygg din luftfrisker" }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle | default: "Velg type, duft og mengde" }}</p>
+    </div>
+
+    {% assign vent = section.settings.vent_product %}
+    {% assign mirror = section.settings.mirror_product %}
+
+    <div class="configurator-layout">
+      <!-- Venstre side: Valgene -->
+      <div class="configurator-steps">
+        
+        <!-- Step 1: Velg type -->
+        <div class="step-section">
+          <h3 class="step-title">
+            <span class="step-number">1</span>
+            Velg type
+          </h3>
+          <div class="type-options">
+            {% if vent %}
+              {% assign vent_variant = vent.selected_or_first_available_variant %}
+              <label class="type-card" data-type="vent" data-variant-id="{{ vent_variant.id }}" data-price="{{ vent_variant.price }}">
+                <input type="radio" name="product-type" value="vent" />
+                <div class="type-card-inner">
+                  {% if vent.featured_image %}
+                    <div class="type-image">
+                      <img src="{{ vent.featured_image | img_url: '200x200' }}" alt="{{ vent.title }}" />
+                    </div>
+                  {% else %}
+                    <div class="type-icon">🚗</div>
+                  {% endif %}
+                  <div class="type-info">
+                    <h4>I ventilasjonen</h4>
+                    <p class="type-name">{{ vent.title }}</p>
+                    <span class="type-price">{{ vent_variant.price | money }}</span>
+                  </div>
+                </div>
+              </label>
+            {% endif %}
+
+            {% if mirror %}
+              {% assign mirror_variant = mirror.selected_or_first_available_variant %}
+              <label class="type-card" data-type="mirror" data-variant-id="{{ mirror_variant.id }}" data-price="{{ mirror_variant.price }}">
+                <input type="radio" name="product-type" value="mirror" />
+                <div class="type-card-inner">
+                  {% if mirror.featured_image %}
+                    <div class="type-image">
+                      <img src="{{ mirror.featured_image | img_url: '200x200' }}" alt="{{ mirror.title }}" />
+                    </div>
+                  {% else %}
+                    <div class="type-icon">🪞</div>
+                  {% endif %}
+                  <div class="type-info">
+                    <h4>I bakspeilet</h4>
+                    <p class="type-name">{{ mirror.title }}</p>
+                    <span class="type-price">{{ mirror_variant.price | money }}</span>
+                  </div>
+                </div>
+              </label>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Step 2: Velg duft -->
+        <div class="step-section">
+          <h3 class="step-title">
+            <span class="step-number">2</span>
+            Velg duft
+          </h3>
+          <div class="scent-grid">
+            {% for i in (1..7) %}
+              {% assign oil_key = 'oil_' | append: i %}
+              {% assign oil = section.settings[oil_key] %}
+              {% if oil %}
+                {% assign oil_variant = oil.selected_or_first_available_variant %}
+                <label class="scent-card" data-oil-id="{{ oil_variant.id }}" data-oil-price="{{ oil_variant.price }}" data-oil-title="{{ oil.title }}">
+                  <input type="radio" name="product-scent" value="{{ oil.handle }}" />
+                  <div class="scent-card-inner">
+                    {% if oil.featured_image %}
+                      <div class="scent-image">
+                        <img src="{{ oil.featured_image | img_url: '120x120' }}" alt="{{ oil.title }}" />
+                      </div>
+                    {% endif %}
+                    <div class="scent-info">
+                      <h5>{{ oil.title | replace: 'Fragrance Oil', '' | strip }}</h5>
+                      <span class="scent-price">{{ oil_variant.price | money }}</span>
+                    </div>
+                  </div>
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Step 3: Refill -->
+        {% if section.settings.refill_product %}
+          <div class="step-section">
+            <h3 class="step-title">
+              <span class="step-number">3</span>
+              Tillegg
+            </h3>
+            <div class="refill-option">
+              <label class="refill-checkbox">
+                <input type="checkbox" id="add-refill" />
+                <div class="refill-content">
+                  <div class="refill-text">
+                    <span class="refill-title">Legg til refill</span>
+                    <span class="refill-subtitle">Samme duft</span>
+                  </div>
+                  <span class="refill-price">+{{ section.settings.refill_product.price | money }}</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Høyre side: Oppsummering -->
+      <div class="configurator-summary">
+        <div class="summary-card">
+          <h3>Din konfigurasjon</h3>
+          
+          <div class="summary-items" id="summary-items">
+            <!-- Dynamisk innhold -->
+            <div class="empty-state">
+              <p>Velg type og duft for å starte</p>
+            </div>
+          </div>
+
+          <div class="summary-footer">
+            <div class="total-row">
+              <span>Totalsum</span>
+              <span class="total-price" id="total-price">0,00 kr</span>
+            </div>
+            <button class="add-to-cart-btn" id="add-to-cart" disabled>
+              Legg i handlekurv
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.product-configurator-v2 {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+}
+
+.configurator-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Steps Section */
+.configurator-steps {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.step-section {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.step-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #1a1a1a;
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Type Cards */
+.type-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.type-card {
+  cursor: pointer;
+  display: block;
+}
+
+.type-card input {
+  display: none;
+}
+
+.type-card-inner {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.type-card input:checked + .type-card-inner {
+  border-color: #1a1a1a;
+  background: #f8f9fa;
+}
+
+.type-card:hover .type-card-inner {
+  border-color: #999;
+}
+
+.type-image {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.type-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.type-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.type-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+
+.type-name {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.type-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Scent Grid */
+.scent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.scent-card {
+  cursor: pointer;
+  display: block;
+}
+
+.scent-card input {
+  display: none;
+}
+
+.scent-card-inner {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  transition: all 0.2s ease;
+  background: white;
+  text-align: center;
+}
+
+.scent-card input:checked + .scent-card-inner {
+  border-color: #1a1a1a;
+  background: #f8f9fa;
+}
+
+.scent-card:hover .scent-card-inner {
+  border-color: #999;
+}
+
+.scent-image {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.scent-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scent-info h5 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+
+.scent-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Refill Option */
+.refill-checkbox {
+  display: block;
+  cursor: pointer;
+}
+
+.refill-checkbox input {
+  display: none;
+}
+
+.refill-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.refill-checkbox input:checked + .refill-content {
+  border-color: #1a1a1a;
+  background: #f8f9fa;
+}
+
+.refill-title {
+  font-weight: 600;
+  color: #1a1a1a;
+  display: block;
+}
+
+.refill-subtitle {
+  font-size: 13px;
+  color: #666;
+}
+
+.refill-price {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Summary Card */
+.summary-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  position: sticky;
+  top: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.summary-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.summary-items {
+  min-height: 150px;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.item-variant {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.qty-btn:hover {
+  background: #f0f0f0;
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.item-price {
+  font-weight: 700;
+  color: #1a1a1a;
+  min-width: 80px;
+  text-align: right;
+}
+
+.summary-footer {
+  border-top: 2px solid #f0f0f0;
+  padding-top: 20px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 16px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+  background: #333;
+}
+
+.add-to-cart-btn:disabled {
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .configurator-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .type-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .scent-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .summary-card {
+    position: static;
+    margin-top: 20px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const configurator = {
+    type: null,
+    oil: null,
+    refill: false,
+    items: []
+  };
+
+  function updateSummary() {
+    const summaryItems = document.getElementById('summary-items');
+    const totalPrice = document.getElementById('total-price');
+    const addToCartBtn = document.getElementById('add-to-cart');
+    
+    let html = '';
+    let total = 0;
+    configurator.items = [];
+
+    // Add type product
+    if (configurator.type) {
+      const typeItem = {
+        id: configurator.type.id,
+        name: configurator.type.name,
+        variant: 'Type: ' + configurator.type.label,
+        price: configurator.type.price,
+        qty: 1
+      };
+      configurator.items.push(typeItem);
+      
+      html += createSummaryItem(typeItem, 'type');
+      total += typeItem.price * typeItem.qty;
+    }
+
+    // Add oil product
+    if (configurator.oil) {
+      const oilItem = {
+        id: configurator.oil.id,
+        name: configurator.oil.name,
+        variant: 'Duft',
+        price: configurator.oil.price,
+        qty: 1
+      };
+      configurator.items.push(oilItem);
+      
+      html += createSummaryItem(oilItem, 'oil');
+      total += oilItem.price * oilItem.qty;
+    }
+
+    // Add refill if selected
+    if (configurator.refill && configurator.oil) {
+      const refillItem = {
+        id: '{{ section.settings.refill_product.selected_or_first_available_variant.id }}',
+        name: 'Refill',
+        variant: configurator.oil.name,
+        price: parseInt('{{ section.settings.refill_product.selected_or_first_available_variant.price }}'),
+        qty: 1
+      };
+      configurator.items.push(refillItem);
+      
+      html += createSummaryItem(refillItem, 'refill');
+      total += refillItem.price * refillItem.qty;
+    }
+
+    if (html === '') {
+      html = '<div class="empty-state"><p>Velg type og duft for å starte</p></div>';
+      addToCartBtn.disabled = true;
+    } else {
+      addToCartBtn.disabled = false;
+    }
+
+    summaryItems.innerHTML = html;
+    totalPrice.textContent = formatMoney(total);
+    
+    // Add event listeners to qty buttons
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const itemType = this.dataset.item;
+        const action = this.dataset.action;
+        updateQuantity(itemType, action);
+      });
+    });
+  }
+
+  function createSummaryItem(item, type) {
+    return `
+      <div class="summary-item">
+        <div class="item-details">
+          <div class="item-name">${item.name}</div>
+          <div class="item-variant">${item.variant}</div>
+        </div>
+        <div class="item-controls">
+          <div class="qty-controls">
+            <button class="qty-btn" data-item="${type}" data-action="decrease">−</button>
+            <span class="qty-value">${item.qty}</span>
+            <button class="qty-btn" data-item="${type}" data-action="increase">+</button>
+          </div>
+          <div class="item-price">${formatMoney(item.price * item.qty)}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function updateQuantity(itemType, action) {
+    const item = configurator.items.find(i => {
+      if (itemType === 'type') return i.id === configurator.type.id;
+      if (itemType === 'oil') return i.id === configurator.oil.id;
+      if (itemType === 'refill') return i.name === 'Refill';
+    });
+    
+    if (item) {
+      if (action === 'increase') {
+        item.qty++;
+      } else if (action === 'decrease' && item.qty > 1) {
+        item.qty--;
+      }
+      updateSummary();
+    }
+  }
+
+  function formatMoney(cents) {
+    return (cents / 100).toFixed(2).replace('.', ',') + ' kr';
+  }
+
+  // Type selection
+  document.querySelectorAll('.type-card').forEach(card => {
+    card.addEventListener('click', function() {
+      configurator.type = {
+        id: this.dataset.variantId,
+        name: this.querySelector('.type-name').textContent,
+        label: this.querySelector('h4').textContent,
+        price: parseInt(this.dataset.price)
+      };
+      updateSummary();
+    });
+  });
+
+  // Oil selection
+  document.querySelectorAll('.scent-card').forEach(card => {
+    card.addEventListener('click', function() {
+      configurator.oil = {
+        id: this.dataset.oilId,
+        name: this.dataset.oilTitle,
+        price: parseInt(this.dataset.oilPrice)
+      };
+      updateSummary();
+    });
+  });
+
+  // Refill checkbox
+  const refillCheckbox = document.getElementById('add-refill');
+  if (refillCheckbox) {
+    refillCheckbox.addEventListener('change', function() {
+      configurator.refill = this.checked;
+      updateSummary();
+    });
+  }
+
+  // Add to cart
+  document.getElementById('add-to-cart').addEventListener('click', function() {
+    const items = configurator.items.map(item => ({
+      id: item.id,
+      quantity: item.qty
+    }));
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items })
+    })
+    .then(response => response.json())
+    .then(data => {
+      window.location.href = '/cart';
+    })
+    .catch(error => {
+      alert('Kunne ikke legge til i handlekurven. Prøv igjen.');
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Produktkonfigurator V2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tittel",
+      "default": "Bygg din luftfrisker"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Undertittel",
+      "default": "Velg type, duft og mengde"
+    },
+    {
+      "type": "product",
+      "id": "vent_product",
+      "label": "Produkt: Ventilasjon"
+    },
+    {
+      "type": "product",
+      "id": "mirror_product",
+      "label": "Produkt: Bakspeil"
+    },
+    {
+      "type": "product",
+      "id": "refill_product",
+      "label": "Produkt: Refill"
+    },
+    {
+      "type": "product",
+      "id": "oil_1",
+      "label": "Duft 1"
+    },
+    {
+      "type": "product",
+      "id": "oil_2",
+      "label": "Duft 2"
+    },
+    {
+      "type": "product",
+      "id": "oil_3",
+      "label": "Duft 3"
+    },
+    {
+      "type": "product",
+      "id": "oil_4",
+      "label": "Duft 4"
+    },
+    {
+      "type": "product",
+      "id": "oil_5",
+      "label": "Duft 5"
+    },
+    {
+      "type": "product",
+      "id": "oil_6",
+      "label": "Duft 6"
+    },
+    {
+      "type": "product",
+      "id": "oil_7",
+      "label": "Duft 7"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produktkonfigurator V2"
+    }
+  ]
+}
+{% endschema %}
