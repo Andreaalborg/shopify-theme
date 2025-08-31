@@ -69,28 +69,38 @@
             <span class="step-number">2</span>
             Velg duft
           </h3>
-          <div class="scent-grid">
-            {% for i in (1..7) %}
-              {% assign oil_key = 'oil_' | append: i %}
-              {% assign oil = section.settings[oil_key] %}
-              {% if oil %}
-                {% assign oil_variant = oil.selected_or_first_available_variant %}
-                <label class="scent-card" data-oil-id="{{ oil_variant.id }}" data-oil-price="{{ oil_variant.price }}" data-oil-title="{{ oil.title }}">
-                  <input type="radio" name="product-scent" value="{{ oil.handle }}" />
-                  <div class="scent-card-inner">
-                    {% if oil.featured_image %}
-                      <div class="scent-image">
-                        <img src="{{ oil.featured_image | img_url: '120x120' }}" alt="{{ oil.title }}" />
+          <div class="scent-container">
+            <div class="scent-grid" id="scent-grid">
+              {% assign oil_count = 0 %}
+              {% for i in (1..7) %}
+                {% assign oil_key = 'oil_' | append: i %}
+                {% assign oil = section.settings[oil_key] %}
+                {% if oil %}
+                  {% assign oil_count = oil_count | plus: 1 %}
+                  {% assign oil_variant = oil.selected_or_first_available_variant %}
+                  <label class="scent-card {% if oil_count > 3 %}scent-hidden{% endif %}" data-oil-id="{{ oil_variant.id }}" data-oil-price="{{ oil_variant.price }}" data-oil-title="{{ oil.title }}">
+                    <input type="radio" name="product-scent" value="{{ oil.handle }}" />
+                    <div class="scent-card-inner">
+                      {% if oil.featured_image %}
+                        <div class="scent-image">
+                          <img src="{{ oil.featured_image | img_url: '120x120' }}" alt="{{ oil.title }}" />
+                        </div>
+                      {% endif %}
+                      <div class="scent-info">
+                        <h5>{{ oil.title | replace: 'Fragrance Oil', '' | replace: 'Frangrance Oil', '' | strip }}</h5>
+                        <span class="scent-price">{{ oil_variant.price | money }}</span>
                       </div>
-                    {% endif %}
-                    <div class="scent-info">
-                      <h5>{{ oil.title | replace: 'Fragrance Oil', '' | strip }}</h5>
-                      <span class="scent-price">{{ oil_variant.price | money }}</span>
                     </div>
-                  </div>
-                </label>
-              {% endif %}
-            {% endfor %}
+                  </label>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% if oil_count > 3 %}
+              <button type="button" class="show-more-btn" id="show-more-scents">
+                <span class="show-more-text">+{{ oil_count | minus: 3 }} dufter</span>
+                <span class="show-less-text" style="display: none;">Vis færre</span>
+              </button>
+            {% endif %}
           </div>
         </div>
 
@@ -292,10 +302,43 @@
 }
 
 /* Scent Grid */
+.scent-container {
+  position: relative;
+}
+
 .scent-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.scent-hidden {
+  display: none;
+}
+
+.scent-grid.expanded .scent-hidden {
+  display: block;
+}
+
+/* Show More Button */
+.show-more-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.show-more-btn:hover {
+  background: #f0f0f0;
+  border-color: #999;
 }
 
 .scent-card {
@@ -565,6 +608,26 @@ document.addEventListener('DOMContentLoaded', function() {
     refill: false,
     items: []
   };
+
+  // Show more/less scents functionality
+  const showMoreBtn = document.getElementById('show-more-scents');
+  const scentGrid = document.getElementById('scent-grid');
+  
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', function() {
+      scentGrid.classList.toggle('expanded');
+      const showMoreText = this.querySelector('.show-more-text');
+      const showLessText = this.querySelector('.show-less-text');
+      
+      if (scentGrid.classList.contains('expanded')) {
+        showMoreText.style.display = 'none';
+        showLessText.style.display = 'inline';
+      } else {
+        showMoreText.style.display = 'inline';
+        showLessText.style.display = 'none';
+      }
+    });
+  }
 
   function updateSummary() {
     const summaryItems = document.getElementById('summary-items');
