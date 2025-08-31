@@ -102,6 +102,24 @@
         "button_text": "Les historien",
         "button_link": "/pages/om-oss"
       }
+    },
+    "product_configurator_v2_Th3qc6": {
+      "type": "product-configurator-v2",
+      "name": "Produktkonfigurator V2",
+      "settings": {
+        "title": "Bygg din luftfrisker",
+        "subtitle": "Velg type, duft og mengde",
+        "vent_product": "luftfrisker-ventil",
+        "mirror_product": "luftfrisker-hengende",
+        "refill_product": "",
+        "oil_1": "cedar-oud-fragrance-oil",
+        "oil_2": "dahab-fragrance-oil",
+        "oil_3": "ruh-aswad-frangrance-oil",
+        "oil_4": "ruh-frangrance-oil",
+        "oil_5": "ruhani-fragrance-oil",
+        "oil_6": "sukoon-fragrance-oil",
+        "oil_7": "tobanilla-frangrance-oil"
+      }
     }
   },
   "order": [
@@ -113,6 +131,7 @@
     "testimonials",
     "benefits-pro",
     "newsletter-aurora",
-    "about-nordic-essence"
+    "about-nordic-essence",
+    "product_configurator_v2_Th3qc6"
   ]
 }
