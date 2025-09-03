@@ -106,18 +106,27 @@
 
         <!-- Step 3: Refill -->
         {% if section.settings.refill_product %}
+          {% assign refill = section.settings.refill_product %}
+          {% assign refill_variant = refill.selected_or_first_available_variant %}
           <div class="step-section">
             <h3 class="step-title">
               <span class="step-number">3</span>
               Tillegg
             </h3>
             <div class="refill-option">
-              <label class="refill-checkbox">
-                <input type="checkbox" id="add-refill" />
-                <div class="refill-content">
+              <div class="refill-checkbox-wrapper">
+                <input type="checkbox" id="add-refill" class="refill-checkbox-input" />
+                <label for="add-refill" class="refill-content">
+                  {% if refill.featured_image %}
+                    <div class="refill-image">
+                      <img src="{{ refill.featured_image | img_url: '100x100' }}" alt="{{ refill.title }}" />
+                    </div>
+                  {% else %}
+                    <div class="refill-icon">🔄</div>
+                  {% endif %}
                   <div class="refill-text">
-                    <span class="refill-title">Legg til refill</span>
-                    <select class="refill-scent-select" id="refill-scent" disabled>
+                    <span class="refill-title">{{ refill.title }}</span>
+                    <select class="refill-scent-select" id="refill-scent" disabled onclick="event.stopPropagation()">
                       <option value="">Velg duft...</option>
                       {% for i in (1..7) %}
                         {% assign oil_key = 'oil_' | append: i %}
@@ -130,10 +139,9 @@
                       {% endfor %}
                     </select>
                   </div>
-                  {% assign refill_variant = section.settings.refill_product.selected_or_first_available_variant %}
                   <span class="refill-price">+{{ refill_variant.price | money }}</span>
-                </div>
-              </label>
+                </label>
+              </div>
             </div>
           </div>
         {% endif %}
@@ -416,29 +424,59 @@
 }
 
 /* Refill Option */
-.refill-checkbox {
-  display: block;
-  cursor: pointer;
+.refill-checkbox-wrapper {
+  position: relative;
 }
 
-.refill-checkbox input {
-  display: none;
+.refill-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .refill-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 16px;
   padding: 16px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   background: white;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-.refill-checkbox input:checked + .refill-content {
+.refill-checkbox-input:checked + .refill-content {
   border-color: #1a1a1a;
   background: #f8f9fa;
+}
+
+.refill-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+  flex-shrink: 0;
+}
+
+.refill-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.refill-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .refill-text {
@@ -470,7 +508,8 @@
 .refill-price {
   font-weight: 700;
   color: #1a1a1a;
-  margin-left: 20px;
+  margin-left: auto;
+  font-size: 18px;
 }
 
 /* Summary Card */
@@ -641,10 +680,13 @@
 </style>
 
 <script>
-// Global toggle function
-function toggleScents() {
+// Global toggle function - must be in window scope
+window.toggleScents = function() {
   const scentGrid = document.getElementById('scent-grid');
   const showMoreBtn = document.getElementById('show-more-scents');
+  
+  if (!scentGrid || !showMoreBtn) return;
+  
   const showMoreText = showMoreBtn.querySelector('.show-more-text');
   const showLessText = showMoreBtn.querySelector('.show-less-text');
   
@@ -683,12 +725,18 @@ document.addEventListener('DOMContentLoaded', function() {
       updateSummary();
     });
     
-    refillSelect.addEventListener('change', function() {
+    refillSelect.addEventListener('change', function(e) {
+      e.stopPropagation();
       state.refillScent = this.value ? {
         name: this.options[this.selectedIndex].text,
         value: this.value
       } : null;
       updateSummary();
+    });
+    
+    // Prevent select clicks from toggling checkbox
+    refillSelect.addEventListener('click', function(e) {
+      e.stopPropagation();
     });
   }
 
