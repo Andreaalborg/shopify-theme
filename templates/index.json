@@ -124,6 +124,7 @@
     },
     "product_configurator_v3_TfTitc": {
       "type": "product-configurator-v3",
+      "disabled": true,
       "name": "Produktkonfigurator V3",
       "settings": {
         "title": "Bygg din luftfrisker",
